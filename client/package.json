@@ -1,8 +1,11 @@
 {
-  "name": "nud-pro-react",
+  "name": "ionweb-client",
   "version": "1.0.0",
-  "private": true,
-  "homepage": "https://timcreative.github.io/now-ui-dashboard-pro-react",
+  "devDependencies": {
+    "tslint": "^5.9.1",
+    "tslint-eslint-rules": "^4.1.1",
+    "typescript": "^2.6.2"
+  },
   "dependencies": {
     "bootstrap": "4.0.0-beta",
     "chart.js": "2.7.1",

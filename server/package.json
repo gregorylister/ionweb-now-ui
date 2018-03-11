@@ -1,22 +1,6 @@
 {
-  "name": "ionweb",
+  "name": "ionweb-server",
   "version": "1.0.0",
-  "description": "Ionweb web application",
-  "main": "./dist/server/public/bundle",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "webpack": ".\\node_modules\\.bin\\webpack --watch"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gregorylister/ionweb.git"
-  },
-  "author": "",
-  "license": "N/A",
-  "bugs": {
-    "url": "https://github.com/gregorylister/ionweb/issues"
-  },
-  "homepage": "https://github.com/gregorylister/ionweb#readme",
   "devDependencies": {
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-cli": "^2.0.1",

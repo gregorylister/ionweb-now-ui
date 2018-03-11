@@ -1,0 +1,1 @@
+- Update logo (svg) files

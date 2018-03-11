@@ -1,0 +1,19 @@
+{
+    "compilerOptions":
+    {    
+        "outDir": "./dist/",    
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "module": "commonjs",
+        "target": "ES2015",
+        "jsx": "react",  
+        "strictNullChecks": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "allowJs": true
+    },
+    "include":
+    [
+        "./src/**/*"
+    ]
+}

@@ -1,0 +1,40 @@
+{
+  "name": "ionweb",
+  "version": "1.0.0",
+  "description": "Ionweb web application",
+  "main": "./dist/server/public/bundle",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": ".\\node_modules\\.bin\\webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gregorylister/ionweb.git"
+  },
+  "author": "",
+  "license": "N/A",
+  "bugs": {
+    "url": "https://github.com/gregorylister/ionweb/issues"
+  },
+  "homepage": "https://github.com/gregorylister/ionweb#readme",
+  "devDependencies": {
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-cli": "^2.0.1",
+    "gulp-sourcemaps": "^2.6.3",
+    "gulp-typescript": "^4.0.0-alpha.1",
+    "source-map-loader": "^0.2.3",
+    "tslint": "^5.9.1",
+    "tslint-eslint-rules": "^4.1.1",
+    "typescript": "^2.6.2"
+  },
+  "dependencies": {
+    "@types/body-parser": "^1.16.8",
+    "@types/express": "^4.11.1",
+    "@types/sequelize": "^4.27.4",
+    "@types/tedious": "^1.8.32",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "sequelize": "^4.32.2",
+    "tedious": "^2.2.4"
+  }
+}

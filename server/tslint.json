@@ -1,0 +1,59 @@
+{
+    "defaultSeverity": "error",
+    
+    "extends": ["tslint-eslint-rules","tslint:recommended"],  
+    
+    "jsRules": 
+    {
+        "indent": [true, "spaces", 4],
+        "linebreak-style": [true, "CRLF"],
+        "quotemark": [true, "double"],
+        "semicolon": true,
+        "no-console": false,
+        "no-string-literal": false,
+        "object-literal-sort-keys": false,
+        "max-line-length": [true, 150],
+        "one-line": 
+        [
+            true,
+            "check-finally",
+            "check-whitespace"
+        ],      
+        "brace-style": 
+        [
+            true,
+            "allman",
+            {
+                "allowSingleLine": true
+            }
+        ]
+    },
+    
+    "rules": 
+    {
+        "indent": [true, "spaces", 4],
+        "linebreak-style": [true, "CRLF"],
+        "quotemark": [true, "double"],
+        "semicolon": true,
+        "no-console": false,
+        "no-string-literal": false,
+        "object-literal-sort-keys": false,
+        "max-line-length": [true, 150],
+        "one-line": 
+        [
+            true,
+            "check-finally",
+            "check-whitespace"
+        ],      
+        "brace-style": 
+        [
+            true,
+            "allman",
+            {
+                "allowSingleLine": true
+            }
+        ]
+    },
+    
+    "rulesDirectory": []
+}

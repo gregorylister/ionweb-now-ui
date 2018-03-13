@@ -1,12 +1,14 @@
-import React from 'react';
+import React from "react";
 // used for making the prop types of this component
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-class CardAuthor extends React.Component{
-    render(){
+class CardAuthor extends React.Component
+{
+    render()
+    {
         return (
             <div className="author">
-                <a href={this.props.link ? this.props.link:"#"}>
+                <a href={this.props.link ? this.props.link : "#"}>
                     <img className="avatar border-gray" src={this.props.avatar} alt={this.props.avatarAlt} />
                     <h5 className="title">{this.props.title}</h5>
                 </a>
@@ -31,6 +33,6 @@ CardAuthor.propTypes = {
         PropTypes.string,
         PropTypes.node
     ])
-}
+};
 
 export default CardAuthor;

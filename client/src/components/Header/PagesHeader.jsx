@@ -1,13 +1,15 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 import {
     Collapse, Navbar, NavbarToggler, Nav, NavItem, Container
-} from 'reactstrap';
+} from "reactstrap";
 
-import pagesRoutes from 'routes/pages.jsx';
+import pagesRoutes from "routes/pages.jsx";
 
-class PagesHeader extends React.Component{
-    constructor(props) {
+class PagesHeader extends React.Component
+{
+    constructor(props)
+    {
         super(props);
         this.state = {
             isOpen: false
@@ -15,18 +17,24 @@ class PagesHeader extends React.Component{
         this.toggle = this.toggle.bind(this);
         this.activeRoute.bind(this);
     }
-    toggle() {
+
+    toggle()
+    {
         this.setState({
             isOpen: !this.state.isOpen
         });
     }
+
     // verifies if routeName is the one active (in browser input)
-    activeRoute(routeName) {
-        return this.props.location.pathname.indexOf(routeName) > -1 ? 'active' : '';
+    activeRoute(routeName)
+    {
+        return this.props.location.pathname.indexOf(routeName) > -1 ? "active" : "";
     }
-    render(){
+
+    render()
+    {
         return (
-            <Navbar expand="lg" className={this.state.isOpen ? "bg-white navbar-absolute":"navbar-transparent navbar-absolute"}>
+            <Navbar expand="lg" className={this.state.isOpen ? "bg-white navbar-absolute" : "navbar-transparent navbar-absolute"}>
                 <Container>
                     <div className="navbar-wrapper">
                         <div className="navbar-toggle">
@@ -41,17 +49,20 @@ class PagesHeader extends React.Component{
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <Link to='/dashboard' className="nav-link"><i className="now-ui-icons design_bullet-list-67"></i> Dashboard</Link>
+                                <Link to="/dashboard" className="nav-link"><i className="now-ui-icons design_bullet-list-67"></i> Dashboard</Link>
                             </NavItem>
                             {
-                                pagesRoutes.map((prop,key)=>{
-                                    if(prop.redirect)
+                                pagesRoutes.map((prop, key) =>
+                                {
+                                    if (prop.redirect)
+                                    {
                                         return null;
+                                    }
                                     return (
                                         <NavItem key={key} className={this.activeRoute(prop.path)}>
-                                            <Link to={prop.path} className="nav-link"><i className={"now-ui-icons "+prop.icon}></i> {prop.short}</Link>
+                                            <Link to={prop.path} className="nav-link"><i className={"now-ui-icons " + prop.icon}></i> {prop.short}</Link>
                                         </NavItem>
-                                    )
+                                    );
                                 })
                             }
                         </Nav>

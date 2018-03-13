@@ -1,10 +1,12 @@
-import React from 'react';
-import { FormGroup, Label, Input } from 'reactstrap';
+import React from "react";
+import { FormGroup, Label, Input } from "reactstrap";
 // used for making the prop types of this component
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-class SimpleCheckbox extends React.Component{
-    render(){
+class SimpleCheckbox extends React.Component
+{
+    render()
+    {
         return (
             <FormGroup check {...this.props.formGroupProps}>
                 <Label check {...this.props.labelProps}>
@@ -19,6 +21,6 @@ class SimpleCheckbox extends React.Component{
 
 SimpleCheckbox.propTypes = {
     label: PropTypes.node
-}
+};
 
 export default SimpleCheckbox;

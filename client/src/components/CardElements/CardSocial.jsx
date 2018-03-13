@@ -1,30 +1,34 @@
-import React from 'react';
+import React from "react";
 // used for making the prop types of this component
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-import { Button } from 'components';
+import { Button } from "components";
 
-class CardSocial extends React.Component{
-    render(){
+class CardSocial extends React.Component
+{
+    render()
+    {
         return (
             <div className="social">
                 {
-                    this.props.socials.map((prop,key) => {
+                    this.props.socials.map((prop, key) =>
+                    {
                         var socialObj = {};
                         socialObj[prop.name] = true;
                         var social = [socialObj];
                         return (
-                            social.map((item,index)=>{
+                            social.map((item, index) =>
+                            {
                                 return (
                                     <Button icon round key={key} href={prop.link} {...item}>
-                                        <i className={"fa fa-"+prop.name}></i>
+                                        <i className={"fa fa-" + prop.name}></i>
                                     </Button>
-                                )
+                                );
                             })
                         );
                     })
                 }
-                {this.props.description !== undefined ? (<h5 className="card-description">{this.props.description}</h5>):null}
+                {this.props.description !== undefined ? (<h5 className="card-description">{this.props.description}</h5>) : null}
             </div>
         );
     }
@@ -36,6 +40,6 @@ CardSocial.propTypes = {
     socials: PropTypes.arrayOf(PropTypes.object),
     // description under the socials
     description: PropTypes.node
-}
+};
 
 export default CardSocial;

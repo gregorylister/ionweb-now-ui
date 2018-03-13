@@ -1,15 +1,17 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 import {
     Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem,
     Dropdown, DropdownToggle, DropdownMenu, DropdownItem,
     Container, InputGroup, InputGroupAddon, Input
-} from 'reactstrap';
+} from "reactstrap";
 
-import dashboardRoutes from 'routes/dashboard.jsx';
+import dashboardRoutes from "routes/dashboard.jsx";
 
-class Header extends React.Component{
-    constructor(props) {
+class Header extends React.Component
+{
+    constructor(props)
+    {
         super(props);
         this.state = {
             isOpen: false,
@@ -19,12 +21,17 @@ class Header extends React.Component{
         this.toggle = this.toggle.bind(this);
         this.dropdownToggle = this.dropdownToggle.bind(this);
     }
-    toggle() {
-        if(this.state.isOpen){
+
+    toggle()
+    {
+        if (this.state.isOpen)
+        {
             this.setState({
                 color: "transparent"
             });
-        } else {
+        }
+        else
+        {
             this.setState({
                 color: "white"
             });
@@ -33,70 +40,100 @@ class Header extends React.Component{
             isOpen: !this.state.isOpen
         });
     }
-    dropdownToggle(e){
+
+    dropdownToggle(e)
+    {
         this.setState({
             dropdownOpen: !this.state.dropdownOpen
         });
     }
-    getBrand(){
+
+    getBrand()
+    {
         var name;
-        dashboardRoutes.map((prop,key) => {
-            if(prop.collapse){
-                 prop.views.map((prop,key) => {
-                    if(prop.path === this.props.location.pathname){
+        dashboardRoutes.map((prop, key) =>
+        {
+            if (prop.collapse)
+            {
+                 // tslint:disable-next-line:no-shadowed-variable
+                 prop.views.map((prop, key) =>
+                 {
+                    if (prop.path === this.props.location.pathname)
+                    {
                         name = prop.name;
                     }
                     return null;
-                })
-            } else {
-                if(prop.redirect){
-                    if(prop.path === this.props.location.pathname){
+                });
+            }
+            else
+            {
+                if (prop.redirect)
+                {
+                    if (prop.path === this.props.location.pathname)
+                    {
                         name = prop.name;
                     }
-                }else{
-                    if(prop.path === this.props.location.pathname){
+                }
+                else
+                {
+                    if (prop.path === this.props.location.pathname)
+                    {
                         name = prop.name;
                     }
                 }
             }
             return null;
-        })
+        });
         return name;
     }
-    openSidebar(){
-        document.documentElement.classList.toggle('nav-open');
-        this.refs.sidebarToggle.classList.toggle('toggled');
+
+    openSidebar()
+    {
+        document.documentElement.classList.toggle("nav-open");
+        this.refs.sidebarToggle.classList.toggle("toggled");
     }
+
     // function that adds color white/transparent to the navbar on resize (this is for the collapse)
-    updateColor(){
-        if(window.innerWidth < 993 && this.state.isOpen){
+    updateColor()
+    {
+        if (window.innerWidth < 993 && this.state.isOpen)
+        {
             this.setState({
                 color: "white"
             });
-        } else {
+        }
+        else
+        {
             this.setState({
                 color: "transparent"
             });
         }
 
     }
-    componentDidMount(){
+
+    componentDidMount()
+    {
         window.addEventListener("resize", this.updateColor.bind(this));
     }
-    componentDidUpdate(e){
-        if(window.innerWidth < 993 && e.history.location.pathname !== e.location.pathname && document.documentElement.className.indexOf('nav-open') !== -1){
-            document.documentElement.classList.toggle('nav-open');
-            this.refs.sidebarToggle.classList.toggle('toggled');
+
+    componentDidUpdate(e)
+    {
+        if (window.innerWidth < 993 && e.history.location.pathname !== e.location.pathname && document.documentElement.className.indexOf("nav-open") !== -1)
+        {
+            document.documentElement.classList.toggle("nav-open");
+            this.refs.sidebarToggle.classList.toggle("toggled");
         }
     }
-    render(){
+
+    render()
+    {
         return (
             // add or remove classes depending if we are on full-screen-maps page or not
             <Navbar
-                color={this.props.location.pathname.indexOf('full-screen-maps') !== -1 ? "white":this.state.color} expand="lg"
+                color={this.props.location.pathname.indexOf("full-screen-maps") !== -1 ? "white" : this.state.color} expand="lg"
                 className={
-                    this.props.location.pathname.indexOf('full-screen-maps') !== -1 ?
-                    "navbar-absolute fixed-top":"navbar-absolute fixed-top " + (this.state.color === "transparent" ? "navbar-transparent ":"")}>
+                    this.props.location.pathname.indexOf("full-screen-maps") !== -1 ?
+                    "navbar-absolute fixed-top" : "navbar-absolute fixed-top " + (this.state.color === "transparent" ? "navbar-transparent " : "")}>
                 <Container fluid>
                     <div className="navbar-wrapper">
                         <div className="navbar-toggle">
@@ -124,7 +161,7 @@ class Header extends React.Component{
                             <NavItem>
                                 <Link to="#pablo" className="nav-link">
                                     <i className="now-ui-icons media-2_sound-wave"></i>
-            						<p>
+                                    <p>
                                         <span className="d-lg-none d-md-block">Stats</span>
                                     </p>
                                 </Link>
@@ -133,8 +170,8 @@ class Header extends React.Component{
                                 <DropdownToggle caret nav>
                                     <i className="now-ui-icons location_world"></i>
                                     <p>
-            							<span className="d-lg-none d-md-block">Some Actions</span>
-            						</p>
+                                        <span className="d-lg-none d-md-block">Some Actions</span>
+                                    </p>
                                 </DropdownToggle>
                                 <DropdownMenu right>
                                     <DropdownItem tag="a">Action</DropdownItem>

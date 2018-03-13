@@ -1,15 +1,19 @@
-import React from 'react';
+import React from "react";
 import {
     FormGroup, Label, Input
-} from 'reactstrap';
+} from "reactstrap";
 // used for making the prop types of this component
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-class CustomRadio extends React.Component{
-    render(){
+class CustomRadio extends React.Component
+{
+    render()
+    {
         var classes = "";
-        if(this.props.formGroupProps !== undefined){
-            if(this.props.formGroupProps.className !== undefined){
+        if (this.props.formGroupProps !== undefined)
+        {
+            if (this.props.formGroupProps.className !== undefined)
+            {
                 classes += " " + this.props.formGroupProps.className;
             }
         }
@@ -27,6 +31,6 @@ class CustomRadio extends React.Component{
 
 CustomRadio.propTypes = {
     label: PropTypes.node
-}
+};
 
 export default CustomRadio;

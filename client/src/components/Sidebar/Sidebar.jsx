@@ -8,7 +8,7 @@ import PerfectScrollbar from "perfect-scrollbar";
 
 import { Button } from "components";
 
-import avatar from "assets/img/ryan.jpg";
+import avatar from "assets/img/default-avatar.png";
 import logo from "logo-white.svg";
 
 var ps;
@@ -20,11 +20,7 @@ class Sidebar extends React.Component
         super(props);
         this.state = {
             openAvatar: false,
-            openComponents: (this.activeRoute("/components") !== "" ? true : false),
-            openForms: (this.activeRoute("/forms") !== "" ? true : false),
-            openTables: (this.activeRoute("/tables") !== "" ? true : false),
-            openMaps: (this.activeRoute("/maps") !== "" ? true : false),
-            openPages: (this.activeRoute("/pages") !== "" ? true : false)
+            openTags: (this.activeRoute("/tags") !== "" ? true : false),
         };
         this.activeRoute.bind(this);
         this.minimizeSidebar = this.minimizeSidebar.bind(this);
@@ -81,13 +77,13 @@ class Sidebar extends React.Component
             <div className="sidebar" data-color="blue">
                 <NotificationAlert ref="notificationAlert"/>
                 <div className="logo">
-                    <a href="https://www.creative-tim.com" className="simple-text logo-mini">
+                    <a href="http://www.iontag.com" className="simple-text logo-mini">
                         <div className="logo-img">
                             <img src={logo} alt="react-logo" />
                         </div>
                     </a>
-                    <a href="https://www.creative-tim.com" className="simple-text logo-normal">
-                        Creative Tim
+                    <a href="http://www.iontag.com" className="simple-text logo-normal">
+                        Ionweb
                     </a>
                     <div className="navbar-minimize">
                         <Button simple neutral icon round id="minimizeSidebar" onClick={this.minimizeSidebar}>
@@ -105,7 +101,7 @@ class Sidebar extends React.Component
                         <div className="info">
                             <a data-toggle="collapse" aria-expanded={this.state.openAvatar} onClick={ () => this.setState({ openAvatar: !this.state.openAvatar })}>
                                 <span>
-                                    Ryan Gosling
+                                    Default User
                                     <b className="caret"></b>
                                 </span>
                             </a>
@@ -113,20 +109,8 @@ class Sidebar extends React.Component
                                 <ul className="nav">
                                     <li>
                                         <a>
-                                            <span className="sidebar-mini-icon">MP</span>
-                                            <span className="sidebar-normal">My Profile</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a>
                                             <span className="sidebar-mini-icon">EP</span>
                                             <span className="sidebar-normal">Edit Profile</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a>
-                                            <span className="sidebar-mini-icon">S</span>
-                                            <span className="sidebar-normal">Settings</span>
                                         </a>
                                     </li>
                                 </ul>

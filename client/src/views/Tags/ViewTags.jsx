@@ -14,7 +14,7 @@ $.DataTable = require("datatables.net-bs");
 require("datatables.net");
 require("datatables.net-responsive");
 
-class DataTables extends React.Component
+class ViewTags extends React.Component
 {
     componentDidMount()
     {
@@ -135,4 +135,4 @@ class DataTables extends React.Component
     }
 }
 
-export default DataTables;
+export default ViewTags;

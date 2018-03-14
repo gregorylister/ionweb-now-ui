@@ -1,1 +1,2 @@
 - Update logo (svg) files
+- User register/login/update/lockout

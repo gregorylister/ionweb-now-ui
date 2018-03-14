@@ -1,28 +1,28 @@
-import Dashboard from 'views/Dashboard/Dashboard.jsx';
-import Buttons from 'views/Components/Buttons.jsx';
-import GridSystem from 'views/Components/GridSystem.jsx';
-import Panels from 'views/Components/Panels.jsx';
-import SweetAlert from 'views/Components/SweetAlertPage.jsx';
-import Notifications from 'views/Components/Notifications.jsx';
-import Icons from 'views/Components/Icons.jsx';
-import Typography from 'views/Components/Typography.jsx';
-import RegularForms from 'views/Forms/RegularForms.jsx';
-import ExtendedForms from 'views/Forms/ExtendedForms.jsx';
-import ValidationForms from 'views/Forms/ValidationForms.jsx';
-import Wizard from 'views/Forms/Wizard/Wizard.jsx';
-import RegularTables from 'views/Tables/RegularTables.jsx';
-import ExtendedTables from 'views/Tables/ExtendedTables.jsx';
-import DataTables from 'views/Tables/DataTables.jsx';
-import GoogleMaps from 'views/Maps/GoogleMaps.jsx';
-import FullScreenMap from 'views/Maps/FullScreenMap.jsx';
-import VectorMap from 'views/Maps/VectorMap.jsx';
-import Charts from 'views/Charts/Charts.jsx';
-import Calendar from 'views/Calendar/Calendar.jsx';
-import Widgets from 'views/Widgets/Widgets.jsx';
-import UserPage from 'views/Pages/UserPage.jsx';
-import TimelinePage from 'views/Pages/TimelinePage.jsx';
+import Dashboard from "views/Dashboard/Dashboard.jsx";
+import Buttons from "views/Components/Buttons.jsx";
+import GridSystem from "views/Components/GridSystem.jsx";
+import Panels from "views/Components/Panels.jsx";
+import SweetAlert from "views/Components/SweetAlertPage.jsx";
+import Notifications from "views/Components/Notifications.jsx";
+import Icons from "views/Components/Icons.jsx";
+import Typography from "views/Components/Typography.jsx";
+import RegularForms from "views/Forms/RegularForms.jsx";
+import ExtendedForms from "views/Forms/ExtendedForms.jsx";
+import ValidationForms from "views/Forms/ValidationForms.jsx";
+import Wizard from "views/Forms/Wizard/Wizard.jsx";
+import RegularTables from "views/Tables/RegularTables.jsx";
+import ExtendedTables from "views/Tables/ExtendedTables.jsx";
+import DataTables from "views/Tables/DataTables.jsx";
+import GoogleMaps from "views/Maps/GoogleMaps.jsx";
+import FullScreenMap from "views/Maps/FullScreenMap.jsx";
+import VectorMap from "views/Maps/VectorMap.jsx";
+import Charts from "views/Charts/Charts.jsx";
+import Calendar from "views/Calendar/Calendar.jsx";
+import Widgets from "views/Widgets/Widgets.jsx";
+import UserPage from "views/Pages/UserPage.jsx";
+import TimelinePage from "views/Pages/TimelinePage.jsx";
 
-import pagesRoutes from './pages.jsx';
+import pagesRoutes from "./pages.jsx";
 
 var pages = [
     { path: "/timeline-page", name: "Timeline Page", mini: "TP", component: TimelinePage },
@@ -31,10 +31,10 @@ var pages = [
 
 var dashRoutes = [
     { path: "/dashboard", name: "Dashboard", icon: "design_app", component: Dashboard },
-    { collapse: true, path: "/pages", name: "Pages", state: "openPages", icon:"design_image", views:
+    { collapse: true, path: "/pages", name: "Pages", state: "openPages", icon: "design_image", views:
         pages
     },
-    { collapse: true, path: "/components", name: "Components", state: "openComponents", icon: "education_atom", views:[
+    { collapse: true, path: "/components", name: "Components", state: "openComponents", icon: "education_atom", views: [
         { path: "/components/buttons", name: "Buttons", mini: "B", component: Buttons },
         { path: "/components/grid-system", name: "Grid System", mini: "GS", component: GridSystem },
         { path: "/components/panels", name: "Panels", mini: "P", component: Panels },

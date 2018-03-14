@@ -1,22 +1,24 @@
-import React from 'react';
+import React from "react";
 import {
     Card, CardBody, Row, Col
-} from 'reactstrap';
+} from "reactstrap";
 // react component used to create a calendar with events on it
-import BigCalendar from 'react-big-calendar';
+import BigCalendar from "react-big-calendar";
 // dependency plugin for react-big-calendar
-import moment from 'moment';
+import moment from "moment";
 // react component used to create alerts
-import SweetAlert from 'react-bootstrap-sweetalert';
+import SweetAlert from "react-bootstrap-sweetalert";
 
-import { PanelHeader } from 'components';
+import { PanelHeader } from "components";
 
-import { events } from 'variables/general.jsx';
+import { events } from "variables/general.jsx";
 
 BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment));
 
-class Calendar extends React.Component{
-    constructor(props){
+class Calendar extends React.Component
+{
+    constructor(props)
+    {
         super(props);
         this.state = {
             events: events,
@@ -24,18 +26,22 @@ class Calendar extends React.Component{
         };
         this.hideAlert = this.hideAlert.bind(this);
     }
-    selectedEvent(event){
+
+    electedEvent(event)
+    {
         alert(event.title);
     }
-    addNewEventAlert(slotInfo){
+
+    addNewEventAlert(slotInfo)
+    {
         this.setState({
             alert: (
                 <SweetAlert
                     input
                     showCancel
-                    style={{display: "block",marginTop: "-100px"}}
+                    style={{display: "block", marginTop: "-100px"}}
                     title="Input something"
-                    onConfirm={(e) => this.addNewEvent(e,slotInfo)}
+                    onConfirm={(e) => this.addNewEvent(e, slotInfo)}
                     onCancel={() => this.hideAlert()}
                     confirmBtnBsStyle="info"
                     cancelBtnBsStyle="danger"
@@ -43,38 +49,48 @@ class Calendar extends React.Component{
             )
         });
     }
-    addNewEvent(e,slotInfo){
+
+    addNewEvent(e, slotInfo)
+    {
         var newEvents = this.state.events;
         newEvents.push({
-            'title': e,
-            'start':slotInfo.start,
-            'end':slotInfo.end
-        })
+            "title": e,
+            "start": slotInfo.start,
+            "end": slotInfo.end
+        });
         this.setState({
             alert: null,
             events: newEvents
-        })
+        });
     }
-    hideAlert(){
+
+    hideAlert()
+    {
         this.setState({
             alert: null
         });
     }
-    eventColors(event, start, end, isSelected) {
+
+    eventColors(event, start, end, isSelected)
+    {
         var backgroundColor = "event-";
-        event.color ? (backgroundColor=backgroundColor+event.color):(backgroundColor=backgroundColor+"default");
+        event.color ? (backgroundColor = backgroundColor + event.color) : (backgroundColor = backgroundColor + "default");
         return {
             className: backgroundColor
         };
     }
-    render(){
+
+    render()
+    {
         return (
             <div>
                 <PanelHeader
                     content={
                         <div className="header text-center">
                             <h2 className="title">React Big Calendar</h2>
-                            <p className="category">A beautiful react component made by <a href="https://github.com/intljusticemission" target="_blank" rel="noopener noreferrer">International Justice Mission</a>. Please checkout their <a href="https://github.com/intljusticemission/react-big-calendar" target="_blank" rel="noopener noreferrer">full documentation.</a></p>
+                            <p className="category">A beautiful react component made by <a href="https://github.com/intljusticemission"
+                            target="_blank" rel="noopener noreferrer">International Justice Mission</a>. Please checkout their <a href="https://github.com/intljusticemission/react-big-calendar"
+                            target="_blank" rel="noopener noreferrer">full documentation.</a></p>
                         </div>
                     }
                 />
@@ -87,7 +103,7 @@ class Calendar extends React.Component{
                                     <BigCalendar
                                         selectable
                                         events={this.state.events}
-                                        defaultView='month'
+                                        defaultView="month"
                                         scrollToTime={new Date(1970, 1, 1, 6)}
                                         defaultDate={new Date()}
                                         onSelectEvent={event => this.selectedEvent(event)}

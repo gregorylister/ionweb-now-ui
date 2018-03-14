@@ -1,43 +1,49 @@
-import React from 'react';
+import React from "react";
 import {
     UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, FormGroup, Card, CardBody, CardHeader, CardTitle, Row, Col
-} from 'reactstrap';
+} from "reactstrap";
 // react plugin used to create datetimepicker
-import Datetime from 'react-datetime';
+import Datetime from "react-datetime";
 // react plugin used to create switch buttons
-import Switch from 'react-bootstrap-switch';
+import Switch from "react-bootstrap-switch";
 // react plugin used to create DropdownMenu for selecting items
-import Select from 'react-select';
+import Select from "react-select";
 // react plugin that creates an input with badges
-import TagsInput from 'react-tagsinput';
+import TagsInput from "react-tagsinput";
 // react plugin that creates slider
-import Nouislider from 'react-nouislider';
+import Nouislider from "react-nouislider";
 
-import { PanelHeader, ImageUpload, Progress } from 'components';
+import { PanelHeader, ImageUpload, Progress } from "components";
 
 var selectOptions = [
-  { value: 'one', label: 'One' },
-  { value: 'two', label: 'Two' },
-  { value: 'three', label: 'Three' },
-  { value: 'four', label: 'Four' },
-  { value: 'five', label: 'Five' },
-  { value: 'six', label: 'Six' }
+  { value: "one", label: "One" },
+  { value: "two", label: "Two" },
+  { value: "three", label: "Three" },
+  { value: "four", label: "Four" },
+  { value: "five", label: "Five" },
+  { value: "six", label: "Six" }
 ];
 
-class ExtendedForms extends React.Component{
-    constructor(props){
+class ExtendedForms extends React.Component
+{
+    constructor(props)
+    {
         super(props);
         this.state = {
             singleSelect: null,
             multipleSelect: null,
-            regularTags: ["pizza","pasta","parmesan"]
+            regularTags: ["pizza", "pasta", "parmesan"]
         };
         this.handleRegularTags = this.handleRegularTags.bind(this);
     }
-    handleRegularTags(regularTags) {
+
+    handleRegularTags(regularTags)
+    {
         this.setState({regularTags});
     }
-    render(){
+
+    render()
+    {
         return (
             <div>
                 <PanelHeader size="sm"/>
@@ -49,7 +55,7 @@ class ExtendedForms extends React.Component{
                                 <CardBody>
                                     <FormGroup>
                                         <Datetime
-                                            inputProps={{placeholder:"Datetime Picker Here"}}
+                                            inputProps={{placeholder: "Datetime Picker Here"}}
                                         />
                                     </FormGroup>
                                 </CardBody>
@@ -62,7 +68,7 @@ class ExtendedForms extends React.Component{
                                     <FormGroup>
                                         <Datetime
                                             timeFormat={false}
-                                            inputProps={{placeholder:"Datetime Picker Here"}}
+                                            inputProps={{placeholder: "Datetime Picker Here"}}
                                         />
                                     </FormGroup>
                                 </CardBody>
@@ -75,7 +81,7 @@ class ExtendedForms extends React.Component{
                                     <FormGroup>
                                         <Datetime
                                             dateFormat={false}
-                                            inputProps={{placeholder:"Datetime Picker Here"}}
+                                            inputProps={{placeholder: "Datetime Picker Here"}}
                                         />
                                     </FormGroup>
                                 </CardBody>
@@ -157,7 +163,7 @@ class ExtendedForms extends React.Component{
                                             <TagsInput
                                                 value={this.state.regularTags}
                                                 onChange={this.handleRegularTags}
-                                                tagProps={{className: 'react-tagsinput-tag info' }}
+                                                tagProps={{className: "react-tagsinput-tag info" }}
                                             />
                                         </Col>
                                         <Col xs={12} md={6}>
@@ -213,15 +219,15 @@ class ExtendedForms extends React.Component{
                                                 start={[40]}
                                                 connect={[true, false]}
                                                 step={1}
-                                                range={{min: 0,max: 100}}
+                                                range={{min: 0, max: 100}}
                                             />
                                             <br />
                                             <div className="slider slider-primary">
                                                 <Nouislider
-                                                    start={[20,60]}
+                                                    start={[20, 60]}
                                                     connect={[false, true, false]}
                                                     step={1}
-                                                    range={{min: 0,max: 100}}
+                                                    range={{min: 0, max: 100}}
                                                 />
                                             </div>
                                         </Col>

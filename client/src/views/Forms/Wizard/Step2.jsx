@@ -1,12 +1,14 @@
-import React from 'react';
+import React from "react";
 import {
     Row, Col
-} from 'reactstrap';
+} from "reactstrap";
 
-import { IconCheckbox } from 'components';
+import { IconCheckbox } from "components";
 
-class Step2 extends React.Component{
-    render(){
+class Step2 extends React.Component
+{
+    render()
+    {
         return (
             <div>
                 <h5 className="info-text"> What are you doing? (checkboxes) </h5>

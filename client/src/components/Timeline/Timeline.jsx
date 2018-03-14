@@ -1,44 +1,47 @@
-import React from 'react';
+import React from "react";
 // used for making the prop types of this component
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-class Timeline extends React.Component{
-    render(){
+class Timeline extends React.Component
+{
+    render()
+    {
         return (
-            <ul className={"timeline" + (this.props.simple ? " timeline-simple":"")}>
+            <ul className={"timeline" + (this.props.simple ? " timeline-simple" : "")}>
                 {
-                    this.props.stories.map((prop,key) => {
+                    this.props.stories.map((prop, key) =>
+                    {
                         return (
-                            <li className={prop.inverted ? "timeline-inverted":""} key={key}>
+                            <li className={prop.inverted ? "timeline-inverted" : ""} key={key}>
                                 {
                                     prop.badgeIcon ? (
-                                        <div className={"timeline-badge "+prop.badgeColor}>
+                                        <div className={"timeline-badge " + prop.badgeColor}>
                                             <i className={prop.badgeIcon}></i>
                                         </div>
-                                    ):null
+                                    ) : null
                                 }
                                 <div className="timeline-panel">
                                     {
                                         prop.title ? (
                                             <div className="timeline-heading">
-                                                <span className={"badge badge-"+prop.titleColor}>{prop.title}</span>
+                                                <span className={"badge badge-" + prop.titleColor}>{prop.title}</span>
                                             </div>
-                                        ):null
+                                        ) : null
                                     }
                                     <div className="timeline-body">{prop.body}</div>
                                     {
                                         prop.footerTitle ? (
                                             <h6><i className={prop.footerIcon}></i> {prop.footerTitle}</h6>
-                                        ):null
+                                        ) : null
                                     }
                                     {
                                         prop.footer ? (
                                             <div className="timeline-footer">{prop.footer}</div>
-                                        ):null
+                                        ) : null
                                     }
                                 </div>
                             </li>
-                        )
+                        );
                     })
                 }
             </ul>
@@ -49,6 +52,6 @@ class Timeline extends React.Component{
 Timeline.propTypes = {
     stories: PropTypes.arrayOf(PropTypes.object),
     simple: PropTypes.bool
-}
+};
 
 export default Timeline;

@@ -1,30 +1,34 @@
-import React from 'react';
+import React from "react";
 import {
     Card, CardBody, CardText, Row, Col
-} from 'reactstrap';
+} from "reactstrap";
 // react component used to create sweet alerts
-import SweetAlert from 'react-bootstrap-sweetalert';
+import SweetAlert from "react-bootstrap-sweetalert";
 
-import { PanelHeader, Button } from 'components';
+import { PanelHeader, Button } from "components";
 
-class SweetAlertPage extends React.Component{
-    constructor(props){
+class SweetAlertPage extends React.Component
+{
+    constructor(props)
+    {
         super(props);
         this.state = {
             alert: null,
             show: false
-        }
+        };
         this.hideAlert = this.hideAlert.bind(this);
         this.successDelete = this.successDelete.bind(this);
         this.cancelDetele = this.cancelDetele.bind(this);
         this.inputConfirmAlert = this.inputConfirmAlert.bind(this);
         this.inputConfirmAlertNext = this.inputConfirmAlertNext.bind(this);
     }
-    basicAlert(){
+
+    basicAlert()
+    {
         this.setState({
             alert: (
                 <SweetAlert
-                    style={{display: "block",marginTop: "-100px"}}
+                    style={{display: "block", marginTop: "-100px"}}
                     title="Here's a message!"
                     onConfirm={() => this.hideAlert()}
                     onCancel={() => this.hideAlert()}
@@ -33,11 +37,13 @@ class SweetAlertPage extends React.Component{
             )
         });
     }
-    titleAndTextAlert(){
+
+    titleAndTextAlert()
+    {
         this.setState({
             alert: (
                 <SweetAlert
-                    style={{display: "block",marginTop: "-100px"}}
+                    style={{display: "block", marginTop: "-100px"}}
                     title="Here's a message!"
                     onConfirm={() => this.hideAlert()}
                     onCancel={() => this.hideAlert()}
@@ -48,12 +54,14 @@ class SweetAlertPage extends React.Component{
             )
         });
     }
-    successAlert(){
+
+    successAlert()
+    {
         this.setState({
             alert: (
                 <SweetAlert
                     success
-                    style={{display: "block",marginTop: "-100px"}}
+                    style={{display: "block", marginTop: "-100px"}}
                     title="Good job!"
                     onConfirm={() => this.hideAlert()}
                     onCancel={() => this.hideAlert()}
@@ -64,11 +72,13 @@ class SweetAlertPage extends React.Component{
             )
         });
     }
-    htmlAlert(){
+
+    htmlAlert()
+    {
         this.setState({
             alert: (
                 <SweetAlert
-                    style={{display: "block",marginTop: "-100px"}}
+                    style={{display: "block", marginTop: "-100px"}}
                     title="HTML example"
                     onConfirm={() => this.hideAlert()}
                     onCancel={() => this.hideAlert()}
@@ -79,12 +89,14 @@ class SweetAlertPage extends React.Component{
             )
         });
     }
-    warningWithConfirmMessage(){
+
+    warningWithConfirmMessage()
+    {
         this.setState({
             alert: (
                 <SweetAlert
                     warning
-                    style={{display: "block",marginTop: "-100px"}}
+                    style={{display: "block", marginTop: "-100px"}}
                     title="Are you sure?"
                     onConfirm={() => this.successDelete()}
                     onCancel={() => this.hideAlert()}
@@ -99,12 +111,14 @@ class SweetAlertPage extends React.Component{
             )
         });
     }
-    warningWithConfirmAndCancelMessage(){
+
+    warningWithConfirmAndCancelMessage()
+    {
         this.setState({
             alert: (
                 <SweetAlert
                     warning
-                    style={{display: "block",marginTop: "-100px"}}
+                    style={{display: "block", marginTop: "-100px"}}
                     title="Are you sure?"
                     onConfirm={() => this.successDelete()}
                     onCancel={() => this.cancelDetele()}
@@ -119,11 +133,13 @@ class SweetAlertPage extends React.Component{
             )
         });
     }
-    autoCloseAlert(){
+
+    autoCloseAlert()
+    {
         this.setState({
             alert: (
                 <SweetAlert
-                    style={{display: "block",marginTop: "-100px"}}
+                    style={{display: "block", marginTop: "-100px"}}
                     title="Auto close alert!"
                     onConfirm={() => this.hideAlert()}
                     showConfirm={false}
@@ -132,15 +148,17 @@ class SweetAlertPage extends React.Component{
                 </SweetAlert>
             )
         });
-        setTimeout(this.hideAlert,2000);
+        setTimeout(this.hideAlert, 2000);
     }
-    inputAlert(){
+
+    inputAlert()
+    {
         this.setState({
             alert: (
                 <SweetAlert
                     input
                     showCancel
-                    style={{display: "block",marginTop: "-100px"}}
+                    style={{display: "block", marginTop: "-100px"}}
                     title="Input something"
                     onConfirm={(e) => this.inputConfirmAlert(e)}
                     onCancel={() => this.hideAlert()}
@@ -150,16 +168,20 @@ class SweetAlertPage extends React.Component{
             )
         });
     }
-    inputConfirmAlert(e){
+
+    inputConfirmAlert(e)
+    {
         this.setState({ alert: e });
-        setTimeout(this.inputConfirmAlertNext,200);
+        setTimeout(this.inputConfirmAlertNext, 200);
     }
-    inputConfirmAlertNext(){
+
+    inputConfirmAlertNext()
+    {
         const inputValue = this.state.alert;
         this.setState({
             alert: (
                 <SweetAlert
-                    style={{display: "block",marginTop: "-100px"}}
+                    style={{display: "block", marginTop: "-100px"}}
                     onConfirm={() => this.hideAlert()}
                     onCancel={() => this.hideAlert()}
                     confirmBtnBsStyle="info"
@@ -170,12 +192,14 @@ class SweetAlertPage extends React.Component{
             )
         });
     }
-    successDelete(){
+
+    successDelete()
+    {
         this.setState({
             alert: (
                 <SweetAlert
                     success
-                    style={{display: "block",marginTop: "-100px"}}
+                    style={{display: "block", marginTop: "-100px"}}
                     title="Deleted!"
                     onConfirm={() => this.hideAlert()}
                     onCancel={() => this.hideAlert()}
@@ -186,12 +210,14 @@ class SweetAlertPage extends React.Component{
             )
         });
     }
-    cancelDetele(){
+
+    cancelDetele()
+    {
         this.setState({
             alert: (
                 <SweetAlert
                     danger
-                    style={{display: "block",marginTop: "-100px"}}
+                    style={{display: "block", marginTop: "-100px"}}
                     title="Cancelled"
                     onConfirm={() => this.hideAlert()}
                     onCancel={() => this.hideAlert()}
@@ -202,19 +228,25 @@ class SweetAlertPage extends React.Component{
             )
         });
     }
-    hideAlert(){
+
+    hideAlert()
+    {
         this.setState({
             alert: null
         });
     }
-    render(){
+
+    render()
+    {
         return (
             <div>
                 <PanelHeader
                     content={
                         <div className="header text-center">
                             <h2 className="title">Sweet Alert</h2>
-                            <p className="category">A beautiful plugin, that replace the classic alert, Handcrafted by our friend <a target="_blank" href="https://github.com/djorg83" rel="noopener noreferrer">Daniel Jorgensen</a>. Please check out the <a href="https://github.com/djorg83/react-bootstrap-sweetalert" target="_blank" rel="noopener noreferrer">full documentation.</a>.</p>
+                            <p className="category">A beautiful plugin, that replace the classic alert, Handcrafted by our friend
+                             <a target="_blank" href="https://github.com/djorg83" rel="noopener noreferrer">Daniel Jorgensen</a>.
+                              Please check out the <a href="https://github.com/djorg83/react-bootstrap-sweetalert" target="_blank" rel="noopener noreferrer">full documentation.</a>.</p>
                         </div>
                     }
                 />

@@ -1,15 +1,17 @@
-import React from 'react';
+import React from "react";
 import {
     Card, CardHeader, CardBody, Row, Col
-} from 'reactstrap';
+} from "reactstrap";
 
-import { PanelHeader, FormInputs, CardAuthor, CardSocials } from 'components';
+import { PanelHeader, FormInputs, CardAuthor, CardSocials } from "components";
 
-import userBackground from 'assets/img/bg5.jpg';
-import userAvatar from 'assets/img/mike.jpg';
+import userBackground from "assets/img/bg5.jpg";
+import userAvatar from "assets/img/mike.jpg";
 
-class User extends React.Component{
-    render(){
+class User extends React.Component
+{
+    render()
+    {
         return (
             <div>
                 <PanelHeader size="sm"/>

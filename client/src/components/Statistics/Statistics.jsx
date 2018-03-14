@@ -1,19 +1,21 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Row, Col } from 'reactstrap';
+import React from "react";
+import PropTypes from "prop-types";
+import { Row, Col } from "reactstrap";
 
-class Statistics extends React.Component{
-    render(){
+class Statistics extends React.Component
+{
+    render()
+    {
         const icon = (
-            <div className={"icon icon-" + this.props.iconState + (this.props.horizontal ? " icon-circle":"")}>
+            <div className={"icon icon-" + this.props.iconState + (this.props.horizontal ? " icon-circle" : "")}>
                 <i className={"now-ui-icons " + this.props.icon}></i>
             </div>
         );
         const title = (<h3 className="info-title">{this.props.title}</h3>);
         const subtitle = (<h6 className="stats-title">{this.props.subtitle}</h6>);
         return (
-            <div className={"statistics" + (this.props.horizontal ? " statistics-horizontal":"")}>
-                <div className={"info" + (this.props.horizontal ? " info-horizontal":"")}>
+            <div className={"statistics" + (this.props.horizontal ? " statistics-horizontal" : "")}>
+                <div className={"info" + (this.props.horizontal ? " info-horizontal" : "")}>
                     {
                         this.props.horizontal ? (
                             <Row>
@@ -25,7 +27,7 @@ class Statistics extends React.Component{
                                     {subtitle}
                                 </Col>
                             </Row>
-                        ):(
+                        ) : (
                             <div>
                                 {icon}
                                 {title}
@@ -37,14 +39,14 @@ class Statistics extends React.Component{
             </div>
         );
     }
-};
+}
 
 Statistics.defaultProps = {
-    iconState: 'default'
+    iconState: "default"
 };
 
 Statistics.propTypes = {
-    iconState: PropTypes.oneOf(['primary','success','info','danger','warning','default']),
+    iconState: PropTypes.oneOf(["primary", "success", "info", "danger", "warning", "default"]),
     icon: PropTypes.string,
     title: PropTypes.node,
     subtitle: PropTypes.node,

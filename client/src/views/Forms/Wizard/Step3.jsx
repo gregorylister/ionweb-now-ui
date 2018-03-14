@@ -1,28 +1,32 @@
-import React from 'react';
+import React from "react";
 import {
     Row, Col,
     FormGroup, Label, Input
-} from 'reactstrap';
+} from "reactstrap";
 // react plugin used to create DropdownMenu for selecting items
-import Select from 'react-select';
+import Select from "react-select";
 
 var selectOptions = [
-  { value: 'one', label: 'One' },
-  { value: 'two', label: 'Two' },
-  { value: 'three', label: 'Three' },
-  { value: 'four', label: 'Four' },
-  { value: 'five', label: 'Five' },
-  { value: 'six', label: 'Six' }
+  { value: "one", label: "One" },
+  { value: "two", label: "Two" },
+  { value: "three", label: "Three" },
+  { value: "four", label: "Four" },
+  { value: "five", label: "Five" },
+  { value: "six", label: "Six" }
 ];
 
-class Step3 extends React.Component{
-    constructor(props){
+class Step3 extends React.Component
+{
+    constructor(props)
+    {
         super(props);
         this.state = {
             select : null
-        }
+        };
     }
-    render(){
+
+    render()
+    {
         return (
             <div>
                 <h5 className="info-text"> Are you living in a nice area? </h5>

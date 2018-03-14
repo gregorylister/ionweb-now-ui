@@ -1,12 +1,14 @@
-import React from 'react';
+import React from "react";
 import {
     ButtonGroup, ButtonToolbar, Card, CardHeader, CardBody, CardTitle, Row, Col, Pagination, PaginationItem, PaginationLink
-} from 'reactstrap';
+} from "reactstrap";
 
-import { PanelHeader, Button } from 'components';
+import { PanelHeader, Button } from "components";
 
-class Buttons extends React.Component{
-    render(){
+class Buttons extends React.Component
+{
+    render()
+    {
         return (
             <div>
                 <PanelHeader size="sm"/>

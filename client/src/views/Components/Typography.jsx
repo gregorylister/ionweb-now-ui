@@ -1,12 +1,14 @@
-import React from 'react';
+import React from "react";
 import {
     Card, CardHeader, CardBody, Row, Col
-} from 'reactstrap';
+} from "reactstrap";
 
-import { PanelHeader } from 'components';
+import { PanelHeader } from "components";
 
-class Typography extends React.Component{
-    render(){
+class Typography extends React.Component
+{
+    render()
+    {
         return (
             <div>
                 <PanelHeader size="sm"/>
@@ -39,14 +41,18 @@ class Typography extends React.Component{
                                     </div>
                                     <div className="typography-line">
                                         <p><span>Paragraph</span>
-                                            I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at.
+                                            I will be the leader of a company that ends up being worth billions of dollars, because I got the answers.
+                                             I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities,
+                                              to show people, this is the level that things could be at.
                                         </p>
                                     </div>
                                     <div className="typography-line">
                                         <span>Quote</span>
                                         <blockquote>
                                          <p className="blockquote blockquote-primary">
-                                         "I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at."
+                                         "I will be the leader of a company that ends up being worth billions of dollars, because I got the answers.
+                                          I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities,
+                                           to show people, this is the level that things could be at."
 
                                          <br />
                                          <br />

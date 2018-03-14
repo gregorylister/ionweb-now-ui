@@ -1,16 +1,18 @@
-import React from 'react';
+import React from "react";
 import {
     Table, UncontrolledTooltip, ButtonGroup, FormGroup, Label, Input, Card, CardHeader, CardBody, CardTitle, Row, Col
-} from 'reactstrap';
+} from "reactstrap";
 
-import { PanelHeader, Button } from 'components';
+import { PanelHeader, Button } from "components";
 
-import jacket from 'assets/img/saint-laurent.jpg';
-import shirt from 'assets/img/balmain.jpg';
-import swim from 'assets/img/prada.jpg';
+import jacket from "assets/img/saint-laurent.jpg";
+import shirt from "assets/img/balmain.jpg";
+import swim from "assets/img/prada.jpg";
 
-class ExtendedTables extends React.Component{
-    render(){
+class ExtendedTables extends React.Component
+{
+    render()
+    {
         return (
             <div>
                 <PanelHeader size="sm"/>
@@ -43,10 +45,10 @@ class ExtendedTables extends React.Component{
                                                 <td className="text-right">
                                                     <Button icon color="info" size="sm">
                                                         <i className="now-ui-icons users_single-02"></i>
-                                                    </Button>{' '}
+                                                    </Button>{" "}
                                                     <Button icon color="success" size="sm">
                                                         <i className="now-ui-icons ui-2_settings-90"></i>
-                                                    </Button>{' '}
+                                                    </Button>{" "}
                                                     <Button icon color="danger" size="sm">
                                                         <i className="now-ui-icons ui-1_simple-remove"></i>
                                                     </Button>
@@ -61,10 +63,10 @@ class ExtendedTables extends React.Component{
                                                 <td className="text-right">
                                                     <Button icon color="info" size="sm">
                                                         <i className="now-ui-icons users_single-02"></i>
-                                                    </Button>{' '}
+                                                    </Button>{" "}
                                                     <Button icon color="success" size="sm">
                                                         <i className="now-ui-icons ui-2_settings-90"></i>
-                                                    </Button>{' '}
+                                                    </Button>{" "}
                                                     <Button icon color="danger" size="sm">
                                                         <i className="now-ui-icons ui-1_simple-remove"></i>
                                                     </Button>
@@ -79,10 +81,10 @@ class ExtendedTables extends React.Component{
                                                 <td className="text-right">
                                                     <Button icon color="info" size="sm">
                                                         <i className="now-ui-icons users_single-02"></i>
-                                                    </Button>{' '}
+                                                    </Button>{" "}
                                                     <Button icon color="success" size="sm">
                                                         <i className="now-ui-icons ui-2_settings-90"></i>
-                                                    </Button>{' '}
+                                                    </Button>{" "}
                                                     <Button icon color="danger" size="sm">
                                                         <i className="now-ui-icons ui-1_simple-remove"></i>
                                                     </Button>
@@ -97,10 +99,10 @@ class ExtendedTables extends React.Component{
                                                 <td className="text-right">
                                                     <Button icon neutral color="info" size="sm">
                                                         <i className="now-ui-icons users_single-02"></i>
-                                                    </Button>{' '}
+                                                    </Button>{" "}
                                                     <Button icon neutral color="success" size="sm">
                                                         <i className="now-ui-icons ui-2_settings-90"></i>
-                                                    </Button>{' '}
+                                                    </Button>{" "}
                                                     <Button icon neutral color="danger" size="sm">
                                                         <i className="now-ui-icons ui-1_simple-remove"></i>
                                                     </Button>
@@ -115,10 +117,10 @@ class ExtendedTables extends React.Component{
                                                 <td className="text-right">
                                                     <Button icon neutral color="info" size="sm">
                                                         <i className="now-ui-icons users_single-02"></i>
-                                                    </Button>{' '}
+                                                    </Button>{" "}
                                                     <Button icon neutral color="success" size="sm">
                                                         <i className="now-ui-icons ui-2_settings-90"></i>
-                                                    </Button>{' '}
+                                                    </Button>{" "}
                                                     <Button icon neutral color="danger" size="sm">
                                                         <i className="now-ui-icons ui-1_simple-remove"></i>
                                                     </Button>
@@ -133,10 +135,10 @@ class ExtendedTables extends React.Component{
                                                 <td className="text-right">
                                                     <Button icon neutral color="info" size="sm">
                                                         <i className="now-ui-icons users_single-02"></i>
-                                                    </Button>{' '}
+                                                    </Button>{" "}
                                                     <Button icon neutral color="success" size="sm">
                                                         <i className="now-ui-icons ui-2_settings-90"></i>
-                                                    </Button>{' '}
+                                                    </Button>{" "}
                                                     <Button icon neutral color="danger" size="sm">
                                                         <i className="now-ui-icons ui-1_simple-remove"></i>
                                                     </Button>
@@ -290,7 +292,7 @@ class ExtendedTables extends React.Component{
                                                 <td>M</td>
                                                 <td className="td-number"><small>€</small>3,390</td>
                                                 <td className="td-number">
-                                                    1{' '}
+                                                    1{" "}
                                                     <ButtonGroup>
                                                         <Button color="info" size="sm">
                                                             <i className="now-ui-icons ui-1_simple-delete"></i>
@@ -326,7 +328,7 @@ class ExtendedTables extends React.Component{
                                                 <td>M</td>
                                                 <td className="td-number"><small>€</small>499</td>
                                                 <td className="td-number">
-                                                    2{' '}
+                                                    2{" "}
                                                     <ButtonGroup>
                                                         <Button color="info" size="sm">
                                                             <i className="now-ui-icons ui-1_simple-delete"></i>
@@ -362,7 +364,7 @@ class ExtendedTables extends React.Component{
                                                 <td>M</td>
                                                 <td className="td-number"><small>€</small>200</td>
                                                 <td className="td-number">
-                                                    3{' '}
+                                                    3{" "}
                                                     <ButtonGroup>
                                                         <Button color="info" size="sm">
                                                             <i className="now-ui-icons ui-1_simple-delete"></i>
@@ -389,7 +391,7 @@ class ExtendedTables extends React.Component{
                                                 <td className="td-price"><small>€</small>2,346</td>
                                                 <td colSpan="3" className="text-right">
                                                     <Button color="info" round>
-                                                        Complete Purchase{' '}
+                                                        Complete Purchase{" "}
                                                         <i className="now-ui-icons arrows-1_minimal-right"></i>
                                                     </Button>
                                                 </td>

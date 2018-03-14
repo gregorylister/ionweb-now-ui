@@ -1,14 +1,16 @@
-import React from 'react';
+import React from "react";
 import {
     Card, CardBody, Row, Col
-} from 'reactstrap';
+} from "reactstrap";
 
-import { PanelHeader, Timeline } from 'components';
+import { PanelHeader, Timeline } from "components";
 
-import { stories } from 'variables/general.jsx';
+import { stories } from "variables/general.jsx";
 
-class TimelinePage extends React.Component{
-    render(){
+class TimelinePage extends React.Component
+{
+    render()
+    {
         return (
             <div>
                 <PanelHeader size="sm" />

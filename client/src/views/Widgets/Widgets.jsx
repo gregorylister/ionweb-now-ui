@@ -1,18 +1,20 @@
-import React from 'react';
-import { Row, Col, Card, CardBody, CardFooter, CardTitle, CardHeader } from 'reactstrap';
+import React from "react";
+import { Row, Col, Card, CardBody, CardFooter, CardTitle, CardHeader } from "reactstrap";
 // react plugin used to create switch buttons
-import Switch from 'react-bootstrap-switch';
+import Switch from "react-bootstrap-switch";
 
 import {
     PanelHeader, Statistics, Stats, CardDescription, CardStats, Timeline, CardIcon, Button, Tasks
-} from 'components';
+} from "components";
 
-import { widgetStories, tasks } from 'variables/general';
+import { widgetStories, tasks } from "variables/general";
 
 import avatar from "assets/img/james.jpg";
 
-class Widgets extends React.Component{
-    render(){
+class Widgets extends React.Component
+{
+    render()
+    {
         return (
             <div>
                 <PanelHeader size="sm"/>

@@ -1,23 +1,29 @@
-import React from 'react';
+import React from "react";
 import {
     Row, Col, Card, CardHeader, CardTitle, CardBody, CardFooter, UncontrolledDropdown, DropdownToggle, DropdownItem, DropdownMenu
-} from 'reactstrap';
+} from "reactstrap";
 // react plugin used to create charts
-import { Line, Bar } from 'react-chartjs-2';
+import { Line, Bar } from "react-chartjs-2";
 
-import { PanelHeader, CardCategory, Stats } from 'components';
+import { PanelHeader, CardCategory, Stats } from "components";
 
-import { chartsLine1, chartsLine2, chartsBar1, chartsBar2 } from 'variables/charts';
+import { chartsLine1, chartsLine2, chartsBar1, chartsBar2 } from "variables/charts";
 
-class Charts extends React.Component{
-    render(){
+class Charts extends React.Component
+{
+    render()
+    {
         return (
             <div>
                 <PanelHeader
                     content={
                         <div className="header text-center">
                             <h2 className="title">React Chartjs 2</h2>
-                            <p className="category">Simple yet flexible React charting for designers &amp; developers. Made by our friends from <a target="_blank" href="https://jerairrest.github.io/react-chartjs-2/" rel="noopener noreferrer">react-chartjs-2</a>, a react based wrapper over <a target="_blank" href="https://www.chartjs.org" rel="noopener noreferrer">Chart.js</a>. Please check <a target="_blank" href="https://github.com/jerairrest/react-chartjs-2" rel="noopener noreferrer">react-chartjs-2 documentation</a> and <a target="_blank" href="https://www.chartjs.org/docs/latest/" rel="noopener noreferrer">Chart.js documentation</a> .</p>
+                            <p className="category">Simple yet flexible React charting for designers &amp; developers.
+                             Made by our friends from <a target="_blank" href="https://jerairrest.github.io/react-chartjs-2/" rel="noopener noreferrer">react-chartjs-2</a>,
+                              a react based wrapper over <a target="_blank" href="https://www.chartjs.org" rel="noopener noreferrer">Chart.js</a>.
+                               Please check <a target="_blank" href="https://github.com/jerairrest/react-chartjs-2" rel="noopener noreferrer">react-chartjs-2 documentation</a>
+                                and <a target="_blank" href="https://www.chartjs.org/docs/latest/" rel="noopener noreferrer">Chart.js documentation</a> .</p>
                         </div>
                     }
                 />

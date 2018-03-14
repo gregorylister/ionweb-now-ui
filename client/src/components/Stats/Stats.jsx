@@ -1,16 +1,20 @@
-import React from 'react';
+import React from "react";
 // used for making the prop types of this component
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-class Stats extends React.Component{
-    render(){
+class Stats extends React.Component
+{
+    render()
+    {
         var stats = [];
-        for (var i = 0; i < this.props.children.length; i++) {
+        for (var i = 0; i < this.props.children.length; i++)
+        {
             stats.push(
                 <i className={this.props.children[i].i} key={i}></i>
             );
-            stats.push(" "+this.props.children[i].t);
-            if(i !== this.props.children.length - 1){
+            stats.push(" " + this.props.children[i].t);
+            if (i !== this.props.children.length - 1)
+            {
                 stats.push(<br />);
             }
         }
@@ -20,6 +24,6 @@ class Stats extends React.Component{
 
 Stats.propTypes = {
     children: PropTypes.array
-}
+};
 
 export default Stats;

@@ -1,20 +1,24 @@
-import React from 'react';
+import React from "react";
 import {
     Card, CardHeader, CardTitle, CardBody, CardFooter,
     Container, Row, Col,
     Form, FormGroup, InputGroup, InputGroupAddon, Input, Label
-} from 'reactstrap';
+} from "reactstrap";
 
-import { CardSocial, InfoArea, Button } from 'components';
+import { CardSocial, InfoArea, Button } from "components";
 
-import bgImage from 'assets/img/bg16.jpg';
+import bgImage from "assets/img/bg16.jpg";
 
-class RegisterPage extends React.Component{
-    constructor(props){
+class RegisterPage extends React.Component
+{
+    constructor(props)
+    {
         super(props);
         this.state = {};
     }
-    render(){
+
+    render()
+    {
         return (
             <div>
                 <div className="full-page-content">
@@ -59,15 +63,15 @@ class RegisterPage extends React.Component{
                                         </CardHeader>
                                         <CardBody>
                                             <Form>
-                                                <InputGroup className={(this.state.firstnameFocus ? "input-group-focus":"")}>
+                                                <InputGroup className={(this.state.firstnameFocus ? "input-group-focus" : "")}>
                                                     <InputGroupAddon ><i className="now-ui-icons users_circle-08"></i></InputGroupAddon>
                                                     <Input type="text" placeholder="First Name..." onFocus={(e) => this.setState({firstnameFocus: true})} onBlur={(e) => this.setState({firstnameFocus: false})}/>
                                                 </InputGroup>
-                                                <InputGroup className={(this.state.lastnameFocus ? "input-group-focus":"")}>
+                                                <InputGroup className={(this.state.lastnameFocus ? "input-group-focus" : "")}>
                                                     <InputGroupAddon ><i className="now-ui-icons text_caps-small"></i></InputGroupAddon>
                                                     <Input type="text" placeholder="Last Name..." onFocus={(e) => this.setState({lastnameFocus: true})} onBlur={(e) => this.setState({lastnameFocus: false})} />
                                                 </InputGroup>
-                                                <InputGroup className={(this.state.emailFocus ? "input-group-focus":"")}>
+                                                <InputGroup className={(this.state.emailFocus ? "input-group-focus" : "")}>
                                                     <InputGroupAddon ><i className="now-ui-icons ui-1_email-85"></i></InputGroupAddon>
                                                     <Input type="email" placeholder="Email..." onFocus={(e) => this.setState({emailFocus: true})} onBlur={(e) => this.setState({emailFocus: false})}/>
                                                 </InputGroup>
@@ -91,7 +95,7 @@ class RegisterPage extends React.Component{
                         </Container>
                     </div>
                 </div>
-                <div className="full-page-background" style={{backgroundImage: "url("+bgImage+")" }}></div>
+                <div className="full-page-background" style={{backgroundImage: "url(" + bgImage + ")" }}></div>
             </div>
         );
     }

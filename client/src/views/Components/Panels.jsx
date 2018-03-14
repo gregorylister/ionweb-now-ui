@@ -1,21 +1,25 @@
-import React from 'react';
+import React from "react";
 import {
     TabContent, TabPane, Nav, NavItem, NavLink, Card, CardHeader, CardTitle, CardBody, Row, Col
-} from 'reactstrap';
+} from "reactstrap";
 
-import { Accordion, PanelHeader } from 'components';
+import { Accordion, PanelHeader } from "components";
 
-class Panels extends React.Component{
-    constructor(props){
+class Panels extends React.Component
+{
+    constructor(props)
+    {
         super(props);
         this.state = {
             hTabs: "ht1",
             vTabs: "vt1",
             vTabsIcons: "vti1",
             pageSubcategories: "ps1"
-        }
+        };
     }
-    render(){
+
+    render()
+    {
         return (
             <div>
                 <PanelHeader size="sm"/>
@@ -30,7 +34,7 @@ class Panels extends React.Component{
                                     <Nav pills className="nav-pills-primary">
                                         <NavItem>
                                             <NavLink
-                                                className={this.state.hTabs === "ht1" ? "active":""}
+                                                className={this.state.hTabs === "ht1" ? "active" : ""}
                                                 onClick={() => this.setState({hTabs: "ht1"})}
                                             >
                                                 Profile
@@ -38,7 +42,7 @@ class Panels extends React.Component{
                                         </NavItem>
                                         <NavItem>
                                             <NavLink
-                                                className={this.state.hTabs === "ht2" ? "active":""}
+                                                className={this.state.hTabs === "ht2" ? "active" : ""}
                                                 onClick={() => this.setState({hTabs: "ht2"})}
                                             >
                                                 Settings
@@ -46,7 +50,7 @@ class Panels extends React.Component{
                                         </NavItem>
                                         <NavItem>
                                             <NavLink
-                                                className={this.state.hTabs === "ht3" ? "active":""}
+                                                className={this.state.hTabs === "ht3" ? "active" : ""}
                                                 onClick={() => this.setState({hTabs: "ht3"})}
                                             >
                                                 Options
@@ -84,7 +88,7 @@ class Panels extends React.Component{
                                             <Nav pills className="nav-pills-primary flex-column">
                                                 <NavItem>
                                                     <NavLink
-                                                        className={this.state.vTabs === "vt1" ? "active":""}
+                                                        className={this.state.vTabs === "vt1" ? "active" : ""}
                                                         onClick={() => this.setState({vTabs: "vt1"})}
                                                     >
                                                         Profile
@@ -92,7 +96,7 @@ class Panels extends React.Component{
                                                 </NavItem>
                                                 <NavItem>
                                                     <NavLink
-                                                        className={this.state.vTabs === "vt2" ? "active":""}
+                                                        className={this.state.vTabs === "vt2" ? "active" : ""}
                                                         onClick={() => this.setState({vTabs: "vt2"})}
                                                     >
                                                         Settings
@@ -100,7 +104,7 @@ class Panels extends React.Component{
                                                 </NavItem>
                                                 <NavItem>
                                                     <NavLink
-                                                        className={this.state.vTabs === "vt3" ? "active":""}
+                                                        className={this.state.vTabs === "vt3" ? "active" : ""}
                                                         onClick={() => this.setState({vTabs: "vt3"})}
                                                     >
                                                         Options
@@ -142,14 +146,17 @@ class Panels extends React.Component{
                                         components={[
                                                 {
                                                     title: "Collapsible Group Item #1",
+                                                    // tslint:disable-next-line:max-line-length
                                                     text: "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS."
                                                 },
                                                 {
                                                     title: "Collapsible Group Item #2",
+                                                    // tslint:disable-next-line:max-line-length
                                                     text: "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS."
                                                 },
                                                 {
                                                     title: "Collapsible Group Item #3",
+                                                    // tslint:disable-next-line:max-line-length
                                                     text: "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS."
                                                 }
 
@@ -169,7 +176,7 @@ class Panels extends React.Component{
                                             <Nav pills className="nav-pills-primary nav-pills-icons flex-column">
                                                 <NavItem>
                                                     <NavLink
-                                                        className={this.state.vTabsIcons === "vti1" ? "active":""}
+                                                        className={this.state.vTabsIcons === "vti1" ? "active" : ""}
                                                         onClick={() => this.setState({vTabsIcons: "vti1"})}
                                                     >
                                                         <i className="now-ui-icons objects_umbrella-13"></i>
@@ -178,7 +185,7 @@ class Panels extends React.Component{
                                                 </NavItem>
                                                 <NavItem>
                                                     <NavLink
-                                                        className={this.state.vTabsIcons === "vti2" ? "active":""}
+                                                        className={this.state.vTabsIcons === "vti2" ? "active" : ""}
                                                         onClick={() => this.setState({vTabsIcons: "vti2"})}
                                                     >
                                                         <i className="now-ui-icons ui-2_settings-90"></i>
@@ -217,7 +224,7 @@ class Panels extends React.Component{
                                     <Nav pills className="nav-pills-primary nav-pills-icons justify-content-center">
                                         <NavItem>
                                             <NavLink
-                                                className={this.state.pageSubcategories === "ps1" ? "active":""}
+                                                className={this.state.pageSubcategories === "ps1" ? "active" : ""}
                                                 onClick={() => this.setState({pageSubcategories: "ps1"})}
                                             >
                                                 <i className="now-ui-icons objects_umbrella-13"></i>
@@ -226,7 +233,7 @@ class Panels extends React.Component{
                                         </NavItem>
                                         <NavItem>
                                             <NavLink
-                                                className={this.state.pageSubcategories === "ps2" ? "active":""}
+                                                className={this.state.pageSubcategories === "ps2" ? "active" : ""}
                                                 onClick={() => this.setState({pageSubcategories: "ps2"})}
                                             >
                                                 <i className="now-ui-icons shopping_shop"></i>
@@ -235,7 +242,7 @@ class Panels extends React.Component{
                                         </NavItem>
                                         <NavItem>
                                             <NavLink
-                                                className={this.state.pageSubcategories === "ps3" ? "active":""}
+                                                className={this.state.pageSubcategories === "ps3" ? "active" : ""}
                                                 onClick={() => this.setState({pageSubcategories: "ps3"})}
                                             >
                                                 <i className="now-ui-icons ui-2_settings-90"></i>

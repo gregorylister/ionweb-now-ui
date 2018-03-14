@@ -1,16 +1,18 @@
-import React from 'react';
+import React from "react";
 import {
     Card, CardBody, CardHeader, CardFooter, CardTitle, Container, Col, FormGroup, Input
-} from 'reactstrap';
+} from "reactstrap";
 
-import { Button } from 'components';
+import { Button } from "components";
 
-import avatar from 'assets/img/eva.jpg';
+import avatar from "assets/img/eva.jpg";
 
-import bgImage from 'assets/img/bg13.jpg';
+import bgImage from "assets/img/bg13.jpg";
 
-class LockScreenPage extends React.Component{
-    render(){
+class LockScreenPage extends React.Component
+{
+    render()
+    {
         return (
             <div>
                 <div className="full-page-content">
@@ -37,7 +39,7 @@ class LockScreenPage extends React.Component{
                         </Container>
                     </div>
                 </div>
-                <div className="full-page-background" style={{backgroundImage: "url("+bgImage+")" }}></div>
+                <div className="full-page-background" style={{backgroundImage: "url(" + bgImage + ")" }}></div>
             </div>
         );
     }

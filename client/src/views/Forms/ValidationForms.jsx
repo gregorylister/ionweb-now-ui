@@ -1,12 +1,14 @@
-import React from 'react';
+import React from "react";
 import {
     Form, FormGroup, Input, Label, Card, CardBody, CardHeader, CardTitle, CardFooter, Row, Col
-} from 'reactstrap';
+} from "reactstrap";
 
-import { PanelHeader, Button } from 'components';
+import { PanelHeader, Button } from "components";
 
-class ValidationForms extends React.Component{
-    constructor(props){
+class ValidationForms extends React.Component
+{
+    constructor(props)
+    {
         super(props);
         this.state = {
             register: {
@@ -52,251 +54,391 @@ class ValidationForms extends React.Component{
             }
         };
     }
-    registerEmail(e){
+
+    registerEmail(e)
+    {
         var register = this.state.register;
         register["email"] = e.target.value;
         var emailRex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        if(emailRex.test(e.target.value)){
+        if (emailRex.test(e.target.value))
+        {
             register["emailState"] = "has-success";
-        } else {
+        }
+        else
+        {
             register["emailState"] = "has-danger";
         }
         this.setState({register});
     }
-    registerPassword(e){
+
+    registerPassword(e)
+    {
         var register = this.state.register;
         register["password"] = e.target.value;
-        if(e.target.value.length > 0){
+        if (e.target.value.length > 0)
+        {
             register["passwordState"] = "has-success";
-        } else {
+        }
+        else
+        {
             register["passwordState"] = "has-danger";
         }
-        if(register["password"] === register["confirm"]){
+        if (register["password"] === register["confirm"])
+        {
             register["confirmState"] = "has-success";
-        } else {
+        }
+        else
+        {
             register["confirmState"] = "has-danger";
         }
         this.setState({register});
     }
-    registerConfirm(e){
+
+    registerConfirm(e)
+    {
         var register = this.state.register;
         register["confirm"] = e.target.value;
-        if(register["password"] === register["confirm"]){
+        if (register["password"] === register["confirm"])
+        {
             register["confirmState"] = "has-success";
-        } else {
+        }
+        else
+        {
             register["confirmState"] = "has-danger";
         }
         this.setState({register});
     }
-    registerSubmit(e){
+
+    registerSubmit(e)
+    {
         var register = this.state.register;
-        if(register["emailState"] !== "has-success")
+        if (register["emailState"] !== "has-success")
+        {
             register["emailState"] = "has-danger";
-        if(register["passwordState"] !== "has-success")
+        }
+        if (register["passwordState"] !== "has-success")
+        {
             register["passwordState"] = "has-danger";
-        if(register["confirmState"] !== "has-success")
+        }
+        if (register["confirmState"] !== "has-success")
+        {
             register["confirmState"] = "has-danger";
+        }
         this.setState({register});
     }
-    loginEmail(e){
+
+    loginEmail(e)
+    {
         var login = this.state.login;
         login["email"] = e.target.value;
         var emailRex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        if(emailRex.test(e.target.value)){
+        if (emailRex.test(e.target.value))
+        {
             login["emailState"] = "has-success";
-        } else {
+        }
+        else
+        {
             login["emailState"] = "has-danger";
         }
         this.setState({login});
     }
-    loginFullName(e){
+
+    loginFullName(e)
+    {
         var login = this.state.login;
         login["fullName"] = e.target.value;
-        if(/[a-z]/.test(e.target.value) && /[A-Z]/.test(e.target.value)){
+        if (/[a-z]/.test(e.target.value) && /[A-Z]/.test(e.target.value))
+        {
             login["fullNameState"] = "has-success";
-        } else {
+        }
+        else
+        {
             login["fullNameState"] = "has-danger";
         }
         this.setState({login});
     }
-    loginPassword(e){
+
+    loginPassword(e)
+    {
         var login = this.state.login;
         login["password"] = e.target.value;
-        if(e.target.value.length > 0){
+        if (e.target.value.length > 0)
+        {
             login["passwordState"] = "has-success";
-        } else {
+        }
+        else
+        {
             login["passwordState"] = "has-danger";
         }
         this.setState({login});
     }
-    loginSubmit(e){
+
+    loginSubmit(e)
+    {
         var login = this.state.login;
-        if(login["emailState"] !== "has-success")
+        if (login["emailState"] !== "has-success")
+        {
             login["emailState"] = "has-danger";
-        if(login["passwordState"] !== "has-success")
+        }
+        if (login["passwordState"] !== "has-success")
+        {
             login["passwordState"] = "has-danger";
-        if(login["fullNameState"] !== "has-success")
+        }
+        if (login["fullNameState"] !== "has-success")
+        {
             login["fullNameState"] = "has-danger";
+        }
         this.setState({login});
     }
-    typeRequired(e){
+
+    typeRequired(e)
+    {
         var type = this.state.type;
         type["required"] = e.target.value;
-        if(type["required"].length > 0){
+        if (type["required"].length > 0)
+        {
             type["requiredState"] = "has-success";
-        } else {
+        }
+        else
+        {
             type["requiredState"] = "has-danger";
         }
         this.setState({type});
     }
-    typeEmail(e){
+
+    typeEmail(e)
+    {
         var emailRex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         var type = this.state.type;
         type["email"] = e.target.value;
-        if(emailRex.test(type["email"])){
+        if (emailRex.test(type["email"]))
+        {
             type["emailState"] = "has-success";
-        } else {
+        }
+        else
+        {
             type["emailState"] = "has-danger";
         }
         this.setState({type});
     }
-    typeNumber(e){
+
+    typeNumber(e)
+    {
         var numberRex = new RegExp("^[0-9]+$");
         var type = this.state.type;
         type["number"] = e.target.value;
-        if(numberRex.test(type["number"])){
+        if (numberRex.test(type["number"]))
+        {
             type["numberState"] = "has-success";
-        } else {
+        }
+        else
+        {
             type["numberState"] = "has-danger";
         }
         this.setState({type});
     }
-    typeUrl(e){
+
+    typeUrl(e)
+    {
 
         var type = this.state.type;
         type["url"] = e.target.value;
-        try{
+        try
+        {
+            // tslint:disable-next-line:no-unused-expression
             new URL(type["url"]);
             type["urlState"] = "has-success";
-        }catch(_){
+        }
+        catch (_)
+        {
             type["urlState"] = "has-danger";
         }
         this.setState({type});
     }
-    typeSource(e){
+
+    typeSource(e)
+    {
         var type = this.state.type;
         type["source"] = e.target.value;
-        if(type["source"]===type["destionation"]){
+        if (type["source"] === type["destionation"])
+        {
             type["equalState"] = "has-success";
-        } else {
+        }
+        else
+        {
             type["equalState"] = "has-danger";
         }
         this.setState({type});
     }
-    typeDestionation(e){
+
+    typeDestionation(e)
+    {
         var type = this.state.type;
         type["destionation"] = e.target.value;
-        if(type["source"]===type["destionation"]){
+        if (type["source"] === type["destionation"])
+        {
             type["equalState"] = "has-success";
-        } else {
+        }
+        else
+        {
             type["equalState"] = "has-danger";
         }
         this.setState({type});
     }
-    typeValidate(e){
+
+    typeValidate(e)
+    {
         var type = this.state.type;
-        if(type["requiredState"] !== "has-success")
+        if (type["requiredState"] !== "has-success")
+        {
             type["requiredState"] = "has-danger";
-        if(type["emailState"] !== "has-success")
+        }
+        if (type["emailState"] !== "has-success")
+        {
             type["emailState"] = "has-danger";
-        if(type["numberState"] !== "has-success")
+        }
+        if (type["numberState"] !== "has-success")
+        {
             type["numberState"] = "has-danger";
-        if(type["urlState"] !== "has-success")
+        }
+        if (type["urlState"] !== "has-success")
+        {
             type["urlState"] = "has-danger";
-        if(type["equalState"] !== "has-success")
+        }
+        if (type["equalState"] !== "has-success")
+        {
             type["equalState"] = "has-danger";
+        }
         this.setState({type});
     }
-    rangeMinL(e){
+
+    rangeMinL(e)
+    {
         var range = this.state.range;
         range["minLength"] = e.target.value;
-        if(range["minLength"].length > 4){
+        if (range["minLength"].length > 4)
+        {
             range["minLengthState"] = "has-success";
-        } else {
+        }
+        else
+        {
             range["minLengthState"] = "has-danger";
         }
         this.setState({range});
     }
-    rangeMaxL(e){
+
+    rangeMaxL(e)
+    {
         var range = this.state.range;
         range["maxLength"] = e.target.value;
-        if(range["maxLength"].length < 6){
+        if (range["maxLength"].length < 6)
+        {
             range["maxLengthState"] = "has-success";
-        } else {
+        }
+        else
+        {
             range["maxLengthState"] = "has-danger";
         }
         this.setState({range});
     }
-    rangeRange(e){
+
+    rangeRange(e)
+    {
         var numberRex = new RegExp("^[0-9]+$");
         var range = this.state.range;
         range["range"] = e.target.value;
-        if(!numberRex.test(range["range"])){
+        if (!numberRex.test(range["range"]))
+        {
             range["rangeState"] = "has-danger";
-        } else {
-            if(range["range"] < 11 && range["range"] > 5){
+        }
+        else
+        {
+            if (range["range"] < 11 && range["range"] > 5)
+            {
                 range["rangeState"] = "has-success";
-            } else {
+            }
+            else
+            {
                 range["rangeState"] = "has-danger";
             }
         }
         this.setState({range});
     }
-    rangeMin(e){
+
+    rangeMin(e)
+    {
         var numberRex = new RegExp("^[0-9]+$");
         var range = this.state.range;
         range["min"] = e.target.value;
-        if(!numberRex.test(range["min"])){
+        if (!numberRex.test(range["min"]))
+        {
             range["minState"] = "has-danger";
-        } else {
-            if(range["min"] > 5){
+        }
+        else
+        {
+            if (range["min"] > 5)
+            {
                 range["minState"] = "has-success";
-            } else {
+            }
+            else
+            {
                 range["minState"] = "has-danger";
             }
         }
         this.setState({range});
     }
-    rangeMax(e){
+
+    rangeMax(e)
+    {
         var numberRex = new RegExp("^[0-9]+$");
         var range = this.state.range;
         range["max"] = e.target.value;
-        if(!numberRex.test(range["max"])){
+        if (!numberRex.test(range["max"]))
+        {
             range["maxState"] = "has-danger";
-        } else {
-            if(range["max"] < 7){
+        }
+        else
+        {
+            if (range["max"] < 7)
+            {
                 range["maxState"] = "has-success";
-            } else {
+            }
+            else
+            {
                 range["maxState"] = "has-danger";
             }
         }
         this.setState({range});
     }
-    rangeValidate(e){
+
+    rangeValidate(e)
+    {
         var range = this.state.range;
-        if(range["minLengthState"] !== "has-success")
+        if (range["minLengthState"] !== "has-success")
+        {
             range["minLengthState"] = "has-danger";
-        if(range["maxLengthState"] !== "has-success")
+        }
+        if (range["maxLengthState"] !== "has-success")
+        {
             range["maxLengthState"] = "has-danger";
-        if(range["rangeState"] !== "has-success")
+        }
+        if (range["rangeState"] !== "has-success")
+        {
             range["rangeState"] = "has-danger";
-        if(range["minState"] !== "has-success")
+        }
+        if (range["minState"] !== "has-success")
+        {
             range["minState"] = "has-danger";
-        if(range["maxState"] !== "has-success")
+        }
+        if (range["maxState"] !== "has-success")
+        {
             range["maxState"] = "has-danger";
+        }
         this.setState({range});
     }
-    render(){
+
+    render()
+    {
         return (
             <div>
                 <PanelHeader size="sm"/>
@@ -309,15 +451,15 @@ class ValidationForms extends React.Component{
                                         <CardTitle>Register Form</CardTitle>
                                     </CardHeader>
                                     <CardBody>
-                                        <FormGroup className={"has-label "+this.state.register.emailState}>
+                                        <FormGroup className={"has-label " + this.state.register.emailState}>
                                             <Label>Email Address *</Label>
                                             <Input type="email" onChange={(e) => this.registerEmail(e)}/>
                                         </FormGroup>
-                                        <FormGroup className={"has-label "+this.state.register.passwordState}>
+                                        <FormGroup className={"has-label " + this.state.register.passwordState}>
                                             <Label>Password *</Label>
                                             <Input type="password" onChange={(e) => this.registerPassword(e)}/>
                                         </FormGroup>
-                                        <FormGroup className={"has-label "+this.state.register.confirmState}>
+                                        <FormGroup className={"has-label " + this.state.register.confirmState}>
                                             <Label>Confirm Password *</Label>
                                             <Input type="password" onChange={(e) => this.registerConfirm(e)}/>
                                         </FormGroup>
@@ -343,15 +485,15 @@ class ValidationForms extends React.Component{
                                         <CardTitle>Login Form</CardTitle>
                                     </CardHeader>
                                     <CardBody>
-                                        <FormGroup className={"has-label "+this.state.login.fullNameState}>
+                                        <FormGroup className={"has-label " + this.state.login.fullNameState}>
                                             <Label>Full Name *</Label>
                                             <Input type="text" onChange={(e) => this.loginFullName(e)}/>
                                         </FormGroup>
-                                        <FormGroup className={"has-label "+this.state.login.emailState}>
+                                        <FormGroup className={"has-label " + this.state.login.emailState}>
                                             <Label>Email Address *</Label>
                                             <Input type="email" onChange={(e) => this.loginEmail(e)}/>
                                         </FormGroup>
-                                        <FormGroup className={"has-label "+this.state.login.passwordState}>
+                                        <FormGroup className={"has-label " + this.state.login.passwordState}>
                                             <Label>Password *</Label>
                                             <Input type="password" onChange={(e) => this.loginPassword(e)}/>
                                         </FormGroup>

@@ -1,20 +1,24 @@
-import React from 'react';
-import { UncontrolledTooltip } from 'reactstrap';
+import React from "react";
+import { UncontrolledTooltip } from "reactstrap";
 // used for making the prop types of this component
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-import { Button, Checkbox } from 'components';
+import { Button, Checkbox } from "components";
 
-class Task extends React.Component{
-    render(){
+class Task extends React.Component
+{
+    render()
+    {
         var tasksList = [];
+        // tslint:disable-next-line:variable-name
         var number;
         var edit;
         var remove;
-        for (var i = 0; i < this.props.tasks.length; i++) {
-            number = "checkbox"+i;
-            edit = "edit"+i;
-            remove = "remove"+i;
+        for (var i = 0; i < this.props.tasks.length; i++)
+        {
+            number = "checkbox" + i;
+            edit = "edit" + i;
+            remove = "remove" + i;
             tasksList.push(
                 <tr key={i}>
                     <td>
@@ -63,6 +67,6 @@ class Task extends React.Component{
 
 Task.propTypes = {
     tasks: PropTypes.arrayOf(PropTypes.object)
-}
+};
 
 export default Task;

@@ -1,15 +1,17 @@
-import React from 'react';
+import React from "react";
 import {
     Card, CardBody, CardFooter, CardTitle,
     Container, Row, Col
-} from 'reactstrap';
+} from "reactstrap";
 
-import { CardIcon, Button} from 'components';
+import { CardIcon, Button} from "components";
 
-import bgImage from 'assets/img/bg15.jpg';
+import bgImage from "assets/img/bg15.jpg";
 
-class Pricing extends React.Component{
-    render(){
+class Pricing extends React.Component
+{
+    render()
+    {
         return (
             <div>
                 <div className="full-page-content">
@@ -98,7 +100,7 @@ class Pricing extends React.Component{
                         </Container>
                     </div>
                 </div>
-                <div className="full-page-background" style={{backgroundImage: "url("+bgImage+")" }}></div>
+                <div className="full-page-background" style={{backgroundImage: "url(" + bgImage + ")" }}></div>
             </div>
         );
     }

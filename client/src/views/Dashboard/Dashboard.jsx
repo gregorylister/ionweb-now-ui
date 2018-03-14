@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 import {
     Card, CardHeader, CardBody, CardFooter, CardTitle, Row, Col, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Table,
-} from 'reactstrap';
+} from "reactstrap";
 // react plugin used to create charts
-import { Line } from 'react-chartjs-2';
+import { Line } from "react-chartjs-2";
 // react components used to create a SVG / Vector map
 import {
     ComposableMap, ZoomableGroup, Geographies, Geography,
@@ -11,23 +11,22 @@ import {
 // function that returns a color based on an interval of numbers
 import { scaleLinear } from "d3-scale";
 
-
 import {
     PanelHeader, Stats, Statistics, CardCategory, Progress,
-} from 'components';
+} from "components";
 
 import {
     dashboardPanelChart,
     dashboardActiveUsersChart,
     dashboardSummerChart,
     dashboardActiveCountriesCard
-} from 'variables/charts.jsx';
+} from "variables/charts.jsx";
 
-import jacket from 'assets/img/saint-laurent.jpg';
-import shirt from 'assets/img/balmain.jpg';
-import swim from 'assets/img/prada.jpg';
+import jacket from "assets/img/saint-laurent.jpg";
+import shirt from "assets/img/balmain.jpg";
+import swim from "assets/img/prada.jpg";
 
-import { table_data } from 'variables/general.jsx';
+import { table_data } from "variables/general.jsx";
 
 const colorScale = scaleLinear()
     .domain([0, 1, 50, 100])
@@ -35,10 +34,14 @@ const colorScale = scaleLinear()
 
 var i = 0;
 
-class Dashboard extends React.Component{
-    createTableData(){
+class Dashboard extends React.Component
+{
+    createTableData()
+    {
         var tableRows = [];
-        for(var i = 0; i < table_data.length; i++){
+        // tslint:disable-next-line:no-shadowed-variable
+        for (var i = 0; i < table_data.length; i++)
+        {
             tableRows.push(
                 <tr key={i}>
                     <td>
@@ -54,7 +57,9 @@ class Dashboard extends React.Component{
         }
         return tableRows;
     }
-    render(){
+
+    render()
+    {
         return (
             <div>
                 <PanelHeader
@@ -211,44 +216,45 @@ class Dashboard extends React.Component{
                                         <Line data={dashboardActiveCountriesCard.data} options={dashboardActiveCountriesCard.options} />
                                     </div>
                                     <div className="map" id="worldMap">
-                                        <ComposableMap style={{ width: "100%", height: '100%' }}>
+                                        <ComposableMap style={{ width: "100%", height: "100%" }}>
                                             <ZoomableGroup>
                                                 <Geographies geography="https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-50m.json">
-                                                    {(geographies, projection) => geographies.map(geography => {
+                                                    {(geographies, projection) => geographies.map(geography =>
+                                                    {
                                                         var style;
                                                         switch (geography.properties.ISO_A3) {
                                                             case "IND":
-                                                                style={default: { fill: colorScale(14.43) }}
+                                                                style = {default: { fill: colorScale(14.43) }};
                                                                 break;
                                                             case "FRA":
-                                                                style={default: { fill: colorScale(18.43) }}
+                                                                style = {default: { fill: colorScale(18.43) }};
                                                                 break;
                                                             case "CAN":
-                                                                style={default: { fill: colorScale(12.43) }}
+                                                                style = {default: { fill: colorScale(12.43) }};
                                                                 break;
                                                             case "RUS":
-                                                                style={default: { fill: colorScale(16.43) }}
+                                                                style = {default: { fill: colorScale(16.43) }};
                                                                 break;
                                                             case "BRA":
-                                                                style={default: { fill: colorScale(4.43) }}
+                                                                style = {default: { fill: colorScale(4.43) }};
                                                                 break;
                                                             case "USA":
-                                                                style={default: { fill: colorScale(53.23) }}
+                                                                style = {default: { fill: colorScale(53.23) }};
                                                                 break;
                                                             case "AUS":
-                                                                style={default: { fill: colorScale(10.35) }}
+                                                                style = {default: { fill: colorScale(10.35) }};
                                                                 break;
                                                             case "DEU":
-                                                                style={default: { fill: colorScale(28.43) }}
+                                                                style = {default: { fill: colorScale(28.43) }};
                                                                 break;
                                                             case "GBR":
-                                                                style={default: { fill: colorScale(7.87) }}
+                                                                style = {default: { fill: colorScale(7.87) }};
                                                                 break;
                                                             case "ROU":
-                                                                style={default: { fill: colorScale(5.94) }}
+                                                                style = {default: { fill: colorScale(5.94) }};
                                                                 break;
                                                             default:
-                                                                style={default: { fill: colorScale(0) }}
+                                                                style = {default: { fill: colorScale(0) }};
                                                                 break;
                                                         }
                                                         return (
@@ -257,9 +263,9 @@ class Dashboard extends React.Component{
                                                                 geography={ geography }
                                                                 projection={ projection }
                                                                 onClick={ this.handleClick }
-                                                                style={style}
-                                                            />
-                                                    )})}
+                                                                style={style} />
+                                                        );
+                                                    })}
                                                 </Geographies>
                                             </ZoomableGroup>
                                         </ComposableMap>

@@ -1,17 +1,19 @@
-import React from 'react';
+import React from "react";
 import {
     Alert, Modal, ModalBody, ModalFooter, ModalHeader, Card, CardTitle, CardBody, CardHeader, Row, Col
-} from 'reactstrap';
+} from "reactstrap";
 // react plugin for creating notifications over the dashboard
-import NotificationAlert from 'react-notification-alert';
+import NotificationAlert from "react-notification-alert";
 
-import { PanelHeader, Button, Instructions } from 'components';
+import { PanelHeader, Button, Instructions } from "components";
 
-import img1 from 'assets/img/bg1.jpg';
-import img2 from 'assets/img/bg3.jpg';
+import img1 from "assets/img/bg1.jpg";
+import img2 from "assets/img/bg3.jpg";
 
-class Notifications extends React.Component{
-    constructor(props) {
+class Notifications extends React.Component
+{
+    constructor(props)
+    {
         super(props);
         this.state = {
             visible: true,
@@ -25,41 +27,50 @@ class Notifications extends React.Component{
         this.toggleModalMini = this.toggleModalMini.bind(this);
         this.notify = this.notify.bind(this);
     }
-    onDismiss(){
-    }
-    toggleModalClassic(){
+
+    // tslint:disable-next-line:no-empty
+    onDismiss() {}
+
+    toggleModalClassic()
+    {
         this.setState({
             modalClassic: !this.state.modalClassic
         });
     }
-    toggleModalNotice(){
+
+    toggleModalNotice()
+    {
         this.setState({
             modalNotice: !this.state.modalNotice
         });
     }
-    toggleModalMini() {
+
+    toggleModalMini()
+    {
         this.setState({
             modalMini: !this.state.modalMini
         });
     }
-    notify(place){
+
+    notify(place)
+    {
         var color = Math.floor((Math.random() * 5) + 1);
         var type;
         switch (color) {
             case 1:
-                type = 'primary';
+                type = "primary";
                 break;
             case 2:
-                type = 'success';
+                type = "success";
                 break;
             case 3:
-                type = 'danger';
+                type = "danger";
                 break;
             case 4:
-                type = 'warning';
+                type = "warning";
                 break;
             case 5:
-                type = 'info';
+                type = "info";
                 break;
             default:
                 break;
@@ -77,10 +88,12 @@ class Notifications extends React.Component{
             type: type,
             icon: "now-ui-icons ui-1_bell-53",
             autoDismiss: 7
-        }
+        };
         this.refs.notificationAlert.notificationAlert(options);
     }
-    render(){
+
+    render()
+    {
         return (
             <div>
                 <PanelHeader
@@ -110,7 +123,8 @@ class Notifications extends React.Component{
                                     </Alert>
                                     <Alert color="info" className="alert-with-icon"  isOpen={this.state.visible} toggle={this.onDismiss}>
                                         <span data-notify="icon" className="now-ui-icons ui-1_bell-53"></span>
-                                        <span data-notify="message">This is a notification with close button and icon and have many lines. You can see that the icon and the close button are always vertically aligned. This is a beautiful notification. So you don't have to worry about the style.</span>
+                                        <span data-notify="message">This is a notification with close button and icon and have many lines.
+                                         You can see that the icon and the close button are always vertically aligned. This is a beautiful notification. So you don't have to worry about the style.</span>
                                     </Alert>
                                 </CardBody>
                             </Card>
@@ -207,7 +221,10 @@ class Notifications extends React.Component{
                                                     Modal Title
                                                 </ModalHeader>
                                                 <ModalBody>
-                                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+                                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
+                                                         Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.
+                                                          A small river named Duden flows by their place and supplies it with the necessary regelialia.
+                                                           It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
                                                 </ModalBody>
                                                 <ModalFooter>
                                                     <Button color="default">
@@ -229,14 +246,16 @@ class Notifications extends React.Component{
                                                     <Instructions
                                                         title="1. Register"
                                                         description={
-                                                            <span>The first step is to create an account at <a href="https://www.creative-tim.com/">Creative Tim</a>. You can choose a social network or go for the classic version, whatever works best for you.</span>
+                                                            <span>The first step is to create an account at <a href="https://www.creative-tim.com/">Creative Tim</a>.
+                                                             You can choose a social network or go for the classic version, whatever works best for you.</span>
                                                         }
                                                         img={img1}
                                                     />
                                                     <Instructions
                                                         title="2. Apply"
                                                         description={
-                                                            <span>The first step is to create an account at <a href="https://www.creative-tim.com/">Creative Tim</a>. You can choose a social network or go for the classic version, whatever works best for you.</span>
+                                                            <span>The first step is to create an account at <a href="https://www.creative-tim.com/">Creative Tim</a>.
+                                                             You can choose a social network or go for the classic version, whatever works best for you.</span>
                                                         }
                                                         img={img2}
                                                     />
@@ -259,7 +278,7 @@ class Notifications extends React.Component{
                                                     <p>Always have an access to your profile</p>
                                                 </ModalBody>
                                                 <ModalFooter>
-                                                    <Button color="link" disabled neutral>Back</Button>{' '}
+                                                    <Button color="link" disabled neutral>Back</Button>{" "}
                                                     <Button color="link" neutral onClick={this.toggleModalMini}>Close</Button>
                                                 </ModalFooter>
                                             </Modal>

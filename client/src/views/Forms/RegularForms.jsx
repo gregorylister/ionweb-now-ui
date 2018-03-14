@@ -1,12 +1,14 @@
-import React from 'react';
+import React from "react";
 import {
     Form, FormGroup, Label, Input, FormText, Card, CardBody, CardHeader, CardTitle, CardFooter, Row, Col
-} from 'reactstrap';
+} from "reactstrap";
 
-import { PanelHeader, FormInputs, Button } from 'components';
+import { PanelHeader, FormInputs, Button } from "components";
 
-class RegularForms extends React.Component{
-    render(){
+class RegularForms extends React.Component
+{
+    render()
+    {
         return (
             <div>
                 <PanelHeader size="sm"/>
@@ -22,7 +24,7 @@ class RegularForms extends React.Component{
                                 <CardBody>
                                     <Form>
                                         <FormInputs
-                                            ncols={["col-12","col-12","col-12"]}
+                                            ncols={["col-12", "col-12", "col-12"]}
                                             proprieties={[
                                                 {
                                                     label: "Email address",

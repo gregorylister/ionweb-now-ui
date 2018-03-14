@@ -1,14 +1,16 @@
-import React from 'react';
+import React from "react";
 import {
     Card, CardHeader, CardBody, Row, Col
-} from 'reactstrap';
+} from "reactstrap";
 
-import { PanelHeader } from 'components';
+import { PanelHeader } from "components";
 
-import icons from 'variables/icons';
+import icons from "variables/icons";
 
-class Icons extends React.Component{
-    render(){
+class Icons extends React.Component
+{
+    render()
+    {
         return (
             <div>
                 <PanelHeader size="sm"/>
@@ -23,7 +25,8 @@ class Icons extends React.Component{
                                 <CardBody className="all-icons">
                                     <Row>
                                         {
-                                            icons.map((prop,key) => {
+                                            icons.map((prop, key) =>
+                                            {
                                                 return (
                                                     <Col lg={2} md={3} sm={4} xs={6} className="font-icon-list" key={key}>
                                                         <div className="font-icon-detail">

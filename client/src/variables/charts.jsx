@@ -1,14 +1,19 @@
 // ##############################
 // // // Function that converts a hex color number to a RGB color number
 // #############################
-function hexToRGB(hex, alpha) {
+function hexToRGB(hex, alpha)
+{
+    // tslint:disable-next-line:one-variable-per-declaration
     var r = parseInt(hex.slice(1, 3), 16),
     g = parseInt(hex.slice(3, 5), 16),
     b = parseInt(hex.slice(5, 7), 16);
 
-    if (alpha) {
+    if (alpha)
+    {
         return "rgba(" + r + ", " + g + ", " + b + ", " + alpha + ")";
-    } else {
+    }
+    else
+    {
         return "rgb(" + r + ", " + g + ", " + b + ")";
     }
 }
@@ -27,17 +32,17 @@ const gradientChartOptionsConfiguration = {
     },
     tooltips: {
       bodySpacing: 4,
-      mode:"nearest",
+      mode: "nearest",
       intersect: 0,
-      position:"nearest",
-      xPadding:10,
-      yPadding:10,
-      caretPadding:10
+      position: "nearest",
+      xPadding: 10,
+      yPadding: 10,
+      caretPadding: 10
     },
     responsive: 1,
     scales: {
         yAxes: [{
-          display:0,
+          display: 0,
           ticks: {
               display: false
           },
@@ -49,7 +54,7 @@ const gradientChartOptionsConfiguration = {
           }
         }],
         xAxes: [{
-          display:0,
+          display: 0,
           ticks: {
               display: false
           },
@@ -61,8 +66,8 @@ const gradientChartOptionsConfiguration = {
           }
         }]
     },
-    layout:{
-      padding:{left:0,right:0,top:15,bottom:15}
+    layout: {
+      padding: {left: 0, right: 0, top: 15, bottom: 15}
     }
 };
 
@@ -73,12 +78,12 @@ var gradientChartOptionsConfigurationWithNumbersAndGrid = {
     },
     tooltips: {
       bodySpacing: 4,
-      mode:"nearest",
+      mode: "nearest",
       intersect: 0,
-      position:"nearest",
-      xPadding:10,
-      yPadding:10,
-      caretPadding:10
+      position: "nearest",
+      xPadding: 10,
+      yPadding: 10,
+      caretPadding: 10
     },
     responsive: 1,
     scales: {
@@ -89,7 +94,7 @@ var gradientChartOptionsConfigurationWithNumbersAndGrid = {
           }
         }],
         xAxes: [{
-          display:0,
+          display: 0,
           ticks: {
               display: false
           },
@@ -101,8 +106,8 @@ var gradientChartOptionsConfigurationWithNumbersAndGrid = {
           }
         }]
     },
-    layout:{
-      padding:{left:0,right:0,top:15,bottom:15}
+    layout: {
+      padding: {left: 0, right: 0, top: 15, bottom: 15}
     }
 };
 
@@ -111,11 +116,13 @@ var gradientChartOptionsConfigurationWithNumbersAndGrid = {
 // #############################
 
 const dashboardPanelChart = {
-    data: (canvas) => {
+    data: (canvas) =>
+    {
         const ctx = canvas.getContext("2d");
+        // tslint:disable-next-line:no-shadowed-variable
         var chartColor = "#FFFFFF";
         var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
-        gradientStroke.addColorStop(0, '#80b6f4');
+        gradientStroke.addColorStop(0, "#80b6f4");
         gradientStroke.addColorStop(1, chartColor);
         var gradientFill = ctx.createLinearGradient(0, 200, 0, 50);
         gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
@@ -139,7 +146,7 @@ const dashboardPanelChart = {
                 borderWidth: 2,
                 data: [50, 150, 100, 190, 130, 90, 150, 160, 120, 140, 190, 95]
             }]
-        }
+        };
     },
     options: {
         layout: {
@@ -152,9 +159,9 @@ const dashboardPanelChart = {
         },
         maintainAspectRatio: false,
         tooltips: {
-          backgroundColor: '#fff',
-          titleFontColor: '#333',
-          bodyFontColor: '#666',
+          backgroundColor: "#fff",
+          titleFontColor: "#333",
+          bodyFontColor: "#666",
           bodySpacing: 4,
           xPadding: 12,
           mode: "nearest",
@@ -204,10 +211,11 @@ const dashboardPanelChart = {
 // #############################
 
 const dashboardActiveUsersChart = {
-    data: (canvas) => {
+    data: (canvas) =>
+    {
         var ctx = canvas.getContext("2d");
         var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
-        gradientStroke.addColorStop(0, '#80b6f4');
+        gradientStroke.addColorStop(0, "#80b6f4");
         gradientStroke.addColorStop(1, chartColor);
         var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
         gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
@@ -228,7 +236,7 @@ const dashboardActiveUsersChart = {
                 borderWidth: 2,
                 data: [542, 480, 430, 550, 530, 453, 380, 434, 568, 610, 700, 630]
             }]
-        }
+        };
     },
     options: gradientChartOptionsConfiguration,
 };
@@ -238,14 +246,15 @@ const dashboardActiveUsersChart = {
 // #############################
 
 const dashboardSummerChart = {
-    data: (canvas) => {
+    data: (canvas) =>
+    {
         var ctx = canvas.getContext("2d");
         var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
-        gradientStroke.addColorStop(0, '#18ce0f');
+        gradientStroke.addColorStop(0, "#18ce0f");
         gradientStroke.addColorStop(1, chartColor);
         var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
         gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-        gradientFill.addColorStop(1, hexToRGB('#18ce0f',0.4));
+        gradientFill.addColorStop(1, hexToRGB("#18ce0f", 0.4));
         return {
             labels: ["12pm,", "3pm", "6pm", "9pm", "12am", "3am", "6am", "9am"],
             datasets: [{
@@ -262,7 +271,7 @@ const dashboardSummerChart = {
                 borderWidth: 2,
                 data: [40, 500, 650, 700, 1200, 1250, 1300, 1900]
             }]
-        }
+        };
     },
     options: gradientChartOptionsConfiguration,
 };
@@ -272,16 +281,17 @@ const dashboardSummerChart = {
 // #############################
 
 const dashboardActiveCountriesCard = {
-    data: (canvas) => {
+    data: (canvas) =>
+    {
         var ctx = canvas.getContext("2d");
         var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
-        gradientStroke.addColorStop(0, '#2CA8FF');
+        gradientStroke.addColorStop(0, "#2CA8FF");
         gradientStroke.addColorStop(1, chartColor);
         var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
         gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-        gradientFill.addColorStop(1, hexToRGB('#2CA8FF', 0.4));
+        gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.4));
         return {
-            labels : ["January","February","March","April","May","June","July","August","September","October"],
+            labels : ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October"],
             datasets: [{
                 label: "Active Countries",
                 backgroundColor: gradientFill,
@@ -294,22 +304,23 @@ const dashboardActiveCountriesCard = {
                 pointRadius: 4,
                 fill: true,
                 borderWidth: 2,
-                data: [80,78,86,96,83,85,76,75,88,90]
+                data: [80, 78, 86, 96, 83, 85, 76, 75, 88, 90]
             }]
-        }
+        };
     },
     options: gradientChartOptionsConfiguration,
-}
+};
 
 // ##############################
 // // // Charts view - Line Chart - Card
 // #############################
 
 const chartsLine1 = {
-    data: (canvas) => {
+    data: (canvas) =>
+    {
         var ctx = canvas.getContext("2d");
         var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
-        gradientStroke.addColorStop(0, '#80b6f4');
+        gradientStroke.addColorStop(0, "#80b6f4");
         gradientStroke.addColorStop(1, chartColor);
         var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
         gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
@@ -330,24 +341,25 @@ const chartsLine1 = {
                 borderWidth: 2,
                 data: [542, 480, 430, 550, 530, 453, 380, 434, 568, 610, 700, 630]
             }]
-        }
+        };
     },
     options: gradientChartOptionsConfiguration,
-}
+};
 
 // ##############################
 // // // Charts view - Line Chart 2 - Card
 // #############################
 
 const chartsLine2 = {
-    data: (canvas) => {
+    data: (canvas) =>
+    {
         var ctx = canvas.getContext("2d");
         var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
-        gradientStroke.addColorStop(0, '#18ce0f');
+        gradientStroke.addColorStop(0, "#18ce0f");
         gradientStroke.addColorStop(1, chartColor);
         var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
         gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-        gradientFill.addColorStop(1, hexToRGB('#18ce0f',0.4));
+        gradientFill.addColorStop(1, hexToRGB("#18ce0f", 0.4));
         return {
             labels: ["12pm,", "3pm", "6pm", "9pm", "12am", "3am", "6am", "9am"],
             datasets: [{
@@ -364,24 +376,25 @@ const chartsLine2 = {
                 borderWidth: 2,
                 data: [40, 500, 650, 700, 1200, 1250, 1300, 1900]
             }]
-        }
+        };
     },
     options: gradientChartOptionsConfigurationWithNumbersAndGrid,
-}
+};
 
 // ##############################
 // // // Charts view - Bar Chart - Card
 // #############################
 
 const chartsBar1 = {
-    data: (canvas) => {
+    data: (canvas) =>
+    {
         var ctx = canvas.getContext("2d");
         var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
         gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-        gradientFill.addColorStop(1, hexToRGB('#2CA8FF', 0.6));
+        gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
         return {
-            labels :[
-                "January","February","March","April","May","June","July","August","September","October","November","December"
+            labels : [
+                "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
             ],
             datasets: [{
                 label: "Active Countries",
@@ -395,9 +408,9 @@ const chartsBar1 = {
                 pointRadius: 4,
                 fill: true,
                 borderWidth: 1,
-                data: [80,99,86,96,123,85,100,75,88,90,123,155]
+                data: [80, 99, 86, 96, 123, 85, 100, 75, 88, 90, 123, 155]
             }]
-        }
+        };
     },
     options: {
         maintainAspectRatio: false,
@@ -406,12 +419,12 @@ const chartsBar1 = {
         },
         tooltips: {
             bodySpacing: 4,
-            mode:"nearest",
+            mode: "nearest",
             intersect: 0,
-            position:"nearest",
-            xPadding:10,
-            yPadding:10,
-            caretPadding:10
+            position: "nearest",
+            xPadding: 10,
+            yPadding: 10,
+            caretPadding: 10
         },
         responsive: 1,
         scales: {
@@ -422,7 +435,7 @@ const chartsBar1 = {
                 }
             }],
             xAxes: [{
-                display:0,
+                display: 0,
                 ticks: {
                     display: false
                 },
@@ -434,11 +447,11 @@ const chartsBar1 = {
                 }
             }]
         },
-        layout:{
-            padding:{left:0,right:0,top:15,bottom:15}
+        layout: {
+            padding: {left: 0, right: 0, top: 15, bottom: 15}
         }
     },
-}
+};
 
 // ##############################
 // // // Charts view - Bar Chart 2 - Card
@@ -446,13 +459,13 @@ const chartsBar1 = {
 
 const chartsBar2 = {
     data : {
-        labels:[
-            "January","February","March","April","May","June","July","August","September","October","November","December"
+        labels: [
+            "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
         ],
-        datasets:[
+        datasets: [
             {
                 backgroundColor: "#f96332",
-                data: [40, 26, 28, 45, 20, 25, 30, 25, 20, 25, 20, 15,]
+                data: [40, 26, 28, 45, 20, 25, 30, 25, 20, 25, 20, 15, ]
             },
             {
                 backgroundColor: "#2CA8FF",
@@ -467,12 +480,12 @@ const chartsBar2 = {
         },
         tooltips: {
             bodySpacing: 4,
-            mode:"nearest",
+            mode: "nearest",
             intersect: 0,
-            position:"nearest",
-            xPadding:10,
-            yPadding:10,
-            caretPadding:10
+            position: "nearest",
+            xPadding: 10,
+            yPadding: 10,
+            caretPadding: 10
         },
         responsive: 1,
         scales: {
@@ -493,11 +506,11 @@ const chartsBar2 = {
                 }
             }]
         },
-        layout:{
-            padding:{left:0,right:0,top:15,bottom:15}
+        layout: {
+            padding: {left: 0, right: 0, top: 15, bottom: 15}
         }
     }
-}
+};
 
 module.exports = {
     dashboardPanelChart, // Chart for Dashboard view - Will be rendered in panel
@@ -508,4 +521,4 @@ module.exports = {
     chartsLine2, // Chart for Charts view - Line Chart 2 - Card
     chartsBar1, // Chart for Charts view - Bar Chart - Card
     chartsBar2, // Chart for Charts view - Bar Chart 2 - Card
-}
+};

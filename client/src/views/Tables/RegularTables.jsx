@@ -1,14 +1,16 @@
-import React from 'react';
+import React from "react";
 import {
     Card, CardBody, CardHeader, CardTitle, Table, Row, Col
-} from 'reactstrap';
+} from "reactstrap";
 
-import { PanelHeader } from 'components';
+import { PanelHeader } from "components";
 
-import { thead, tbody } from 'variables/general';
+import { thead, tbody } from "variables/general";
 
-class RegularTables extends React.Component{
-    render(){
+class RegularTables extends React.Component
+{
+    render()
+    {
         return (
             <div>
                 <PanelHeader size="sm"/>
@@ -24,11 +26,14 @@ class RegularTables extends React.Component{
                                         <thead className="text-primary">
                                             <tr>
                                                 {
-                                                    thead.map((prop, key) => {
-                                                        if(key === thead.length-1)
+                                                    thead.map((prop, key) =>
+                                                    {
+                                                        if (key === thead.length - 1)
+                                                        {
                                                             return (
                                                                 <th  key={key} className="text-right">{prop}</th>
                                                             );
+                                                        }
                                                         return (
                                                             <th  key={key}>{prop}</th>
                                                         );
@@ -38,22 +43,27 @@ class RegularTables extends React.Component{
                                         </thead>
                                         <tbody>
                                             {
-                                                tbody.map((prop,key) => {
+                                                tbody.map((prop, key) =>
+                                                {
                                                     return (
                                                         <tr key={key}>
                                                             {
-                                                                prop.data.map((prop,key)=> {
-                                                                    if(key === thead.length-1)
+                                                                // tslint:disable-next-line:no-shadowed-variable
+                                                                prop.data.map((prop, key) =>
+                                                                {
+                                                                    if (key === thead.length - 1)
+                                                                    {
                                                                         return (
                                                                             <td  key={key} className="text-right">{prop}</td>
                                                                         );
+                                                                    }
                                                                     return (
                                                                         <td  key={key}>{prop}</td>
                                                                     );
                                                                 })
                                                             }
                                                         </tr>
-                                                    )
+                                                    );
                                                 })
                                             }
                                         </tbody>
@@ -72,11 +82,14 @@ class RegularTables extends React.Component{
                                         <thead className="text-primary">
                                             <tr>
                                                 {
-                                                    thead.map((prop, key) => {
-                                                        if(key === thead.length-1)
+                                                    thead.map((prop, key) =>
+                                                    {
+                                                        if (key === thead.length - 1)
+                                                        {
                                                             return (
                                                                 <th  key={key} className="text-right">{prop}</th>
                                                             );
+                                                        }
                                                         return (
                                                             <th  key={key}>{prop}</th>
                                                         );
@@ -86,22 +99,27 @@ class RegularTables extends React.Component{
                                         </thead>
                                         <tbody>
                                             {
-                                                tbody.map((prop,key) => {
+                                                tbody.map((prop, key) =>
+                                                {
                                                     return (
                                                         <tr key={key}>
                                                             {
-                                                                prop.data.map((prop,key)=> {
-                                                                    if(key === thead.length-1)
+                                                                // tslint:disable-next-line:no-shadowed-variable
+                                                                prop.data.map((prop, key) =>
+                                                                {
+                                                                    if (key === thead.length - 1)
+                                                                    {
                                                                         return (
                                                                             <td  key={key} className="text-right">{prop}</td>
                                                                         );
+                                                                    }
                                                                     return (
                                                                         <td  key={key}>{prop}</td>
                                                                     );
                                                                 })
                                                             }
                                                         </tr>
-                                                    )
+                                                    );
                                                 })
                                             }
                                         </tbody>
@@ -119,11 +137,14 @@ class RegularTables extends React.Component{
                                         <thead className="text-primary">
                                             <tr>
                                                 {
-                                                    thead.map((prop, key) => {
-                                                        if(key === thead.length-1)
+                                                    thead.map((prop, key) =>
+                                                    {
+                                                        if (key === thead.length - 1)
+                                                        {
                                                             return (
                                                                 <th  key={key} className="text-right">{prop}</th>
                                                             );
+                                                        }
                                                         return (
                                                             <th  key={key}>{prop}</th>
                                                         );
@@ -133,22 +154,27 @@ class RegularTables extends React.Component{
                                         </thead>
                                         <tbody>
                                             {
-                                                tbody.map((prop,key) => {
+                                                tbody.map((prop, key) =>
+                                                {
                                                     return (
                                                         <tr key={key} className={prop.className}>
                                                             {
-                                                                prop.data.map((prop,key)=> {
-                                                                    if(key === thead.length-1)
+                                                                // tslint:disable-next-line:no-shadowed-variable
+                                                                prop.data.map((prop, key) =>
+                                                                {
+                                                                    if (key === thead.length - 1)
+                                                                    {
                                                                         return (
                                                                             <td  key={key} className="text-right">{prop}</td>
                                                                         );
+                                                                    }
                                                                     return (
                                                                         <td  key={key}>{prop}</td>
                                                                     );
                                                                 })
                                                             }
                                                         </tr>
-                                                    )
+                                                    );
                                                 })
                                             }
                                         </tbody>

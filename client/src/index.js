@@ -9,7 +9,7 @@ import {
 
 import "bootstrap/dist/css/bootstrap.css";
 import "assets/scss/now-ui-dashboard.css";
-import "assets/css/demo.css";
+import "assets/css/extra.css";
 
 import indexRoutes from "routes/index.jsx";
 

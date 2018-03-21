@@ -3,41 +3,68 @@ import ReactTable from "react-table";
 import { inspectionTableColumns, serviceTableColumns, tagTableColumns, Tips} from "./tableDefinition";
 import "react-table/react-table.css";
 
+const requestData = (pageSize, page, sorted, filtered) =>
+{
+    return new Promise((resolve, reject) =>
+    {
+        fetch(`/tag/get?pageSize=${pageSize}&page=${page}&sorted=${JSON.stringify(sorted)}&filtered=${JSON.stringify(filtered)}`)
+        .then(response =>
+        {
+            if (response.ok)
+            {
+                resolve(response.json());
+            }
+            else
+            {
+                reject("Something went wrong ...");
+            }
+        });
+    });
+};
+
 class TagTable extends React.Component
 {
+    constructor(props)
+    {
+        super(props);
+        this.state = { data: [], pages: null, loading: true};
+        this.fetchData = this.fetchData.bind(this);
+    }
+
+    fetchData(state, instance)
+    {
+        this.setState({ loading: true });
+
+        requestData(
+            state.pageSize,
+            state.page,
+            state.sorted,
+            state.filtered
+        ).then(res =>
+        {
+            this.setState({
+                data: res.data.rows,
+                pages: res.data.pages,
+                loading: false
+            });
+        });
+    }
+
     render()
     {
-        const tagData =
-        [
-            {code: "1257ht", number: "0001", name: "Tank", itemNumber: "178", location: "Warehouse",
-            frequency: "Monthly", quantity: "1", initialDate: "21/02/2018", generalComments: "Test comment"},
-            {code: "1257ht", number: "0001", name: "Tank", itemNumber: "178", location: "Warehouse",
-            frequency: "Monthly", quantity: "1", initialDate: "21/02/2018", generalComments: "Test comment"},
-            {code: "1257ht", number: "0001", name: "Tank", itemNumber: "178", location: "Warehouse",
-            frequency: "Monthly", quantity: "1", initialDate: "21/02/2018", generalComments: "Test comment"},
-        ];
-        const serviceData =
-        [
-            {number: "1", description: "Wrap plastic", date: "13/07/2019"},
-            {number: "1", description: "Wrap plastic", date: "13/07/2019"},
-            {number: "1", description: "Wrap plastic", date: "13/07/2019"},
-            {number: "1", description: "Wrap plastic", date: "13/07/2019"},
-        ];
-        const inspectionData =
-        [
-            {number: "1", description: "Check oil", date: "12/07/2019"},
-            {number: "1", description: "Check oil", date: "12/07/2019"},
-            {number: "1", description: "Check oil", date: "12/07/2019"},
-            {number: "1", description: "Check oil", date: "12/07/2019"},
-        ];
+        const { data, pages, loading } = this.state;
         return (
             <div>
                 <ReactTable
-                    data={tagData}
-                    columns={tagTableColumns}
+                    manual
+                    data={data}
+                    pages={pages}
+                    loading={loading}
+                    onFetchData={this.fetchData}
                     filterable
                     defaultPageSize={10}
                     className="-striped -highlight"
+                    columns={tagTableColumns}
                     SubComponent={(row) =>
                     {
                         return (
@@ -45,14 +72,14 @@ class TagTable extends React.Component
                                 <br />
                                 <div className="outerTableHeader">Services</div><br /><br />
                                 <ReactTable
-                                    data={serviceData}
+                                    data={[]}
                                     columns={serviceTableColumns}
                                     defaultPageSize={3}
                                     showPagination={true}
                                 /><br /><br />
                                 <div className="outerTableHeader">Inspections</div><br /><br />
                                 <ReactTable
-                                    data={inspectionData}
+                                    data={[]}
                                     columns={inspectionTableColumns}
                                     defaultPageSize={3}
                                     showPagination={true}

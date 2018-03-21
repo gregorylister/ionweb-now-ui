@@ -26,7 +26,14 @@ export default class TagRepository
     public async getTags(offset: number, limit: number): Promise<ITag[]>
     {
         let tags = [];
-        tags = await this.tagTable.findAll({ offset, limit });
+        if (offset < 0 || limit < 0)
+        {
+            tags = await this.tagTable.findAll();
+        }
+        else
+        {
+            tags = await this.tagTable.findAll({ offset, limit });
+        }
         return tags;
     }
 }

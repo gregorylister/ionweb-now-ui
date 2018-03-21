@@ -1,3 +1,6 @@
+* Tidy up TagTable + tagRouter
+* Add error catch in TagTable
+
 - Use cdn?
 - Update logo (svg) files
 - Update header and footer

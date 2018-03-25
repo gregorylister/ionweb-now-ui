@@ -1,8 +1,8 @@
 import { ITag } from "../model/ITag";
-import { TagInspectionTableDefinition, tagInspectionTableName } from "./dbModel/TagInspectionTableDefinition";
-import { TagServiceTableDefinition, tagServiceTableName } from "./dbModel/TagServiceTableDefinition";
-import { TagTableDefinition, tagTableName } from "./dbModel/TagTableDefinition";
 import { IConnection } from "./IConnection";
+import { tagInspectionTableDefinition, tagInspectionTableName } from "./tableDefinition";
+import { tagServiceTableDefinition, tagServiceTableName } from "./tableDefinition";
+import { tagTableDefinition, tagTableName } from "./tableDefinition";
 
 export default class TagRepository
 {
@@ -12,7 +12,7 @@ export default class TagRepository
     {
         this.tagTable = this.connection.getConnection.define(
             tagTableName,
-            TagTableDefinition,
+            tagTableDefinition,
             { freezeTableName: true },
         );
     }

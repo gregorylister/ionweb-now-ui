@@ -1,5 +1,6 @@
 * Tidy up TagTable + tagRouter
 * Add error catch in TagTable
+* Fix dates
 
 - Use cdn?
 - Update logo (svg) files

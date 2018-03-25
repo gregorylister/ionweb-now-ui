@@ -13,7 +13,7 @@ export default class TagRepository
         this.tagTable = this.connection.getConnection.define(
             tagTableName,
             tagTableDefinition,
-            { freezeTableName: true },
+            { freezeTableName: true, timestamps: false},
         );
     }
 

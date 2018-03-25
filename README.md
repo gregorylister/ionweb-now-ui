@@ -1,5 +1,4 @@
-* Tidy up TagTable + tagRouter
-* Add error catch in TagTable
+* Read/write for service and inspection tables
 * Fix dates
 
 - Use cdn?

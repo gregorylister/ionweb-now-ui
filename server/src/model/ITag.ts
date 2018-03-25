@@ -1,13 +1,13 @@
 export interface ITag
 {
-    firstInspectionDate: Date;
-    generalComments: string;
-    inspectionFrequency: string;
-    itemName: string;
-    itemNumber: string;
-    lastModified: Date;
+    first_inspection_date: Date;
+    general_comments: string;
+    inspection_frequency: string;
+    item_name: string;
+    item_number: string;
+    last_modified: Date;
     location: string;
-    numberOfInspections: number;
-    tagCode: string;
-    tagNumber: string;
+    number_of_inspections: number;
+    tag_code: string;
+    tag_number: string;
 }

@@ -2,25 +2,7 @@ import React from "react";
 import ReactTable from "react-table";
 import { inspectionTableColumns, serviceTableColumns, tagTableColumns, Tips} from "./tableDefinition";
 import "react-table/react-table.css";
-
-const requestData = (pageSize, page, sorted, filtered) =>
-{
-    return new Promise((resolve, reject) =>
-    {
-        fetch(`/tag/get?pageSize=${pageSize}&page=${page}&sorted=${JSON.stringify(sorted)}&filtered=${JSON.stringify(filtered)}`)
-        .then(response =>
-        {
-            if (response.ok)
-            {
-                resolve(response.json());
-            }
-            else
-            {
-                reject("Something went wrong ...");
-            }
-        });
-    });
-};
+import requestData from "./requestData";
 
 class TagTable extends React.Component
 {
@@ -39,14 +21,18 @@ class TagTable extends React.Component
             state.pageSize,
             state.page,
             state.sorted,
-            state.filtered
-        ).then(res =>
+            state.filtered)
+        .then(res =>
         {
             this.setState({
                 data: res.data.rows,
                 pages: res.data.pages,
                 loading: false
             });
+        })
+        .catch(err =>
+        {
+            console.error(err);
         });
     }
 

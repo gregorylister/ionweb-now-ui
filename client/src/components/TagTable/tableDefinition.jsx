@@ -8,19 +8,19 @@ export const tagTableColumns =
         [
             {
                 Header: (<div className="innertableHeader">Code</div>),
-                accessor: "tagCode",
+                accessor: "tag_code",
             },
             {
                 Header: (<div className="innertableHeader">Number</div>),
-                accessor: "tagNumber",
+                accessor: "tag_number",
             },
             {
                 Header: (<div className="innertableHeader">Name</div>),
-                accessor: "itemName",
+                accessor: "item_name",
             },
             {
                 Header: (<div className="innertableHeader">Item #</div>),
-                accessor: "itemNumber",
+                accessor: "item_number",
             },
             {
                 Header: (<div className="innertableHeader">Location</div>),
@@ -34,15 +34,15 @@ export const tagTableColumns =
         [
             {
                 Header: (<div className="innertableHeader">Frequency</div>),
-                accessor: "inspectionFrequency",
+                accessor: "inspection_frequency",
             },
             {
                 Header: (<div className="innertableHeader">Quantity</div>),
-                accessor: "numberOfInspections",
+                accessor: "number_of_inspections",
             },
             {
                 Header: (<div className="innertableHeader">Initial Date</div>),
-                accessor: "firstInspectionDate",
+                accessor: "first_inspection_date",
             },
         ],
     },

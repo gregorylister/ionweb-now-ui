@@ -8,7 +8,7 @@ export default class MSSQLConnectionImpl implements IConnection
     constructor()
     {
         this.sequelize = new Sequelize(
-            "test_iontag_v1",
+            "service_test",
             "iontag@test-iontag",
             "Pass1234!",
             {

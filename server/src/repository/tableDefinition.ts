@@ -1,43 +1,43 @@
 import * as Sequelize from "sequelize";
 
-export const tagTableName: any = "Tag";
-export const tagServiceTableName: any = "TagService";
-export const tagInspectionTableName: any = "TagInspection";
+export const tagTableName: any = "tag";
+export const tagServiceTableName: any = "tag_service";
+export const tagInspectionTableName: any = "tag_inspection";
 
 export const tagTableDefinition: any =
 {
-    firstInspectionDate: Sequelize.DATE,
-    generalComments: Sequelize.STRING,
-    inspectionFrequency: Sequelize.STRING,
-    itemName: Sequelize.STRING,
-    itemNumber: Sequelize.STRING,
-    lastModified: Sequelize.DATE,
+    first_inspection_date: Sequelize.DATE,
+    general_comments: Sequelize.STRING,
+    inspection_frequency: Sequelize.STRING,
+    item_name: Sequelize.STRING,
+    item_number: Sequelize.STRING,
+    last_modified: Sequelize.DATE,
     location: Sequelize.STRING,
-    numberOfInspections: Sequelize.BIGINT,
-    tagCode: Sequelize.STRING,
-    tagNumber: Sequelize.STRING,
+    number_of_inspections: Sequelize.BIGINT,
+    tag_code: Sequelize.STRING,
+    tag_number: Sequelize.STRING,
 };
 
 export const tagServiceTableDefinition: any =
 {
-    approvedBy: Sequelize.STRING,
-    endDateTime: Sequelize.DATE,
-    executedBy: Sequelize.STRING,
-    lastModified: Sequelize.DATE,
-    serviceDate: Sequelize.DATE,
-    serviceNumber: Sequelize.BIGINT,
-    startDateTime: Sequelize.DATE,
-    tagId: Sequelize.BIGINT,
+    approved_by: Sequelize.STRING,
+    end_date_time: Sequelize.DATE,
+    executed_by: Sequelize.STRING,
+    last_modified: Sequelize.DATE,
+    service_date: Sequelize.DATE,
+    service_number: Sequelize.BIGINT,
+    start_date_time: Sequelize.DATE,
+    tag_id: Sequelize.BIGINT,
 };
 
 export const tagInspectionTableDefinition: any =
 {
-    additionalService: Sequelize.BLOB,
-    additionalServiceDetails: Sequelize.STRING,
+    additional_service: Sequelize.BLOB,
+    additional_service_details: Sequelize.STRING,
     description: Sequelize.STRING,
-    inspectedBy: Sequelize.STRING,
-    inspectionDate: Sequelize.DATE,
-    inspectionNumber: Sequelize.BIGINT,
-    lastModified: Sequelize.DATE,
-    tagId: Sequelize.BIGINT,
+    inspected_by: Sequelize.STRING,
+    inspection_date: Sequelize.DATE,
+    inspection_number: Sequelize.BIGINT,
+    last_modified: Sequelize.DATE,
+    tag_id: Sequelize.BIGINT,
 };

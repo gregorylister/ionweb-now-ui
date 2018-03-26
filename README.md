@@ -1,3 +1,5 @@
+* Get rid of ITag interface etc!
+
 * Read/write for service and inspection tables
 * Fix dates
 

@@ -1,4 +1,4 @@
-import { ITag } from "../model/ITag";
+import { ITag } from "../model/tagInterface";
 import TagRepository from "../repository/TagRepository";
 
 export interface ITagService

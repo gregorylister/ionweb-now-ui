@@ -2,7 +2,6 @@ import * as bodyParser from "body-parser";
 import * as express from "express";
 import * as _ from "lodash";
 import * as serviceInjector from "../injection/serviceInjector";
-import { ITag } from "../model/ITag";
 import * as responseHelper from "./responseHelper";
 import * as urls from "./Urls";
 
@@ -10,11 +9,10 @@ const router = express.Router();
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
-const tagService = serviceInjector.createTagService();
-
 // Generic add tag handler
-router.post(urls.TAG_ADD, async (req, res) =>
+const addSimple = async (req: express.Request, res: express.Response) =>
 {
+    const tagService = serviceInjector.createTagService(req.originalUrl);
     let ionRes = null;
     try
     {
@@ -27,11 +25,12 @@ router.post(urls.TAG_ADD, async (req, res) =>
         ionRes = responseHelper.fail(err);
     }
     res.end(JSON.stringify(ionRes));
-});
+};
 
 // Generic get tags handler
 const getWithOffset = async (req: express.Request, res: express.Response) =>
 {
+    const tagService = serviceInjector.createTagService(req.originalUrl);
     let ionRes = null;
     try
     {
@@ -54,6 +53,7 @@ const getFilteredSorted = async (req: express.Request, res: express.Response, ne
 {
     if (req.query.pageSize && req.query.page && req.query.sorted && req.query.filtered)
     {
+        const tagService = serviceInjector.createTagService(req.originalUrl);
         let ionRes = null;
         try
         {
@@ -90,11 +90,8 @@ const getFilteredSorted = async (req: express.Request, res: express.Response, ne
     }
 };
 
-// Assign get handlers to router
-router.get(urls.TAG_GET + "*", getFilteredSorted, getWithOffset);
-
 // Sorting function
-function applySorts(tags: ITag[], sorted: any)
+function applySorts(tags: any[], sorted: any)
 {
     return _.orderBy(tags, sorted.map((sort: any) =>
     {
@@ -112,7 +109,7 @@ function applySorts(tags: ITag[], sorted: any)
 }
 
 // Filtering function
-function applyFilters(tags: ITag[], filtered: any)
+function applyFilters(tags: any[], filtered: any)
 {
     if (filtered.length)
     {
@@ -126,5 +123,12 @@ function applyFilters(tags: ITag[], filtered: any)
     }
     return tags;
 }
+
+// Assign handlers to router
+router.get(urls.TAG_GET + "*", getFilteredSorted, getWithOffset);
+router.post(urls.TAG_ADD, addSimple);
+
+router.get(urls.SERVICE_TAG_GET + "*", getFilteredSorted, getWithOffset);
+router.post(urls.SERVICE_TAG_ADD, addSimple);
 
 export default router;

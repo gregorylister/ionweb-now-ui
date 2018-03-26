@@ -1,9 +1,5 @@
 import * as Sequelize from "sequelize";
 
-export const tagTableName: any = "tag";
-export const tagServiceTableName: any = "tag_service";
-export const tagInspectionTableName: any = "tag_inspection";
-
 export const tagTableDefinition: any =
 {
     first_inspection_date: Sequelize.DATE,

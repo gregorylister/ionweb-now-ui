@@ -11,3 +11,15 @@ export interface ITag
     tag_code: string;
     tag_number: string;
 }
+
+export interface IServiceTag
+{
+    approved_by: string;
+    end_date_time: Date;
+    executed_by: string;
+    last_modified: Date;
+    service_date: Date;
+    service_number: number;
+    start_date_time: Date;
+    tag_id: number;
+}

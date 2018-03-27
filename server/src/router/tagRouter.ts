@@ -12,17 +12,18 @@ router.use(bodyParser.json());
 // Generic add tag handler
 const addSimple = async (req: express.Request, res: express.Response) =>
 {
-    const tagService = serviceInjector.createTagService(req.originalUrl);
     let ionRes = null;
     try
     {
+        const tagService = serviceInjector.createTagService(req.originalUrl);
         const tag = req.body;
         await tagService.addTag(tag);
         ionRes = responseHelper.pass(null);
     }
     catch (err)
     {
-        ionRes = responseHelper.fail(err);
+        ionRes = responseHelper.fail(err.message);
+        console.error(err.message);
     }
     res.end(JSON.stringify(ionRes));
 };
@@ -30,10 +31,10 @@ const addSimple = async (req: express.Request, res: express.Response) =>
 // Generic get tags handler
 const getWithOffset = async (req: express.Request, res: express.Response) =>
 {
-    const tagService = serviceInjector.createTagService(req.originalUrl);
     let ionRes = null;
     try
     {
+        const tagService = serviceInjector.createTagService(req.originalUrl);
         const offset = Number(req.query.offset);
         const limit = Number(req.query.limit);
 
@@ -43,7 +44,8 @@ const getWithOffset = async (req: express.Request, res: express.Response) =>
     }
     catch (err)
     {
-        ionRes = responseHelper.fail(err);
+        ionRes = responseHelper.fail(err.message);
+        console.error(err.message);
     }
     res.end(JSON.stringify(ionRes));
 };
@@ -53,10 +55,10 @@ const getFilteredSorted = async (req: express.Request, res: express.Response, ne
 {
     if (req.query.pageSize && req.query.page && req.query.sorted && req.query.filtered)
     {
-        const tagService = serviceInjector.createTagService(req.originalUrl);
         let ionRes = null;
         try
         {
+            const tagService = serviceInjector.createTagService(req.originalUrl);
             const pageSize = Number(req.query.pageSize);
             const page = Number(req.query.page);
             const sorted = JSON.parse(req.query.sorted);
@@ -80,7 +82,8 @@ const getFilteredSorted = async (req: express.Request, res: express.Response, ne
         }
         catch (err)
         {
-            ionRes = responseHelper.fail(err);
+            ionRes = responseHelper.fail(err.message);
+            console.error(err.message);
         }
         res.end(JSON.stringify(ionRes));
     }

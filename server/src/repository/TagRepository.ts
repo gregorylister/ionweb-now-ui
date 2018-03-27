@@ -1,4 +1,3 @@
-import { ITag } from "../model/tagInterface";
 import { IConnection } from "./IConnection";
 import { tagInspectionTableDefinition } from "./tableDefinition";
 import { tagServiceTableDefinition } from "./tableDefinition";
@@ -10,33 +9,42 @@ export default class TagRepository
 
     constructor(private readonly url: string, private readonly connection: IConnection)
     {
-        let tagTableName = "";
-        switch (url)
+        let tableName = null;
+        let tableDefinition = null;
+        const tableRoute = url.split("/");
+        switch (tableRoute[1])
         {
-            case "/tag/get" || "/tag/add":
-                tagTableName = "tag";
+            case "tag":
+                tableName = "tag";
+                tableDefinition = tagTableDefinition;
                 break;
-            case "/servicetag/get" || "/servicetag/add":
-                tagTableName = "tag_service";
+            case "servicetag":
+                tableName = "tag_service";
+                tableDefinition = tagServiceTableDefinition;
                 break;
-            default:
-                tagTableName = "tag";
         }
 
-        this.tagTable = this.connection.getConnection.define(
-            tagTableName,
-            tagTableDefinition,
-            { freezeTableName: true, timestamps: false},
-        );
+        if (tableName && tableDefinition)
+        {
+            this.tagTable = this.connection.getConnection.define(
+                tableName,
+                tableDefinition,
+                { freezeTableName: true, timestamps: false},
+            );
+        }
+        else
+        {
+            throw new Error("Unable to parse URL...");
+        }
     }
 
-    public async addTag(tag: ITag): Promise<void>
+    public async addTag(tag: any): Promise<void>
     {
         await this.tagTable.sync();
         await this.tagTable.create(tag);
     }
 
-    public async getTags(offset: number, limit: number): Promise<ITag[]>
+    public async getTags(offset: number, limit: number): Promise<any[]>
     {
         let tags = [];
         if (offset < 0 || limit < 0)

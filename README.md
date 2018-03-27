@@ -1,7 +1,8 @@
-* Get rid of ITag interface etc!
-
 * Read/write for service and inspection tables
+* Missing db columns e.g comments + UI table col names 
+
 * Fix dates
+* Create "Aww snap" element and render in UI catch
 
 - Use cdn?
 - Update logo (svg) files

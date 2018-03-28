@@ -22,6 +22,10 @@ export default class TagRepository
                 tableName = "tag_service";
                 tableDefinition = tagServiceTableDefinition;
                 break;
+            case "inspectiontag":
+                tableName = "tag_inspection";
+                tableDefinition = tagInspectionTableDefinition;
+                break;
         }
 
         if (tableName && tableDefinition)

@@ -134,4 +134,7 @@ router.post(urls.TAG_ADD, addSimple);
 router.get(urls.SERVICE_TAG_GET + "*", getFilteredSorted, getWithOffset);
 router.post(urls.SERVICE_TAG_ADD, addSimple);
 
+router.get(urls.INSPECTION_TAG_GET + "*", getFilteredSorted, getWithOffset);
+router.post(urls.INSPECTION_TAG_ADD, addSimple);
+
 export default router;

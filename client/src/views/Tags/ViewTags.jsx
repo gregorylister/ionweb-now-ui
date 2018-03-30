@@ -17,7 +17,7 @@ class ViewTags extends React.Component
                                 <CardHeader><CardTitle></CardTitle></CardHeader>
                                 <CardBody>
                                     <div className="toolbar">
-                                        {/* Here you can write extra buttons/actions for the toolbar */}
+                                        {/* Insert toolbar buttons here */}
                                     </div>
                                     <TagTable />
                                 </CardBody>

@@ -1,8 +1,9 @@
-const requestData = (pageSize, page, sorted, filtered) =>
+const requestData = (tagType, pageSize, page, sorted, filtered, tagId) =>
 {
     return new Promise((resolve, reject) =>
     {
-        fetch(`/tag/get?pageSize=${pageSize}&page=${page}&sorted=${JSON.stringify(sorted)}&filtered=${JSON.stringify(filtered)}`)
+
+        fetch(`/${tagType}/get?pageSize=${pageSize}&page=${page}&sorted=${JSON.stringify(sorted)}&filtered=${JSON.stringify(filtered)}&tagId=${JSON.stringify(tagId)}`)
         .then(res =>
         {
             if (res.ok)

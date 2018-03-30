@@ -48,16 +48,16 @@ export default class TagRepository
         await this.tagTable.create(tag);
     }
 
-    public async getTags(offset: number, limit: number): Promise<any[]>
+    public async getTags(tagId: number): Promise<any[]>
     {
         let tags = [];
-        if (offset < 0 || limit < 0)
+        if (tagId >= 0)
         {
-            tags = await this.tagTable.findAll();
+            tags = await this.tagTable.findAll({where: {tag_id: tagId}});
         }
         else
         {
-            tags = await this.tagTable.findAll({ offset, limit });
+            tags = await this.tagTable.findAll();
         }
         return tags;
     }

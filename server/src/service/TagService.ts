@@ -2,7 +2,7 @@ import TagRepository from "../repository/TagRepository";
 
 export interface ITagService
 {
-    getTags(offset: number, limit: number): Promise<any[]>;
+    getTags(tagId: number): Promise<any[]>;
     addTag(tag: any): Promise<void>;
 }
 
@@ -10,9 +10,9 @@ export class TagServiceImpl implements ITagService
 {
     constructor(private readonly tagRepository: TagRepository) {}
 
-    public getTags(offset: number, limit: number): Promise<any[]>
+    public getTags(tagId: number): Promise<any[]>
     {
-        return this.tagRepository.getTags(offset, limit);
+        return this.tagRepository.getTags(tagId);
     }
 
     public addTag(tag: any): Promise<void>

@@ -7,6 +7,10 @@ export const tagTableColumns =
         columns:
         [
             {
+                Header: (<div className="innertableHeader">ID</div>),
+                accessor: "id",
+            },
+            {
                 Header: (<div className="innertableHeader">Code</div>),
                 accessor: "tag_code",
             },
@@ -15,11 +19,11 @@ export const tagTableColumns =
                 accessor: "tag_number",
             },
             {
-                Header: (<div className="innertableHeader">Name</div>),
+                Header: (<div className="innertableHeader">Item Name</div>),
                 accessor: "item_name",
             },
             {
-                Header: (<div className="innertableHeader">Item #</div>),
+                Header: (<div className="innertableHeader">Item Number</div>),
                 accessor: "item_number",
             },
             {
@@ -54,28 +58,31 @@ export const inspectionTableColumns =
         columns:
         [
             {
-                Header: "Number",
-                accessor: "number",
+                Header: (<div className="innertableHeader">Number</div>),
+                accessor: "inspection_number",
             },
             {
-                Header: "Description",
+                Header: (<div className="innertableHeader">Description</div>),
                 accessor: "description",
             },
             {
-                Header: "Date",
-                accessor: "date",
+                Header: (<div className="innertableHeader">Date</div>),
+                accessor: "inspection_date",
             },
             {
-                Header: "Inspected by",
-                accessor: "inspectedBy",
+                Header: (<div className="innertableHeader">Inspected by</div>),
+                accessor: "inspected_by",
             },
             {
-                Header: "Additional Service Required",
-                accessor: "addServRequired",
+                Header: (<div className="innertableHeader">Additional Service</div>),
+                accessor: "additional_service",
+                Cell: row => (
+                    row.value === true ? "Yes" : "No"
+                )
             },
             {
-                Header: "Additional Service Details",
-                accessor: "addServDetails",
+                Header: (<div className="innertableHeader">Additional Service Details</div>),
+                accessor: "additional_service_details",
             },
         ],
     },
@@ -87,32 +94,28 @@ export const serviceTableColumns =
         columns:
         [
             {
-                Header: "Number",
-                accessor: "number",
+                Header: (<div className="innertableHeader">Number</div>),
+                accessor: "service_number",
             },
             {
-                Header: "Description",
-                accessor: "description",
+                Header: (<div className="innertableHeader">Date</div>),
+                accessor: "service_date",
             },
             {
-                Header: "Date",
-                accessor: "date",
+                Header: (<div className="innertableHeader">Start</div>),
+                accessor: "start_date_time",
             },
             {
-                Header: "Start",
-                accessor: "start",
+                Header: (<div className="innertableHeader">Finish</div>),
+                accessor: "end_date_time",
             },
             {
-                Header: "Finish",
-                accessor: "finish",
+                Header: (<div className="innertableHeader">Executed by</div>),
+                accessor: "executed_by",
             },
             {
-                Header: "Executed by",
-                accessor: "executedBy",
-            },
-            {
-                Header: "Approved by",
-                accessor: "approvedBy",
+                Header: (<div className="innertableHeader">Approved by</div>),
+                accessor: "approved_by",
             },
         ],
     },

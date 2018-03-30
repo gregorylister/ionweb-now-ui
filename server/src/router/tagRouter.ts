@@ -28,28 +28,6 @@ const addSimple = async (req: express.Request, res: express.Response) =>
     res.end(JSON.stringify(ionRes));
 };
 
-// Generic get tags handler
-const getWithOffset = async (req: express.Request, res: express.Response) =>
-{
-    let ionRes = null;
-    try
-    {
-        const tagService = serviceInjector.createTagService(req.originalUrl);
-        const offset = Number(req.query.offset);
-        const limit = Number(req.query.limit);
-
-        const tags = await tagService.getTags(offset, limit);
-
-        ionRes = responseHelper.pass(tags);
-    }
-    catch (err)
-    {
-        ionRes = responseHelper.fail(err.message);
-        console.error(err.message);
-    }
-    res.end(JSON.stringify(ionRes));
-};
-
 // Get tags handler - uses pagination, filtering and sorting - for use with react-table
 const getFilteredSorted = async (req: express.Request, res: express.Response, next: express.NextFunction) =>
 {
@@ -63,8 +41,9 @@ const getFilteredSorted = async (req: express.Request, res: express.Response, ne
             const page = Number(req.query.page);
             const sorted = JSON.parse(req.query.sorted);
             const filtered = JSON.parse(req.query.filtered);
+            const tagId = Number(req.query.tagId);
 
-            const tags = await tagService.getTags(-1, -1);
+            const tags = await tagService.getTags(tagId);
 
             // Apply filters
             const filteredData = applyFilters(tags, filtered);
@@ -128,13 +107,13 @@ function applyFilters(tags: any[], filtered: any)
 }
 
 // Assign handlers to router
-router.get(urls.TAG_GET + "*", getFilteredSorted, getWithOffset);
+router.get(urls.TAG_GET + "*", getFilteredSorted);
 router.post(urls.TAG_ADD, addSimple);
 
-router.get(urls.SERVICE_TAG_GET + "*", getFilteredSorted, getWithOffset);
+router.get(urls.SERVICE_TAG_GET + "*", getFilteredSorted);
 router.post(urls.SERVICE_TAG_ADD, addSimple);
 
-router.get(urls.INSPECTION_TAG_GET + "*", getFilteredSorted, getWithOffset);
+router.get(urls.INSPECTION_TAG_GET + "*", getFilteredSorted);
 router.post(urls.INSPECTION_TAG_ADD, addSimple);
 
 export default router;

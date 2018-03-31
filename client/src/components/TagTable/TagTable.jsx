@@ -4,6 +4,7 @@ import { inspectionTableColumns, serviceTableColumns, tagTableColumns, Tips} fro
 import "react-table/react-table.css";
 import requestData from "./requestData";
 import SubTable from "./SubTable";
+import Comments from "./Comments";
 
 class TagTable extends React.Component
 {
@@ -60,12 +61,13 @@ class TagTable extends React.Component
                     {
                         return (
                             <div style={{ marginLeft: "45px", marginRight: "45px"}}>
-                                <SubTable
-                                    tagId={row.row.id}
-                                    title={"Services"}
-                                    tagType={"servicetag"}
-                                    defaultPageSize={5}
-                                    columns={serviceTableColumns}
+                                <Comments
+                                    plain
+                                    defaultOpened={0}
+                                    components={[{
+                                        title: "Comments",
+                                        text: row.row.general_comments
+                                    }]}
                                 />
                                 <SubTable
                                     tagId={row.row.id}
@@ -76,11 +78,19 @@ class TagTable extends React.Component
                                 />
                                 <SubTable
                                     tagId={row.row.id}
+                                    title={"Services"}
+                                    tagType={"servicetag"}
+                                    defaultPageSize={5}
+                                    columns={serviceTableColumns}
+                                />
+                                <SubTable
+                                    tagId={row.row.id}
                                     title={"Files"}
                                     tagType={"files"}
                                     defaultPageSize={5}
                                     columns={[{columns: [{Header: "Files", accessor: "files"}]} ]}
                                 />
+                                <br/>
                             </div>
                         );
                     }}

@@ -44,7 +44,7 @@ class SubTable extends React.Component
         return (
                 <div>
                     <br/>
-                    <div className="outerTableHeader">{this.props.title}</div>
+                    <div className="innertableHeader">{this.props.title}</div>
                     <br/>
                     <ReactTable
                         tagType={this.props.tagType}

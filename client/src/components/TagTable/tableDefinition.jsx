@@ -3,7 +3,7 @@ import React from "react";
 export const tagTableColumns =
 [
     {
-        Header: (<div className="outerTableHeader">Tag</div>),
+        Header: (<div className="outerTableHeader">Tag Details</div>),
         columns:
         [
             {
@@ -30,10 +30,14 @@ export const tagTableColumns =
                 Header: (<div className="innertableHeader">Location</div>),
                 accessor: "location",
             },
+            {
+                Header: (<div className="innertableHeader">Comments</div>),
+                accessor: "general_comments",
+            },
         ],
     },
     {
-        Header: (<div className="outerTableHeader">Inspection</div>),
+        Header: (<div className="outerTableHeader">Inspections</div>),
         columns:
         [
             {

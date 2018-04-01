@@ -4,7 +4,7 @@ import { inspectionTableColumns, serviceTableColumns, tagTableColumns, Tips} fro
 import "react-table/react-table.css";
 import requestData from "./requestData";
 import SubTable from "./SubTable";
-import Comments from "./Comments";
+import Expander from "./Expander";
 
 class TagTable extends React.Component
 {
@@ -60,35 +60,56 @@ class TagTable extends React.Component
                     SubComponent={(row) =>
                     {
                         return (
-                            <div style={{ marginLeft: "45px", marginRight: "45px"}}>
-                                <Comments
+                            <div style={{ marginLeft: "25px", marginRight: "25px"}}>
+                                <Expander
                                     plain
-                                    defaultOpened={0}
+                                    defaultOpened={-1}
                                     components={[{
                                         title: "Comments",
-                                        text: row.row.general_comments
+                                        data: row.row.general_comments
                                     }]}
                                 />
-                                <SubTable
-                                    tagId={row.row.id}
-                                    title={"Inspections"}
-                                    tagType={"inspectiontag"}
-                                    defaultPageSize={5}
-                                    columns={inspectionTableColumns}
+                                <Expander
+                                    plain
+                                    defaultOpened={-1}
+                                    components={[{
+                                        title: "Inspections",
+                                        data:
+                                            <SubTable
+                                                tagId={row.row.id}
+                                                tagType={"inspectiontag"}
+                                                defaultPageSize={5}
+                                                columns={inspectionTableColumns}
+                                            />
+                                    }]}
                                 />
-                                <SubTable
-                                    tagId={row.row.id}
-                                    title={"Services"}
-                                    tagType={"servicetag"}
-                                    defaultPageSize={5}
-                                    columns={serviceTableColumns}
+                                <Expander
+                                    plain
+                                    defaultOpened={-1}
+                                    components={[{
+                                        title: "Services",
+                                        data:
+                                            <SubTable
+                                                tagId={row.row.id}
+                                                tagType={"servicetag"}
+                                                defaultPageSize={5}
+                                                columns={serviceTableColumns}
+                                            />
+                                    }]}
                                 />
-                                <SubTable
-                                    tagId={row.row.id}
-                                    title={"Files"}
-                                    tagType={"files"}
-                                    defaultPageSize={5}
-                                    columns={[{columns: [{Header: "Files", accessor: "files"}]} ]}
+                                <Expander
+                                    plain
+                                    defaultOpened={-1}
+                                    components={[{
+                                        title: "Files",
+                                        data:
+                                            <SubTable
+                                                tagId={row.row.id}
+                                                tagType={"files"}
+                                                defaultPageSize={5}
+                                                columns={[{columns: [{Header: "Files", accessor: "files"}]} ]}
+                                            />
+                                    }]}
                                 />
                                 <br/>
                             </div>

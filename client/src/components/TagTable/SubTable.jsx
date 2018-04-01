@@ -42,23 +42,18 @@ class SubTable extends React.Component
     {
         const { data, pages, loading } = this.state;
         return (
-                <div>
-                    <br/>
-                    <div className="innertableHeader">{this.props.title}</div>
-                    <br/>
-                    <ReactTable
-                        tagType={this.props.tagType}
-                        defaultPageSize={this.props.defaultPageSize}
-                        columns={this.props.columns}
-                        manual
-                        data={data}
-                        pages={pages}
-                        loading={loading}
-                        onFetchData={this.fetchData}
-                        filterable
-                        className="-striped -highlight"
-                    />
-                </div>
+            <ReactTable
+                tagType={this.props.tagType}
+                defaultPageSize={this.props.defaultPageSize}
+                columns={this.props.columns}
+                manual
+                data={data}
+                pages={pages}
+                loading={loading}
+                onFetchData={this.fetchData}
+                filterable
+                className="-striped -highlight"
+            />
         );
     }
 }

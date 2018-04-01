@@ -2,7 +2,7 @@ import React from "react";
 import { Collapse, Card, CardHeader, CardBody } from "reactstrap";
 import PropTypes from "prop-types";
 
-class Comments extends React.Component
+class Expander extends React.Component
 {
     constructor(props)
     {
@@ -34,15 +34,15 @@ class Comments extends React.Component
                                         <br />
                                         <div className="innertableHeader">
                                             <a data-toggle="collapse" aria-expanded={this.state.open === key ? true : false} className={this.state.open === key ? "expanded" : ""} ref={"collapse" + key} onClick={() => this.openCollapse(key)}>
+                                                <i style={{marginTop: 2, marginRight: 5, float: "left"}} className="now-ui-icons ui-1_simple-add"></i>
                                                 {prop.title}
-                                                <i className="now-ui-icons arrows-1_minimal-down"></i>
                                             </a>
                                         </div>
                                     </CardHeader>
                                     <Collapse isOpen={this.state.open === key ? true : false}>
-                                            <CardBody>
-                                                {prop.text}
-                                            </CardBody>
+                                        <CardBody>
+                                            {prop.data}
+                                        </CardBody>
                                     </Collapse>
                                 </Card>
                             );
@@ -53,10 +53,10 @@ class Comments extends React.Component
     }
 }
 
-Comments.propTypes = {
+Expander.propTypes = {
     defaultOpened: PropTypes.number,
     plain: PropTypes.bool,
     components: PropTypes.arrayOf(PropTypes.object)
 };
 
-export default Comments;
+export default Expander;

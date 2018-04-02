@@ -32,7 +32,7 @@ class Expander extends React.Component
                                 <Card className={this.props.plain ? "card-plain" : ""} key={key}>
                                     <CardHeader>
                                         <br />
-                                        <div className="innertableHeader">
+                                        <div className="innerTableHeader">
                                             <a data-toggle="collapse" aria-expanded={this.state.open === key ? true : false} className={this.state.open === key ? "expanded" : ""} ref={"collapse" + key} onClick={() => this.openCollapse(key)}>
                                                 <i style={{marginTop: 2, marginRight: 5, float: "left"}} className="now-ui-icons ui-1_simple-add"></i>
                                                 {prop.title}

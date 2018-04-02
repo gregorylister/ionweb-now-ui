@@ -464,14 +464,12 @@
     padding-bottom: 0;
 }
 
-.innertableHeader
-{
+.innerTableHeader{
     text-align: left;
     font-weight: bold;
 }
 
-.outerTableHeader
-{
+.outerTableHeader{
     text-align: left;
     font-weight: 800;
     font-size: large;

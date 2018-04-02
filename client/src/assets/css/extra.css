@@ -487,3 +487,8 @@
     border:1px solid rgba(0,0,0,0.1);
     border-radius: 3px;
 }
+
+.mainToolbar{
+    text-align: left;
+    margin-bottom: 1em;
+}

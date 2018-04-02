@@ -116,7 +116,6 @@ class TagTable extends React.Component
                         );
                     }}
                 />
-                <br />
                 <Tips />
             </div>
         );

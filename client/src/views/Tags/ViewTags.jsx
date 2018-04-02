@@ -1,7 +1,8 @@
 import React from "react";
-import { Card, CardBody, CardHeader, CardTitle, Row, Col } from "reactstrap";
+import { Card, CardBody, Row, Col } from "reactstrap";
 import { PanelHeader } from "components";
 import { TagTable } from "components";
+import { Button } from "components";
 
 class ViewTags extends React.Component
 {
@@ -14,10 +15,10 @@ class ViewTags extends React.Component
                     <Row>
                         <Col xs={12} md={12}>
                             <Card>
-                                <CardHeader><CardTitle></CardTitle></CardHeader>
                                 <CardBody>
-                                    <div className="toolbar">
-                                        {/* Insert toolbar buttons here */}
+                                    <div className="mainToolbar">
+                                        <Button style={{marginTop: "0px", marginBottom: "0px"}} size="sm" color="success" simple icon iconMini><i className="now-ui-icons ui-1_simple-add"></i></Button>
+                                        <Button style={{marginTop: "0px", marginBottom: "0px"}} size="sm" color="primary" simple icon iconMini><i className="now-ui-icons ui-1_simple-remove"></i></Button>
                                     </div>
                                     <TagTable />
                                 </CardBody>

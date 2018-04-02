@@ -15,22 +15,36 @@ export const tagTableColumns =
                     <div>
                         <Button
                             style={{height: "20px", marginTop: "0px",  marginBottom: "0px"}}
+                            size="sm"
                             id={"edit" + row.index}
                             round icon iconMini neutral
                             color="info"
                         >
                             <i className="now-ui-icons ui-2_settings-90"></i>
                         </Button>
-                        <UncontrolledTooltip placement="top" target={"edit" + row.index} delay={0}>Edit Tag</UncontrolledTooltip>
+                        <UncontrolledTooltip
+                            placement="right"
+                            target={"edit" + row.index}
+                            delay={0}
+                        >
+                            Edit tag
+                        </UncontrolledTooltip>
                         <Button
                             style={{height: "20px", marginTop: "0px", marginBottom: "0px"}}
+                            size="sm"
                             id={"remove" + row.index}
                             round icon iconMini neutral
                             color="danger"
                         >
                             <i className="now-ui-icons ui-1_simple-remove"></i>
                         </Button>
-                        <UncontrolledTooltip placement="top" target={"remove" + row.index} delay={0}>Remove Tag</UncontrolledTooltip>
+                        <UncontrolledTooltip
+                            placement="right"
+                            target={"remove" + row.index}
+                            delay={0}
+                        >
+                            Delete tag
+                        </UncontrolledTooltip>
                     </div>
                 )
             },
@@ -158,6 +172,6 @@ export const serviceTableColumns =
 ];
 
 export const Tips = () =>
-    <div style={{ textAlign: "center" }}>
-        Tip: Hold shift when sorting to multi-sort!
+    <div style={{color: "#46b3ff", textAlign: "center", marginTop: "1em"}}>
+        <span data-notify="icon" className="now-ui-icons ui-1_bell-53"></span> Hold shift when sorting to multi-sort!
     </div>;

@@ -16,10 +16,18 @@ class ViewTags extends React.Component
                         <Col xs={12} md={12}>
                             <Card>
                                 <CardBody>
-                                    <div className="mainToolbar">
-                                        <Button style={{marginTop: "0px", marginBottom: "0px"}} size="sm" color="success" simple icon iconMini><i className="now-ui-icons ui-1_simple-add"></i></Button>
-                                        <Button style={{marginTop: "0px", marginBottom: "0px"}} size="sm" color="primary" simple icon iconMini><i className="now-ui-icons ui-1_simple-remove"></i></Button>
-                                    </div>
+                                    <Row>
+                                        <Col xs={12} md={12}>
+                                            <Card>
+                                                <CardBody>
+                                                    <Button style={{height: "18px", marginTop: "0px", marginBottom: "0px"}} size="sm" color="success" simple icon iconMini><i className="now-ui-icons ui-1_simple-add"></i></Button>
+                                                    <Button style={{height: "18px", marginTop: "0px", marginBottom: "0px"}} size="sm" color="success" simple icon iconMini><i className="now-ui-icons arrows-1_share-66"></i></Button>
+                                                    <Button style={{height: "18px", marginTop: "0px", marginBottom: "0px"}} size="sm" color="danger" simple icon iconMini><i className="now-ui-icons ui-1_simple-remove"></i></Button>
+                                                    <Button style={{height: "18px", marginTop: "0px", marginBottom: "0px"}} size="sm" color="info" simple icon iconMini><i className="now-ui-icons travel_info"></i></Button>
+                                                </CardBody>
+                                            </Card>
+                                        </Col>
+                                    </Row>
                                     <TagTable />
                                 </CardBody>
                             </Card>

@@ -14,7 +14,7 @@ export const tagTableColumns =
                 Cell: row => (
                     <div>
                         <Button
-                            style={{height: "20px", marginTop: "0px",  marginBottom: "0px"}}
+                            style={{height: "18px", marginTop: "0px",  marginBottom: "0px"}}
                             size="sm"
                             id={"edit" + row.index}
                             round icon iconMini neutral
@@ -30,7 +30,7 @@ export const tagTableColumns =
                             Edit tag
                         </UncontrolledTooltip>
                         <Button
-                            style={{height: "20px", marginTop: "0px", marginBottom: "0px"}}
+                            style={{height: "18px", marginTop: "0px", marginBottom: "0px"}}
                             size="sm"
                             id={"remove" + row.index}
                             round icon iconMini neutral
@@ -170,8 +170,3 @@ export const serviceTableColumns =
         ],
     },
 ];
-
-export const Tips = () =>
-    <div style={{color: "#46b3ff", textAlign: "center", marginTop: "1em"}}>
-        <span data-notify="icon" className="now-ui-icons ui-1_bell-53"></span> Hold shift when sorting to multi-sort!
-    </div>;

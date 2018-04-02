@@ -1,6 +1,6 @@
 import React from "react";
 import ReactTable from "react-table";
-import { inspectionTableColumns, serviceTableColumns, tagTableColumns, Tips} from "./tableDefinition";
+import { inspectionTableColumns, serviceTableColumns, tagTableColumns} from "./tableDefinition";
 import "react-table/react-table.css";
 import requestData from "./requestData";
 import SubTable from "./SubTable";
@@ -116,7 +116,7 @@ class TagTable extends React.Component
                         );
                     }}
                 />
-                <Tips />
+                <br />
             </div>
         );
     }

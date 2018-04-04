@@ -5,6 +5,12 @@ import "react-table/react-table.css";
 import requestData from "./requestData";
 import SubTable from "./SubTable";
 import Expander from "./Expander";
+import { style } from "typestyle";
+
+const innerTableMargins = style({
+    marginLeft: "25px",
+    marginRight: "25px"
+});
 
 class TagTable extends React.Component
 {
@@ -60,7 +66,7 @@ class TagTable extends React.Component
                     SubComponent={(row) =>
                     {
                         return (
-                            <div style={{ marginLeft: "25px", marginRight: "25px"}}>
+                            <div className={innerTableMargins}>
                                 <Expander
                                     plain
                                     defaultOpened={-1}

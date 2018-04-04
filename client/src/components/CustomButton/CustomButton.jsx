@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Button } from "reactstrap";
-// used to make this component's props into classes
 import cx from "classnames";
-// used for making the prop types of this component
 import PropTypes from "prop-types";
 
 class CustomButton extends Component
@@ -10,12 +8,14 @@ class CustomButton extends Component
     render()
     {
         const {
-            simple, round, icon, neutral, iconMini, leftLabel, rightLabel, wd, className,
+            tiny, noMargins, simple, round, icon, neutral, iconMini, leftLabel, rightLabel, wd, className,
             twitter, facebook, google, linkedin, pinterest, youtube, tumblr, github, behance, dribbble, reddit, stumbleupon,
              ...rest
          } = this.props;
 
         var btnClasses = cx({
+            "btn-tiny": tiny,
+            "btn-no-margins": noMargins,
             "btn-simple": simple,
             "btn-round": round,
             "btn-icon": icon,
@@ -52,6 +52,8 @@ class CustomButton extends Component
 }
 
 CustomButton.propTypes = {
+    tiny: PropTypes.bool,
+    noMargins: PropTypes.bool,
     simple: PropTypes.bool,
     round: PropTypes.bool,
     icon: PropTypes.bool,

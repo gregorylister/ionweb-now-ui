@@ -13,38 +13,10 @@ export const tagTableColumns =
                 accessor: "actions",
                 Cell: row => (
                     <div>
-                        <Button
-                            style={{height: "18px", marginTop: "0px",  marginBottom: "0px"}}
-                            size="sm"
-                            id={"edit" + row.index}
-                            round icon iconMini neutral
-                            color="info"
-                        >
-                            <i className="now-ui-icons ui-2_settings-90"></i>
-                        </Button>
-                        <UncontrolledTooltip
-                            placement="right"
-                            target={"edit" + row.index}
-                            delay={0}
-                        >
-                            Edit tag
-                        </UncontrolledTooltip>
-                        <Button
-                            style={{height: "18px", marginTop: "0px", marginBottom: "0px"}}
-                            size="sm"
-                            id={"remove" + row.index}
-                            round icon iconMini neutral
-                            color="danger"
-                        >
-                            <i className="now-ui-icons ui-1_simple-remove"></i>
-                        </Button>
-                        <UncontrolledTooltip
-                            placement="right"
-                            target={"remove" + row.index}
-                            delay={0}
-                        >
-                            Delete tag
-                        </UncontrolledTooltip>
+                        <Button size="sm" id={"edit" + row.index} tiny noMargins icon color="info"><i className="now-ui-icons ui-2_settings-90"></i></Button>
+                        <Button size="sm" id={"remove" + row.index} tiny noMargins icon color="danger"><i className="now-ui-icons ui-1_simple-remove"></i></Button>
+                        <UncontrolledTooltip placement="right" target={"edit" + row.index} delay={0}>Edit tag</UncontrolledTooltip>
+                        <UncontrolledTooltip placement="right" target={"remove" + row.index} delay={0}> Delete tag</UncontrolledTooltip>
                     </div>
                 )
             },

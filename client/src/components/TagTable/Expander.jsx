@@ -1,6 +1,13 @@
 import React from "react";
 import { Collapse, Card, CardHeader, CardBody } from "reactstrap";
 import PropTypes from "prop-types";
+import { style } from "typestyle";
+
+const expanderLeft = style({
+    marginTop: "2px !important",
+    marginRight: "5px !important",
+    float: "left !important"
+});
 
 class Expander extends React.Component
 {
@@ -34,7 +41,7 @@ class Expander extends React.Component
                                         <br />
                                         <div className="innerTableHeader">
                                             <a data-toggle="collapse" aria-expanded={this.state.open === key ? true : false} className={this.state.open === key ? "expanded" : ""} ref={"collapse" + key} onClick={() => this.openCollapse(key)}>
-                                                <i style={{marginTop: 2, marginRight: 5, float: "left"}} className="now-ui-icons ui-1_simple-add"></i>
+                                                <i className={`${expanderLeft} now-ui-icons ui-1_simple-add`}></i>
                                                 {prop.title}
                                             </a>
                                         </div>

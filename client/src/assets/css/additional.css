@@ -487,3 +487,12 @@
     border:1px solid rgba(0,0,0,0.1);
     border-radius: 3px;
 }
+
+.btn-tiny{
+    height: 18px !important;
+}
+
+.btn-no-margins{
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}

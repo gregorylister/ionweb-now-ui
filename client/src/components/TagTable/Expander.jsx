@@ -3,10 +3,15 @@ import { Collapse, Card, CardHeader, CardBody } from "reactstrap";
 import PropTypes from "prop-types";
 import { style } from "typestyle";
 
-const expanderLeft = style({
+const expanderIcon = style({
     marginTop: "2px !important",
     marginRight: "5px !important",
     float: "left !important"
+});
+
+const expanderTitle = style({
+    textAlign: "left",
+    fontWeight: "bold"
 });
 
 class Expander extends React.Component
@@ -39,9 +44,9 @@ class Expander extends React.Component
                                 <Card className={this.props.plain ? "card-plain" : ""} key={key}>
                                     <CardHeader>
                                         <br />
-                                        <div className="innerTableHeader">
+                                        <div className={expanderTitle}>
                                             <a data-toggle="collapse" aria-expanded={this.state.open === key ? true : false} className={this.state.open === key ? "expanded" : ""} ref={"collapse" + key} onClick={() => this.openCollapse(key)}>
-                                                <i className={`${expanderLeft} now-ui-icons ui-1_simple-add`}></i>
+                                                <i className={`${expanderIcon} now-ui-icons ui-1_simple-add`}></i>
                                                 {prop.title}
                                             </a>
                                         </div>

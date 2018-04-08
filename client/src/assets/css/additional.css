@@ -464,15 +464,13 @@
     padding-bottom: 0;
 }
 
-.innerTableHeader{
-    text-align: left;
-    font-weight: bold;
+.btn-no-margins{
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
-.outerTableHeader{
-    text-align: left;
-    font-weight: 800;
-    font-size: large;
+.btn-tiny.btn-tiny.btn-tiny{
+    height: 18px;
 }
 
 .ReactTable{
@@ -486,13 +484,4 @@
     flex-direction:column;
     border:1px solid rgba(0,0,0,0.1);
     border-radius: 3px;
-}
-
-.btn-tiny{
-    height: 18px !important;
-}
-
-.btn-no-margins{
-    margin-top: 0px !important;
-    margin-bottom: 0px !important;
 }

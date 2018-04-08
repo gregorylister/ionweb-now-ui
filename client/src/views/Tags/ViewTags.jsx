@@ -3,6 +3,11 @@ import { Card, CardBody, Row, Col, UncontrolledTooltip } from "reactstrap";
 import { PanelHeader } from "components";
 import { TagTable } from "components";
 import { Button } from "components";
+import { style } from "typestyle";
+
+const tooltipOpacity = style({
+    opacity: "1 !important"
+});
 
 class ViewTags extends React.Component
 {
@@ -24,10 +29,10 @@ class ViewTags extends React.Component
                                                     <Button id="import"size="sm" color="success" noMargins round><i className="now-ui-icons arrows-1_share-66"></i></Button>
                                                     <Button id="delete"size="sm" color="danger" noMargins round><i className="now-ui-icons ui-1_simple-remove"></i></Button>
                                                     <Button id="tips"size="sm" color="info" noMargins round><i className="now-ui-icons travel_info"></i></Button>
-                                                    <UncontrolledTooltip placement="right" target={"add"} delay={0}>Add tag</UncontrolledTooltip>
-                                                    <UncontrolledTooltip placement="right" target={"import"} delay={0}>Import CSV</UncontrolledTooltip>
-                                                    <UncontrolledTooltip placement="right" target={"delete"} delay={0}>Delete selected</UncontrolledTooltip>
-                                                    <UncontrolledTooltip placement="right" target={"tips"} delay={0}>Tips</UncontrolledTooltip>
+                                                    <UncontrolledTooltip className={tooltipOpacity} placement="right" target={"add"} delay={0}>Add tag</UncontrolledTooltip>
+                                                    <UncontrolledTooltip className={tooltipOpacity} placement="right" target={"import"} delay={0}>Import CSV</UncontrolledTooltip>
+                                                    <UncontrolledTooltip className={tooltipOpacity} placement="right" target={"delete"} delay={0}>Delete selected</UncontrolledTooltip>
+                                                    <UncontrolledTooltip className={tooltipOpacity} placement="right" target={"tips"} delay={0}>Tips</UncontrolledTooltip>
                                                 </CardBody>
                                             </Card>
                                         </Col>

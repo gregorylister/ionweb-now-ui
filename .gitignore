@@ -4,3 +4,6 @@ server/node_modules/
 
 # Distribution folder
 server/dist/
+
+# Build folder
+client/build

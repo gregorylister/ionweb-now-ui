@@ -1,15 +1,13 @@
 import React from "react";
-// javascript plugin used to create scrollbars on windows
 import PerfectScrollbar from "perfect-scrollbar";
-import {
-    Route,
-    Switch,
-    Redirect
-} from "react-router-dom";
-
+import { Route, Switch, Redirect } from "react-router-dom";
 import { Header, Footer, Sidebar } from "components";
-
 import dashboardRoutes from "routes/dashboard.jsx";
+import { style } from "typestyle";
+
+const windowWidth = style({
+    minWidth: "300px !important"
+});
 
 var ps;
 
@@ -34,7 +32,7 @@ class Dashboard extends React.Component
     render()
     {
         return (
-            <div className="wrapper">
+            <div className={`${windowWidth} wrapper`}>
                 <Sidebar {...this.props} routes={dashboardRoutes}/>
                 <div className="main-panel" ref="mainPanel">
                     <Header {...this.props}/>

@@ -6,7 +6,7 @@
             "type": "node",
             "request": "launch",
             "name": "ionweb-server",
-            "program": "${workspaceFolder}\\server\\dist\\index.js",
+            "program": "${workspaceFolder}\\server\\dist\\server.js",
             "outFiles": ["${workspaceFolder}/**/*.js"],
             "sourceMaps": true,
             "env": {"NODE_ENV": "development"}

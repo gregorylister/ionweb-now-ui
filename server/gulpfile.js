@@ -3,6 +3,24 @@ var sourcemaps = require("gulp-sourcemaps");
 var ts = require("gulp-typescript");
 var tsProject = ts.createProject("tsconfig.json");
 
+gulp.task("copybuild", function()
+{
+    return gulp.src([".././client/build/**/*"])
+        .pipe(gulp.dest("dist/public"));
+});
+
+gulp.task("copypublic", function()
+{
+    return gulp.src(["src/public/**/*"])
+        .pipe(gulp.dest("dist"));
+});
+
+gulp.task("copypackage", function()
+{
+    return gulp.src(["package.json"])
+        .pipe(gulp.dest("dist"));
+});
+
 gulp.task("tscompile", function()
 {
     return tsProject.src()
@@ -33,4 +51,4 @@ gulp.task("setprod", function()
 
 gulp.task("dev", gulp.series("setdev", "build", "watch"));
 
-gulp.task("prod", gulp.series("setprod", "build"));
+gulp.task("prod", gulp.series("setprod", "build", "copybuild", "copypublic", "copypackage"));

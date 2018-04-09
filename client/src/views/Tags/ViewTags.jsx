@@ -1,8 +1,9 @@
 import React from "react";
-import { Card, CardBody, Row, Col, UncontrolledTooltip, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import { Card, CardBody, Row, Col, UncontrolledTooltip } from "reactstrap";
 import { PanelHeader } from "components";
 import { TagTable } from "components";
 import { Button } from "components";
+import { TagForm } from "components";
 import { style } from "typestyle";
 
 const tooltipOpacity = style({
@@ -47,22 +48,7 @@ class ViewTags extends React.Component
                                                     <UncontrolledTooltip className={tooltipOpacity} placement="right" target={"import"} delay={0}>Import CSV</UncontrolledTooltip>
                                                     <UncontrolledTooltip className={tooltipOpacity} placement="right" target={"delete"} delay={0}>Delete selected</UncontrolledTooltip>
                                                     <UncontrolledTooltip className={tooltipOpacity} placement="right" target={"tips"} delay={0}>Tips</UncontrolledTooltip>
-                                                    <Modal size="lg" isOpen={this.state.addTagModal} toggle={this.toggleAddTagModal}>
-                                                        <ModalHeader className="justify-content-center" toggle={this.toggleAddTagModal}>
-                                                            Modal Title
-                                                        </ModalHeader>
-                                                        <ModalBody>
-                                                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in B</p>
-                                                        </ModalBody>
-                                                        <ModalFooter>
-                                                            <Button color="default">
-                                                                Nice Button
-                                                            </Button>
-                                                            <Button color="danger" onClick={this.toggleAddTagModal}>
-                                                                Close
-                                                            </Button>
-                                                        </ModalFooter>
-                                                    </Modal>
+                                                    <TagForm isOpen={this.state.addTagModal} toggle={this.toggleAddTagModal}/>
                                                 </CardBody>
                                             </Card>
                                         </Col>

@@ -23,6 +23,7 @@ import PanelHeader from "./PanelHeader/PanelHeader";
 import Sidebar from "./Sidebar/Sidebar";
 import Statistics from "./Statistics/Statistics";
 import Stats from "./Stats/Stats";
+import TagForm from "./TagForm/TagForm";
 import TagTable from "./TagTable/TagTable";
 import Tasks from "./Tasks/Tasks";
 import Timeline from "./Timeline/Timeline";
@@ -54,6 +55,7 @@ export {
     Statistics,
     Stats,
     TagTable,
+    TagForm,
     Tasks,
     Timeline,
 };

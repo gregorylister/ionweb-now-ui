@@ -1,8 +1,7 @@
 import React from "react";
-import { Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Label } from "reactstrap";
+import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { Button } from "components";
 import { FormInputs } from "components";
-import Datetime from "react-datetime";
 import { style } from "typestyle";
 
 const modalWidth = style({
@@ -28,21 +27,24 @@ class TagForm extends React.Component
                                     inputProps : {
                                         type : "text",
                                         disabled: true,
-                                        defaultValue: ""
+                                        defaultValue: "",
+                                        placeholder: ""
                                     }
                                 },
                                 {
                                     label : "Code",
                                     inputProps : {
                                         type : "text",
-                                        defaultValue: ""
+                                        defaultValue: "",
+                                        placeholder: ""
                                     }
                                 },
                                 {
                                     label : "Number",
                                     inputProps : {
                                         type : "text",
-                                        defaultValue: ""
+                                        defaultValue: "",
+                                        placeholder: ""
                                     }
                                 }
                             ]}
@@ -54,58 +56,28 @@ class TagForm extends React.Component
                                     label : "Item Name",
                                     inputProps : {
                                         type : "text",
-                                        defaultValue: ""
+                                        defaultValue: "",
+                                        placeholder: ""
                                     }
                                 },
                                 {
                                     label : "Item Number",
                                     inputProps : {
                                         type : "text",
-                                        defaultValue: ""
+                                        defaultValue: "",
+                                        placeholder: ""
                                     }
                                 },
                                 {
                                     label : "Location",
                                     inputProps : {
                                         type : "text",
-                                        defaultValue: ""
-                                    }
-                                }
-                            ]}
-                        />
-                        <FormInputs
-                            ncols = {["col-md-4 pr-1" , "col-md-4 px-1", "col-md-4 pl-1"]}
-                            proprieties = {[
-                                {
-                                    label : "Inspection Frequency",
-                                    inputProps : {
-                                        type : "text",
-                                        defaultValue: "",
-                                        placeholder: ""
-                                    }
-                                },
-                                {
-                                    label : "Inspection Quantity",
-                                    inputProps : {
-                                        type : "text",
-                                        defaultValue: "",
-                                        placeholder: ""
-                                    }
-                                },
-                                {
-                                    label : "Last Updated",
-                                    inputProps : {
-                                        type : "date",
                                         defaultValue: "",
                                         placeholder: ""
                                     }
                                 }
                             ]}
                         />
-                        <FormGroup className="col-md-4 pl-1">
-                            <Label>Initial Date</Label>
-                            <Datetime inputProps={{placeholder: "Datetime picker here"}}/>
-                        </FormGroup>
                         <FormInputs
                             ncols = {["col-md-12"]}
                             proprieties = {[

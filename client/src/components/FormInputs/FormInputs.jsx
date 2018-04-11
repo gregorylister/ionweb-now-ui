@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { FormGroup, Label, Input, InputGroup, InputGroupAddon } from "reactstrap";
 // used for making the prop types of this component
 import PropTypes from "prop-types";
+import Datetime from "react-datetime";
 
 class FieldGroup extends React.Component
 {
@@ -36,20 +37,37 @@ class FieldGroup extends React.Component
                 </InputGroup>
             );
         }
-        return (
-            inputProps.type === "radio" || inputProps.type === "checkbox" ? (
+
+        if (inputProps.type === "radio" || inputProps.type === "checkbox")
+        {
+            return (
                 <FormGroup {...formGroupProps} className={inputProps.type === "radio" ? "form-check-radio" : ""}>
                     <Label {...labelProps}>
                         <Input {...inputProps} />
                         <span className="form-check-sign"></span>
                         {label ? label : ""}
                     </Label>
-                </FormGroup>) : (
+                </FormGroup>
+            );
+        }
+        else if (inputProps.type === "datetime")
+        {
+            return (
+                <FormGroup {...formGroupProps}>
+                    {label ? <Label {...labelProps}>{label}</Label> : ""}
+                    <Datetime inputProps={{...inputProps}}/>
+                </FormGroup>
+            );
+        }
+        else
+        {
+            return (
                 <FormGroup {...formGroupProps}>
                     {label ? <Label {...labelProps}>{label}</Label> : ""}
                     <Input {...inputProps} />
-                </FormGroup>)
-        );
+                </FormGroup>
+            );
+        }
     }
 }
 

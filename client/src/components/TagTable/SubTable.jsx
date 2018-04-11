@@ -12,30 +12,31 @@ class SubTable extends React.Component
         this.fetchData = this.fetchData.bind(this);
     }
 
-    fetchData(state, instance)
+    async fetchData(state, instance)
     {
-        this.setState({ loading: true });
-
-        requestData(
-            instance.props.tagType,
-            state.pageSize,
-            state.page,
-            state.sorted,
-            state.filtered,
-            Number(this.props.tagId),
-        )
-        .then(res =>
+        try
         {
+            this.setState({ loading: true });
+
+            const res = await requestData(
+                instance.props.tagType,
+                state.pageSize,
+                state.page,
+                state.sorted,
+                state.filtered,
+                -1
+            );
+
             this.setState({
                 data: res.data.rows,
                 pages: res.data.pages,
                 loading: false
             });
-        })
-        .catch(err =>
+        }
+        catch (err)
         {
-            console.error(err);
-        });
+            console.error(err.message);
+        }
     }
 
     render()

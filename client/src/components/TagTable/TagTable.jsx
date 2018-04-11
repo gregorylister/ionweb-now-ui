@@ -1,11 +1,11 @@
 import React from "react";
 import ReactTable from "react-table";
-import { inspectionTableColumns, serviceTableColumns, tagTableColumns} from "./tableDefinition";
-import "react-table/react-table.css";
 import requestData from "./requestData";
 import SubTable from "./SubTable";
 import Expander from "./Expander";
 import { style } from "typestyle";
+import "react-table/react-table.css";
+import { inspectionTableColumns, serviceTableColumns, tagTableColumns} from "./tableDefinition";
 
 const innerTableMargins = style({
     marginLeft: "25px",
@@ -21,30 +21,31 @@ class TagTable extends React.Component
         this.fetchData = this.fetchData.bind(this);
     }
 
-    fetchData(state, instance)
+    async fetchData(state, instance)
     {
-        this.setState({ loading: true });
-
-        requestData(
-            instance.props.tagType,
-            state.pageSize,
-            state.page,
-            state.sorted,
-            state.filtered,
-            -1
-        )
-        .then(res =>
+        try
         {
+            this.setState({ loading: true });
+
+            const res = await requestData(
+                instance.props.tagType,
+                state.pageSize,
+                state.page,
+                state.sorted,
+                state.filtered,
+                -1
+            );
+
             this.setState({
                 data: res.data.rows,
                 pages: res.data.pages,
                 loading: false
             });
-        })
-        .catch(err =>
+        }
+        catch (err)
         {
-            console.error(err);
-        });
+            console.error(err.message);
+        }
     }
 
     render()

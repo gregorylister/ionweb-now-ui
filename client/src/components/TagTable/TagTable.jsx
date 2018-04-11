@@ -44,7 +44,7 @@ class TagTable extends React.Component
         }
         catch (err)
         {
-            console.error(err.message);
+            console.error(err);
         }
     }
 

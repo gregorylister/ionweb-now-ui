@@ -23,7 +23,7 @@ const addSimple = async (req: express.Request, res: express.Response) =>
     catch (err)
     {
         ionRes = responseHelper.fail(err.message);
-        console.error(err.message);
+        console.error(err);
     }
     res.end(JSON.stringify(ionRes));
 };
@@ -62,7 +62,7 @@ const getFilteredSorted = async (req: express.Request, res: express.Response, ne
         catch (err)
         {
             ionRes = responseHelper.fail(err.message);
-            console.error(err.message);
+            console.error(err);
         }
         res.end(JSON.stringify(ionRes));
     }

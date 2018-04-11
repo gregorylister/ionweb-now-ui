@@ -10,6 +10,27 @@ const modalWidth = style({
 
 class TagForm extends React.Component
 {
+    constructor(props)
+    {
+        super(props);
+        this.postData = this.postData.bind(this);
+    }
+
+    async postData()
+    {
+        await fetch("/tag/add", {
+            method: "post",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                tag_code: "test",
+                tag_number: "1"
+            })
+        });
+    }
+
     render()
     {
         return (
@@ -96,7 +117,7 @@ class TagForm extends React.Component
                     </form>
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="primary">
+                    <Button color="primary" onClick={this.postData}>
                         Submit
                     </Button>
                     <Button color="danger" onClick={this.props.toggle}>

@@ -13,9 +13,9 @@ router.get("/*", async (req, res) =>
         const htmlTemplate = await readFile(path.join(__dirname, templatePath));
         res.send(htmlTemplate);
     }
-    catch (error)
+    catch (err)
     {
-        console.error(error.stack);
+        console.error(err);
         res.status(500).end("500 - Internal Error");
     }
 });

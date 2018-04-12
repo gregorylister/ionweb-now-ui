@@ -3,6 +3,7 @@ import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { Button } from "components";
 import { FormInputs } from "components";
 import { style } from "typestyle";
+import SweetAlert from "react-bootstrap-sweetalert";
 
 const modalWidth = style({
     minWidth: "300px !important"
@@ -20,10 +21,34 @@ class TagForm extends React.Component
             item_number: "",
             location: "",
             general_comments: "",
-            last_modified: new Date()
+            alert: null
         };
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.successAlert = this.successAlert.bind(this);
+        this.hideAlert = this.hideAlert.bind(this);
         this.onChange = this.onChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    successAlert()
+    {
+        this.setState({
+            alert: (
+                <SweetAlert
+                    success
+                    style={{display: "block", marginTop: "-100px"}}
+                    title="Tag created..."
+                    onConfirm={() => this.hideAlert()}
+                    onCancel={() => this.hideAlert()}
+                    confirmBtnBsStyle="info"
+                >
+                </SweetAlert>
+            )
+        });
+    }
+
+    hideAlert()
+    {
+        this.setState({alert: null});
     }
 
     onChange(event)
@@ -56,6 +81,7 @@ class TagForm extends React.Component
                     last_modified: new Date()
                 })
             });
+            this.successAlert();
         }
         catch (err)
         {
@@ -68,6 +94,7 @@ class TagForm extends React.Component
         const {tag_code, tag_number, item_name, item_number, location, general_comments} = this.state;
         return (
             <Modal className={modalWidth} size="lg" isOpen={this.props.isOpen} toggle={this.props.toggle}>
+                {this.state.alert}
                 <ModalHeader className="justify-content-center" toggle={this.props.toggle}>
                     Add Tag
                 </ModalHeader>

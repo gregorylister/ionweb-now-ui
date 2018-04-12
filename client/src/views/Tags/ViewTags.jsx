@@ -21,9 +21,7 @@ class ViewTags extends React.Component
 
     toggleAddTagModal()
     {
-        this.setState({
-            addTagModal: !this.state.addTagModal
-        });
+        this.setState({addTagModal: !this.state.addTagModal});
     }
 
     render()

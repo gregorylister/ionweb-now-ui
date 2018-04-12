@@ -14,18 +14,9 @@ class TagForm extends React.Component
     constructor(props)
     {
         super(props);
-        this.state = {
-            tag_code: "",
-            tag_number: "",
-            item_name: "",
-            item_number: "",
-            location: "",
-            general_comments: "",
-            alert: null
-        };
+        this.state = {alert: null};
         this.successAlert = this.successAlert.bind(this);
         this.hideAlert = this.hideAlert.bind(this);
-        this.onChange = this.onChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -51,19 +42,11 @@ class TagForm extends React.Component
         this.setState({alert: null});
     }
 
-    onChange(event)
-    {
-        const state = this.state;
-        state[event.target.name] = event.target.value;
-        this.setState(state);
-    }
-
     async handleSubmit(event)
     {
         try
         {
             event.preventDefault();
-            const {tag_code, tag_number, item_name, item_number, location, general_comments} = this.state;
 
             await fetch("/tag/add", {
                 method: "post",
@@ -72,12 +55,12 @@ class TagForm extends React.Component
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    tag_code: tag_code,
-                    tag_number: tag_number,
-                    item_name: item_name,
-                    item_number: item_number,
-                    location: location,
-                    general_comments: general_comments,
+                    tag_code: this.props.tag_code,
+                    tag_number: this.props.tag_number,
+                    item_name: this.props.item_name,
+                    item_number: this.props.item_number,
+                    location: this.props.location,
+                    general_comments: this.props.general_comments,
                     last_modified: new Date()
                 })
             });
@@ -91,7 +74,6 @@ class TagForm extends React.Component
 
     render()
     {
-        const {tag_code, tag_number, item_name, item_number, location, general_comments} = this.state;
         return (
             <Modal className={modalWidth} size="lg" isOpen={this.props.isOpen} toggle={this.props.toggle}>
                 {this.state.alert}
@@ -120,8 +102,8 @@ class TagForm extends React.Component
                                         type : "text",
                                         defaultValue: "",
                                         placeholder: "",
-                                        value: tag_code,
-                                        onChange: this.onChange
+                                        value: this.props.tag_code,
+                                        onChange: this.props.onChange
                                     }
                                 },
                                 {
@@ -131,8 +113,8 @@ class TagForm extends React.Component
                                         type : "text",
                                         defaultValue: "",
                                         placeholder: "",
-                                        value: tag_number,
-                                        onChange: this.onChange
+                                        value: this.props.tag_number,
+                                        onChange: this.props.onChange
                                     }
                                 }
                             ]}
@@ -147,8 +129,8 @@ class TagForm extends React.Component
                                         type : "text",
                                         defaultValue: "",
                                         placeholder: "",
-                                        value: item_name,
-                                        onChange: this.onChange
+                                        value: this.props.item_name,
+                                        onChange: this.props.onChange
                                     }
                                 },
                                 {
@@ -158,8 +140,8 @@ class TagForm extends React.Component
                                         type : "text",
                                         defaultValue: "",
                                         placeholder: "",
-                                        value: item_number,
-                                        onChange: this.onChange
+                                        value: this.props.item_number,
+                                        onChange: this.props.onChange
                                     }
                                 },
                                 {
@@ -169,8 +151,8 @@ class TagForm extends React.Component
                                         type : "text",
                                         defaultValue: "",
                                         placeholder: "",
-                                        value: location,
-                                        onChange: this.onChange
+                                        value: this.props.location,
+                                        onChange: this.props.onChange
                                     }
                                 }
                             ]}
@@ -187,8 +169,8 @@ class TagForm extends React.Component
                                         cols: "80",
                                         defaultValue: "",
                                         placeholder: "Enter comments here",
-                                        value: general_comments,
-                                        onChange: this.onChange
+                                        value: this.props.general_comments,
+                                        onChange: this.props.onChange
                                     }
                                 }
                             ]}

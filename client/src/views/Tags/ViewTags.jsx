@@ -15,13 +15,37 @@ class ViewTags extends React.Component
     constructor(props)
     {
         super(props);
-        this.state = {addTagModal: false};
+        this.state = {
+            tag_code: "",
+            tag_number: "",
+            item_name: "",
+            item_number: "",
+            location: "",
+            general_comments: "",
+            addTagModal: false
+        };
         this.toggleAddTagModal = this.toggleAddTagModal.bind(this);
+        this.onChange = this.onChange.bind(this);
+    }
+
+    onChange(event)
+    {
+        const state = this.state;
+        state[event.target.name] = event.target.value;
+        this.setState(state);
     }
 
     toggleAddTagModal()
     {
-        this.setState({addTagModal: !this.state.addTagModal});
+        this.setState({
+            tag_code: "",
+            tag_number: "",
+            item_name: "",
+            item_number: "",
+            location: "",
+            general_comments: "",
+            addTagModal: !this.state.addTagModal,
+        });
     }
 
     render()
@@ -46,7 +70,17 @@ class ViewTags extends React.Component
                                                     <UncontrolledTooltip className={tooltipOpacity} placement="right" target={"import"} delay={0}>Import CSV</UncontrolledTooltip>
                                                     <UncontrolledTooltip className={tooltipOpacity} placement="right" target={"delete"} delay={0}>Delete selected</UncontrolledTooltip>
                                                     <UncontrolledTooltip className={tooltipOpacity} placement="right" target={"tips"} delay={0}>Tips</UncontrolledTooltip>
-                                                    <TagForm isOpen={this.state.addTagModal} toggle={this.toggleAddTagModal}/>
+                                                    <TagForm
+                                                        tag_code={this.state.tag_code}
+                                                        tag_number={this.state.tag_number}
+                                                        item_name={this.state.item_name}
+                                                        item_number={this.state.item_number}
+                                                        location={this.state.location}
+                                                        general_comments={this.state.general_comments}
+                                                        onChange={this.onChange}
+                                                        isOpen={this.state.addTagModal}
+                                                        toggle={this.toggleAddTagModal}
+                                                    />
                                                 </CardBody>
                                             </Card>
                                         </Col>

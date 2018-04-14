@@ -1,3 +1,4 @@
+import { Sequelize } from "sequelize";
 import { IConnection } from "./IConnection";
 import { tagInspectionTableDefinition } from "./tableDefinition";
 import { tagServiceTableDefinition } from "./tableDefinition";
@@ -5,14 +6,15 @@ import { tagTableDefinition } from "./tableDefinition";
 
 export default class TagRepository
 {
-    private readonly tagTable: any;
+    private readonly tagTable: Sequelize["Model"];
+    private readonly tableRoute: string;
 
     constructor(private readonly url: string, private readonly connection: IConnection)
     {
         let tableName = null;
         let tableDefinition = null;
-        const tableRoute = url.split("/");
-        switch (tableRoute[1])
+        this.tableRoute = url.split("/")[1];
+        switch (this.tableRoute)
         {
             case "tag":
                 tableName = "tag";
@@ -33,7 +35,7 @@ export default class TagRepository
             this.tagTable = this.connection.getConnection.define(
                 tableName,
                 tableDefinition,
-                { freezeTableName: true, timestamps: false},
+                {freezeTableName: true, timestamps: false},
             );
         }
         else
@@ -44,21 +46,31 @@ export default class TagRepository
 
     public async addTag(tag: any): Promise<void>
     {
-        await this.tagTable.sync();
+        // await this.tagTable.sync();
         await this.tagTable.create(tag);
     }
 
     public async getTags(tagId: number): Promise<any[]>
     {
+        // await this.tagTable.sync();
         let tags = [];
-        if (tagId >= 0)
-        {
-            tags = await this.tagTable.findAll({where: {tag_id: tagId}});
-        }
-        else
+        if (this.tableRoute === "tag")
         {
             tags = await this.tagTable.findAll();
         }
+        else
+        {
+            tags = await this.tagTable.findAll({where: {tag_id: tagId}});
+        }
         return tags;
+    }
+
+    public async deleteTag(tagId: number): Promise<void>
+    {
+        // await this.tagTable.sync();
+        if (this.tableRoute === "tag")
+        {
+            await this.tagTable.destroy({where: {id: tagId}});
+        }
     }
 }

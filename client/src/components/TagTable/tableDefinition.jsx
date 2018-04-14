@@ -18,6 +18,18 @@ const tooltipOpacity = style({
     opacity: "1 !important"
 });
 
+const deleteTag = async (tagType, tagId) =>
+{
+    try
+    {
+        await fetch(`/${tagType}/delete?tagId=${JSON.stringify(tagId)}`);
+    }
+    catch (error)
+    {
+        console.error(error);
+    }
+};
+
 export const tagTableColumns =
 [
     {
@@ -30,7 +42,7 @@ export const tagTableColumns =
                 Cell: row => (
                     <div>
                         <Button size="sm" id={"edit" + row.index} tiny noMargins icon color="info"><i className="now-ui-icons ui-2_settings-90"></i></Button>
-                        <Button size="sm" id={"remove" + row.index} tiny noMargins icon color="danger"><i className="now-ui-icons ui-1_simple-remove"></i></Button>
+                        <Button onClick={() => deleteTag("tag", row.row.id)} size="sm" id={"remove" + row.index} tiny noMargins icon color="danger"><i className="now-ui-icons ui-1_simple-remove"></i></Button>
                         <UncontrolledTooltip className={tooltipOpacity} placement="right" target={"edit" + row.index} delay={0}>Edit tag</UncontrolledTooltip>
                         <UncontrolledTooltip className={tooltipOpacity} placement="right" target={"remove" + row.index} delay={0}> Delete tag</UncontrolledTooltip>
                     </div>

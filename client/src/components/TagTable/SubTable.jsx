@@ -24,7 +24,7 @@ class SubTable extends React.Component
                 state.page,
                 state.sorted,
                 state.filtered,
-                -1
+                Number(this.props.tagId)
             );
 
             this.setState({

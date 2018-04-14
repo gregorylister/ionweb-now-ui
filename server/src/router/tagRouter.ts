@@ -28,6 +28,25 @@ const addSimple = async (req: express.Request, res: express.Response) =>
     res.end(JSON.stringify(ionRes));
 };
 
+// Generic delete tag handler
+const deleteSimple = async (req: express.Request, res: express.Response) =>
+{
+    let ionRes = null;
+    try
+    {
+        const tagService = serviceInjector.createTagService(req.originalUrl);
+        const tagId = Number(req.query.tagId);
+        await tagService.deleteTag(tagId);
+        ionRes = responseHelper.pass(null);
+    }
+    catch (err)
+    {
+        ionRes = responseHelper.fail(err.message);
+        console.error(err);
+    }
+    res.end(JSON.stringify(ionRes));
+};
+
 // Get tags handler - uses pagination, filtering and sorting - for use with react-table
 const getFilteredSorted = async (req: express.Request, res: express.Response, next: express.NextFunction) =>
 {
@@ -109,11 +128,14 @@ function applyFilters(tags: any[], filtered: any)
 // Assign handlers to router
 router.get(urls.TAG_GET + "*", getFilteredSorted);
 router.post(urls.TAG_ADD, addSimple);
+router.get(urls.TAG_DELETE, deleteSimple);
 
 router.get(urls.SERVICE_TAG_GET + "*", getFilteredSorted);
 router.post(urls.SERVICE_TAG_ADD, addSimple);
+router.get(urls.SERVICE_TAG_DELETE, deleteSimple);
 
 router.get(urls.INSPECTION_TAG_GET + "*", getFilteredSorted);
 router.post(urls.INSPECTION_TAG_ADD, addSimple);
+router.get(urls.INSPECTION_TAG_DELETE, deleteSimple);
 
 export default router;

@@ -91,7 +91,6 @@ class TagForm extends React.Component
                                         name: "id",
                                         type : "text",
                                         disabled: true,
-                                        defaultValue: "",
                                         placeholder: "",
                                     }
                                 },
@@ -100,7 +99,6 @@ class TagForm extends React.Component
                                     inputProps : {
                                         name: "tag_code",
                                         type : "text",
-                                        defaultValue: "",
                                         placeholder: "",
                                         value: this.props.tag_code,
                                         onChange: this.props.onChange
@@ -111,7 +109,6 @@ class TagForm extends React.Component
                                     inputProps : {
                                         name: "tag_number",
                                         type : "text",
-                                        defaultValue: "",
                                         placeholder: "",
                                         value: this.props.tag_number,
                                         onChange: this.props.onChange
@@ -127,7 +124,6 @@ class TagForm extends React.Component
                                     inputProps : {
                                         name: "item_name",
                                         type : "text",
-                                        defaultValue: "",
                                         placeholder: "",
                                         value: this.props.item_name,
                                         onChange: this.props.onChange
@@ -138,7 +134,6 @@ class TagForm extends React.Component
                                     inputProps : {
                                         name: "item_number",
                                         type : "text",
-                                        defaultValue: "",
                                         placeholder: "",
                                         value: this.props.item_number,
                                         onChange: this.props.onChange
@@ -149,7 +144,6 @@ class TagForm extends React.Component
                                     inputProps : {
                                         name: "location",
                                         type : "text",
-                                        defaultValue: "",
                                         placeholder: "",
                                         value: this.props.location,
                                         onChange: this.props.onChange
@@ -167,7 +161,6 @@ class TagForm extends React.Component
                                         type : "textarea",
                                         rows: "4",
                                         cols: "80",
-                                        defaultValue: "",
                                         placeholder: "Enter comments here",
                                         value: this.props.general_comments,
                                         onChange: this.props.onChange

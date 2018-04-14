@@ -7,70 +7,92 @@ import { tagTableDefinition } from "./tableDefinition";
 export default class TagRepository
 {
     private readonly tagTable: Sequelize["Model"];
+    private readonly tagServiceTable: Sequelize["Model"];
+    private readonly tagInspectionTable: Sequelize["Model"];
     private readonly tableRoute: string;
+    private readonly initTablesFlag: boolean = false;
 
     constructor(private readonly url: string, private readonly connection: IConnection)
     {
-        let tableName = null;
-        let tableDefinition = null;
         this.tableRoute = url.split("/")[1];
-        switch (this.tableRoute)
-        {
-            case "tag":
-                tableName = "tag";
-                tableDefinition = tagTableDefinition;
-                break;
-            case "servicetag":
-                tableName = "tag_service";
-                tableDefinition = tagServiceTableDefinition;
-                break;
-            case "inspectiontag":
-                tableName = "tag_inspection";
-                tableDefinition = tagInspectionTableDefinition;
-                break;
-        }
+        this.tagTable = this.connection.getConnection.define(
+            "tag",
+            tagTableDefinition,
+            {freezeTableName: true, timestamps: false},
+        );
+        this.tagServiceTable = this.connection.getConnection.define(
+            "tag_service",
+            tagServiceTableDefinition,
+            {freezeTableName: true, timestamps: false},
+        );
+        this.tagInspectionTable = this.connection.getConnection.define(
+            "tag_inspection",
+            tagInspectionTableDefinition,
+            {freezeTableName: true, timestamps: false},
+        );
 
-        if (tableName && tableDefinition)
+        if (this.initTablesFlag)
         {
-            this.tagTable = this.connection.getConnection.define(
-                tableName,
-                tableDefinition,
-                {freezeTableName: true, timestamps: false},
-            );
-        }
-        else
-        {
-            throw new Error("Unable to parse URL...");
+            this.initTables();
         }
     }
 
     public async addTag(tag: any): Promise<void>
     {
-        // await this.tagTable.sync();
-        await this.tagTable.create(tag);
+        switch (this.tableRoute)
+        {
+            case "tag":
+                await this.tagTable.create(tag);
+                break;
+            case "servicetag":
+                await this.tagServiceTable.create(tag);
+                break;
+            case "inspectiontag":
+                await this.tagInspectionTable.create(tag);
+                break;
+        }
     }
 
     public async getTags(tagId: number): Promise<any[]>
     {
-        // await this.tagTable.sync();
         let tags = [];
-        if (this.tableRoute === "tag")
+        switch (this.tableRoute)
         {
-            tags = await this.tagTable.findAll();
-        }
-        else
-        {
-            tags = await this.tagTable.findAll({where: {tag_id: tagId}});
+            case "tag":
+                tags = await this.tagTable.findAll();
+                break;
+            case "servicetag":
+                tags = await this.tagServiceTable.findAll({where: {tag_id: tagId}});
+                break;
+            case "inspectiontag":
+                tags = await this.tagInspectionTable.findAll({where: {tag_id: tagId}});
+                break;
         }
         return tags;
     }
 
     public async deleteTag(tagId: number): Promise<void>
     {
-        // await this.tagTable.sync();
-        if (this.tableRoute === "tag")
+        switch (this.tableRoute)
         {
-            await this.tagTable.destroy({where: {id: tagId}});
+            case "tag":
+                await this.tagTable.destroy({where: {id: tagId}});
+                await this.tagServiceTable.destroy({where: {tag_id: tagId}});
+                await this.tagInspectionTable.destroy({where: {tag_id: tagId}});
+                break;
+            case "servicetag":
+                await this.tagServiceTable.destroy({where: {id: tagId}});
+                break;
+            case "inspectiontag":
+                await this.tagInspectionTable.destroy({where: {id: tagId}});
+                break;
         }
+    }
+
+    private async initTables()
+    {
+        await this.tagTable.sync({force: true});
+        await this.tagServiceTable.sync({force: true});
+        await this.tagInspectionTable.sync({force: true});
     }
 }

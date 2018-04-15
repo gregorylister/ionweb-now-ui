@@ -75,10 +75,11 @@ class TagTable extends React.Component
         return (
             <div>
                 <ReactTable
-                    tagType={"tag"}
-                    defaultPageSize={10}
-                    columns={tagTableColumns}
                     manual
+                    filterable
+                    tagType={"tag"}
+                    columns={tagTableColumns}
+                    className="-striped -highlight"
                     // Data props
                     data={this.state.data}
                     pages={this.state.pages}
@@ -98,8 +99,6 @@ class TagTable extends React.Component
                     onExpandedChange={expanded => this.setState({expanded})}
                     onResizedChange={resized => this.setState({resized})}
                     onFilteredChange={filtered => this.setState({filtered})}
-                    filterable
-                    className="-striped -highlight"
                     SubComponent={(row) =>
                     {
                         return (

@@ -41,16 +41,15 @@ class SubTable extends React.Component
 
     render()
     {
-        const { data, pages, loading } = this.state;
         return (
             <ReactTable
                 tagType={this.props.tagType}
                 defaultPageSize={this.props.defaultPageSize}
                 columns={this.props.columns}
                 manual
-                data={data}
-                pages={pages}
-                loading={loading}
+                data={this.state.data}
+                pages={this.state.pages}
+                loading={this.state.loading}
                 onFetchData={this.fetchData}
                 filterable
                 className="-striped -highlight"

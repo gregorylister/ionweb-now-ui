@@ -31,7 +31,7 @@ class TagTable extends React.Component
     static getDerivedStateFromProps(nextProps, prevState)
     {
         // Check if tag modal has been closed in parent component
-        if (nextProps.refreshTagTable === true)
+        if (nextProps.refreshTagTable)
         {
             // Update table view state and trigger a data fetch
             return {

@@ -1,9 +1,15 @@
 import React from "react";
 import ReactTable from "react-table";
-import "react-table/react-table.css";
 import requestData from "./requestData";
+import { style } from "typestyle";
+import "react-table/react-table.css";
 
-class SubTable extends React.Component
+const innerHeaderFont = style({
+    textAlign: "left",
+    fontWeight: "bold"
+});
+
+class FileTable extends React.Component
 {
     constructor(props)
     {
@@ -39,18 +45,31 @@ class SubTable extends React.Component
         }
     }
 
+    fileTableColumns =
+    [
+        {
+            columns:
+            [
+                {
+                Header: (<div className={innerHeaderFont}>Files</div>),
+                accessor: "files"
+                }
+            ],
+        },
+    ];
+
     render()
     {
         return (
             <ReactTable
-                tagType={this.props.tagType}
-                defaultPageSize={this.props.defaultPageSize}
-                columns={this.props.columns}
-                manual
+                // tagType={"files"}
+                defaultPageSize={5}
+                columns={this.fileTableColumns}
+                // manual
                 data={this.state.data}
                 pages={this.state.pages}
                 loading={this.state.loading}
-                onFetchData={this.fetchData}
+                // onFetchData={this.fetchData}
                 filterable
                 className="-striped -highlight"
             />
@@ -58,4 +77,4 @@ class SubTable extends React.Component
     }
 }
 
-export default SubTable;
+export default FileTable;

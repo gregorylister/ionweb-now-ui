@@ -1,15 +1,33 @@
 import React from "react";
 import ReactTable from "react-table";
 import requestData from "./requestData";
-import SubTable from "./SubTable";
 import Expander from "./Expander";
+import InspectionTagTable from "./InspectionTagTable";
+import ServiceTagTable from "./ServiceTagTable";
+import FileTable from "./FileTable";
+import { Button } from "components";
+import { UncontrolledTooltip } from "reactstrap";
 import { style } from "typestyle";
 import "react-table/react-table.css";
-import { inspectionTableColumns, serviceTableColumns, tagTableColumns} from "./tableDefinition";
 
 const innerTableMargins = style({
     marginLeft: "25px",
     marginRight: "25px"
+});
+
+const innerHeaderFont = style({
+    textAlign: "left",
+    fontWeight: "bold"
+});
+
+const outerHeaderFont = style({
+    textAlign: "left",
+    fontWeight: 800,
+    fontSize: "large"
+});
+
+const tooltipOpacity = style({
+    opacity: "1 !important"
 });
 
 class TagTable extends React.Component
@@ -70,6 +88,90 @@ class TagTable extends React.Component
         }
     }
 
+    async deleteTag(tagType, tagId)
+    {
+        try
+        {
+            await fetch(`/${tagType}/delete?tagId=${JSON.stringify(tagId)}`);
+        }
+        catch (error)
+        {
+            console.error(error);
+        }
+    }
+
+    tagTableColumns =
+    [
+        {
+            Header: (<div className={outerHeaderFont}>Tag Details</div>),
+            columns:
+            [
+                {
+                    Header: (<div className={innerHeaderFont}>Actions</div>),
+                    accessor: "actions",
+                    Cell: row => (
+                        <div>
+                            <Button size="sm" id={"edit" + row.index} tiny noMargins icon color="info"><i className="now-ui-icons ui-2_settings-90"></i></Button>
+                            <Button onClick={() => this.deleteTag("tag", row.row.id)} size="sm" id={"remove" + row.index} tiny noMargins icon color="danger"><i className="now-ui-icons ui-1_simple-remove"></i></Button>
+                            <UncontrolledTooltip className={tooltipOpacity} placement="right" target={"edit" + row.index} delay={0}>Edit tag</UncontrolledTooltip>
+                            <UncontrolledTooltip className={tooltipOpacity} placement="right" target={"remove" + row.index} delay={0}> Delete tag</UncontrolledTooltip>
+                        </div>
+                    )
+                },
+                {
+                    Header: (<div className={innerHeaderFont}>ID</div>),
+                    accessor: "id",
+                },
+                {
+                    Header: (<div className={innerHeaderFont}>Code</div>),
+                    accessor: "tag_code",
+                },
+                {
+                    Header: (<div className={innerHeaderFont}>Number</div>),
+                    accessor: "tag_number",
+                },
+                {
+                    Header: (<div className={innerHeaderFont}>Item Name</div>),
+                    accessor: "item_name",
+                },
+                {
+                    Header: (<div className={innerHeaderFont}>Item Number</div>),
+                    accessor: "item_number",
+                },
+                {
+                    Header: (<div className={innerHeaderFont}>Location</div>),
+                    accessor: "location",
+                },
+                {
+                    Header: (<div className={innerHeaderFont}>Comments</div>),
+                    accessor: "general_comments",
+                },
+                {
+                    Header: (<div className={innerHeaderFont}>Updated</div>),
+                    accessor: "last_modified",
+                },
+            ],
+        },
+        {
+            Header: (<div className={outerHeaderFont}>Inspections</div>),
+            columns:
+            [
+                {
+                    Header: (<div className={innerHeaderFont}>Frequency</div>),
+                    accessor: "inspection_frequency",
+                },
+                {
+                    Header: (<div className={innerHeaderFont}>Quantity</div>),
+                    accessor: "number_of_inspections",
+                },
+                {
+                    Header: (<div className={innerHeaderFont}>Initial Date</div>),
+                    accessor: "first_inspection_date",
+                },
+            ],
+        },
+    ];
+
     render()
     {
         return (
@@ -78,7 +180,7 @@ class TagTable extends React.Component
                     manual
                     filterable
                     tagType={"tag"}
-                    columns={tagTableColumns}
+                    columns={this.tagTableColumns}
                     className="-striped -highlight"
                     // Data props
                     data={this.state.data}
@@ -117,11 +219,8 @@ class TagTable extends React.Component
                                     components={[{
                                         title: "Inspections",
                                         data:
-                                            <SubTable
+                                            <InspectionTagTable
                                                 tagId={row.row.id}
-                                                tagType={"inspectiontag"}
-                                                defaultPageSize={5}
-                                                columns={inspectionTableColumns}
                                             />
                                     }]}
                                 />
@@ -131,11 +230,8 @@ class TagTable extends React.Component
                                     components={[{
                                         title: "Services",
                                         data:
-                                            <SubTable
+                                            <ServiceTagTable
                                                 tagId={row.row.id}
-                                                tagType={"servicetag"}
-                                                defaultPageSize={5}
-                                                columns={serviceTableColumns}
                                             />
                                     }]}
                                 />
@@ -145,11 +241,8 @@ class TagTable extends React.Component
                                     components={[{
                                         title: "Files",
                                         data:
-                                            <SubTable
+                                            <FileTable
                                                 tagId={row.row.id}
-                                                tagType={"files"}
-                                                defaultPageSize={5}
-                                                columns={[{columns: [{Header: "Files", accessor: "files"}]} ]}
                                             />
                                     }]}
                                 />

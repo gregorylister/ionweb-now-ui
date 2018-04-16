@@ -94,9 +94,9 @@ class TagTable extends React.Component
         {
             await fetch(`/${tagType}/delete?tagId=${JSON.stringify(tagId)}`);
         }
-        catch (error)
+        catch (err)
         {
-            console.error(error);
+            console.error(err);
         }
     }
 

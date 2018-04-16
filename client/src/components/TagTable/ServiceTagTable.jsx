@@ -25,7 +25,7 @@ class ServiceTagTable extends React.Component
             this.setState({ loading: true });
 
             const res = await requestData(
-                instance.props.tagType,
+                "servicetag",
                 state.pageSize,
                 state.page,
                 state.sorted,
@@ -82,7 +82,6 @@ class ServiceTagTable extends React.Component
     {
         return (
             <ReactTable
-                tagType={"servicetag"}
                 defaultPageSize={5}
                 columns={this.serviceTableColumns}
                 manual

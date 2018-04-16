@@ -25,7 +25,7 @@ class FileTable extends React.Component
             this.setState({ loading: true });
 
             const res = await requestData(
-                instance.props.tagType,
+                "files",
                 state.pageSize,
                 state.page,
                 state.sorted,
@@ -62,7 +62,6 @@ class FileTable extends React.Component
     {
         return (
             <ReactTable
-                // tagType={"files"}
                 defaultPageSize={5}
                 columns={this.fileTableColumns}
                 // manual

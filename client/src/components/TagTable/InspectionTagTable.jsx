@@ -25,7 +25,7 @@ class InspectionTagTable extends React.Component
             this.setState({ loading: true });
 
             const res = await requestData(
-                instance.props.tagType,
+                "inspectiontag",
                 state.pageSize,
                 state.page,
                 state.sorted,
@@ -85,7 +85,6 @@ class InspectionTagTable extends React.Component
     {
         return (
             <ReactTable
-                tagType={"inspectiontag"}
                 defaultPageSize={5}
                 columns={this.inspectionTableColumns}
                 manual

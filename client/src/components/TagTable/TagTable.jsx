@@ -68,7 +68,7 @@ class TagTable extends React.Component
             this.setState({ loading: true });
 
             const res = await requestData(
-                instance.props.tagType,
+                "tag",
                 state.pageSize,
                 state.page,
                 state.sorted,
@@ -88,11 +88,11 @@ class TagTable extends React.Component
         }
     }
 
-    async deleteTag(tagType, tagId)
+    async deleteTag(tagId)
     {
         try
         {
-            await fetch(`/${tagType}/delete?tagId=${JSON.stringify(tagId)}`);
+            await fetch(`/tag/delete?tagId=${JSON.stringify(tagId)}`);
         }
         catch (err)
         {
@@ -112,7 +112,7 @@ class TagTable extends React.Component
                     Cell: row => (
                         <div>
                             <Button size="sm" id={"edit" + row.index} tiny noMargins icon color="info"><i className="now-ui-icons ui-2_settings-90"></i></Button>
-                            <Button onClick={() => this.deleteTag("tag", row.row.id)} size="sm" id={"remove" + row.index} tiny noMargins icon color="danger"><i className="now-ui-icons ui-1_simple-remove"></i></Button>
+                            <Button onClick={() => this.deleteTag(row.row.id)} size="sm" id={"remove" + row.index} tiny noMargins icon color="danger"><i className="now-ui-icons ui-1_simple-remove"></i></Button>
                             <UncontrolledTooltip className={tooltipOpacity} placement="right" target={"edit" + row.index} delay={0}>Edit tag</UncontrolledTooltip>
                             <UncontrolledTooltip className={tooltipOpacity} placement="right" target={"remove" + row.index} delay={0}> Delete tag</UncontrolledTooltip>
                         </div>
@@ -179,7 +179,6 @@ class TagTable extends React.Component
                 <ReactTable
                     manual
                     filterable
-                    tagType={"tag"}
                     columns={this.tagTableColumns}
                     className="-striped -highlight"
                     // Data props

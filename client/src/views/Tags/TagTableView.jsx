@@ -10,7 +10,7 @@ const tooltipOpacity = style({
     opacity: "1 !important"
 });
 
-class ViewTags extends React.Component
+class TagTableView extends React.Component
 {
     constructor(props)
     {
@@ -98,4 +98,4 @@ class ViewTags extends React.Component
     }
 }
 
-export default ViewTags;
+export default TagTableView;

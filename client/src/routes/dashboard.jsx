@@ -1,15 +1,15 @@
 import Dashboard from "views/Dashboard/Dashboard.jsx";
-import ViewTags from "views/Tags/ViewTags.jsx";
+import TagTableView from "views/Tags/TagTableView.jsx";
 import Calendar from "views/Calendar/Calendar.jsx";
 
 var dashRoutes =
 [
     { path: "/dashboard", name: "Dashboard", icon: "design_app", component: Dashboard },
 
-    { collapse: true, path: "/tags", name: "Tags", state: "openTags", icon: "files_single-copy-04",
+    { collapse: true, path: "/tagsettings", name: "Tag Settings", state: "openTags", icon: "shopping_tag-content",
         views:
             [
-                { path: "/tags/view", name: "View Tags", mini: "VT", component: ViewTags }
+                { path: "/tagsettings/tagtable", name: "Tag Table", mini: "TT", component: TagTableView }
             ]
     },
 

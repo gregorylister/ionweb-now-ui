@@ -176,6 +176,7 @@ class TagTable extends React.Component
             <div>
                 <ReactTable
                     ref={instance => { this.table = instance; }}
+                    defaultSorted={[{id: "id", desc: true}]}
                     defaultPageSize={10}
                     manual
                     filterable

@@ -8,6 +8,7 @@ import FileTable from "./FileTable";
 import { Button } from "components";
 import { UncontrolledTooltip } from "reactstrap";
 import { style } from "typestyle";
+import SweetAlert from "react-bootstrap-sweetalert";
 import "react-table/react-table.css";
 
 const innerTableMargins = style({
@@ -29,8 +30,19 @@ class TagTable extends React.Component
     constructor(props)
     {
         super(props);
-        this.state = {data: [], pages: null, loading: true, refreshTable: this.props.refreshTable};
+        this.state = {
+            data: [],
+            pages: null,
+            loading: true,
+            refreshTable: this.props.refreshTable,
+            alert: null
+        };
         this.fetchData = this.fetchData.bind(this);
+        this.deleteTag = this.deleteTag.bind(this);
+        this.warningConfirm = this.warningConfirm.bind(this);
+        this.successDelete = this.successDelete.bind(this);
+        this.cancelDelete = this.cancelDelete.bind(this);
+        this.hideAlert = this.hideAlert.bind(this);
     }
 
     static getDerivedStateFromProps(nextProps, prevState)
@@ -92,6 +104,69 @@ class TagTable extends React.Component
         }
     }
 
+    warningConfirm(tagId)
+    {
+        this.setState({
+            alert: (
+                <SweetAlert
+                    warning
+                    style={{display: "block", marginTop: "-200px"}}
+                    title="Are you sure?"
+                    onConfirm={() => this.successDelete(tagId)}
+                    onCancel={() => this.cancelDelete()}
+                    confirmBtnBsStyle="info"
+                    cancelBtnBsStyle="danger"
+                    confirmBtnText="Yes, delete it!"
+                    cancelBtnText="Cancel"
+                    showCancel
+                >
+                </SweetAlert>
+            )
+        });
+    }
+
+    async successDelete(tagId)
+    {
+        await this.deleteTag(tagId);
+        this.setState({
+            alert: (
+                <SweetAlert
+                    success
+                    style={{display: "block", marginTop: "-200px"}}
+                    title="Success!"
+                    onConfirm={() => this.hideAlert()}
+                    onCancel={() => this.hideAlert()}
+                    confirmBtnBsStyle="info"
+                >
+                Tag deleted
+                </SweetAlert>
+            )
+        });
+    }
+
+    cancelDelete()
+    {
+        this.setState({
+            alert: (
+                <SweetAlert
+                    danger
+                    style={{display: "block", marginTop: "-200px"}}
+                    title="Cancelled!"
+                    onConfirm={() => this.hideAlert()}
+                    onCancel={() => this.hideAlert()}
+                    confirmBtnBsStyle="info"
+                >
+                </SweetAlert>
+            )
+        });
+    }
+
+    hideAlert()
+    {
+        this.setState({alert: null});
+        this.fetchData(this.table.state, this.table);
+    }
+
     tagTableColumns =
     [
         {
@@ -104,7 +179,7 @@ class TagTable extends React.Component
                     Cell: row => (
                         <div>
                             <Button size="sm" id={"edit" + row.index} tiny noMargins icon color="info"><i className="now-ui-icons ui-2_settings-90"></i></Button>
-                            <Button onClick={() => this.deleteTag(row.row.id)} size="sm" id={"remove" + row.index} tiny noMargins icon color="danger"><i className="now-ui-icons ui-1_simple-remove"></i></Button>
+                            <Button onClick={() => this.warningConfirm(row.row.id)} size="sm" id={"remove" + row.index} tiny noMargins icon color="danger"><i className="now-ui-icons ui-1_simple-remove"></i></Button>
                             <UncontrolledTooltip className={tooltipOpacity} placement="right" target={"edit" + row.index} delay={0}>Edit tag</UncontrolledTooltip>
                             <UncontrolledTooltip className={tooltipOpacity} placement="right" target={"remove" + row.index} delay={0}> Delete tag</UncontrolledTooltip>
                         </div>
@@ -168,6 +243,7 @@ class TagTable extends React.Component
     {
         return (
             <div>
+                {this.state.alert}
                 <ReactTable
                     ref={instance => { this.table = instance; }}
                     defaultSorted={[{id: "id", desc: true}]}

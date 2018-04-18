@@ -26,12 +26,13 @@ class TagForm extends React.Component
             alert: (
                 <SweetAlert
                     success
-                    style={{display: "block", marginTop: "-100px"}}
-                    title="Tag created..."
+                    style={{display: "block", marginTop: "-200px"}}
+                    title="Success!"
                     onConfirm={() => this.hideAlert()}
                     onCancel={() => this.hideAlert()}
                     confirmBtnBsStyle="info"
                 >
+                Tag created
                 </SweetAlert>
             )
         });

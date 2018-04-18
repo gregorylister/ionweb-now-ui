@@ -16,11 +16,14 @@ class ViewTags extends React.Component
     {
         super(props);
         this.state = {
-            // Add tag modal state
-            tag_code: "", tag_number: "", item_name: "", item_number: "",
-            location: "", general_comments: "", addTagModal: false,
-            // Flag passed as props to trigger table updates
-            refreshTagTable: true
+            tag_code: "",
+            tag_number: "",
+            item_name: "",
+            item_number: "",
+            location: "",
+            general_comments: "",
+            addTagModal: false,
+            refreshTable: true
         };
         this.toggleAddTagModal = this.toggleAddTagModal.bind(this);
         this.onChange = this.onChange.bind(this);
@@ -43,7 +46,7 @@ class ViewTags extends React.Component
             location: "",
             general_comments: "",
             addTagModal: !this.state.addTagModal,
-            refreshTagTable: !this.state.refreshTagTable
+            refreshTable: !this.state.refreshTable
         });
     }
 
@@ -84,7 +87,7 @@ class ViewTags extends React.Component
                                             </Card>
                                         </Col>
                                     </Row>
-                                    <TagTable refreshTagTable={this.state.refreshTagTable}/>
+                                    <TagTable refreshTable={this.state.refreshTable}/>
                                 </CardBody>
                             </Card>
                         </Col>

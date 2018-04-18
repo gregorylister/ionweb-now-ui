@@ -35,37 +35,35 @@ class TagTable extends React.Component
     constructor(props)
     {
         super(props);
-
-        this.state = {
-            // Table data state
-            data: [], pages: null, loading: true,
-            // Table view state
-            sorted: [], page: 0, pageSize: 10, expanded: {}, resized: [], filtered: []
-        };
-
+        this.state = {data: [], pages: null, loading: true, refreshTable: this.props.refreshTable};
         this.fetchData = this.fetchData.bind(this);
     }
 
     static getDerivedStateFromProps(nextProps, prevState)
     {
-        // Check if tag modal has been closed in parent component
-        if (nextProps.refreshTagTable)
+        if (nextProps.refreshTable)
         {
-            // Update table view state and trigger a data fetch
             return {
-                prevRefreshTagTable: nextProps.refreshTagTable,
-                sorted: [], page: 0, pageSize: 10, expanded: {}, resized: [], filtered: []
+                refreshTable: nextProps.refreshTable
           };
         }
 
         return null;
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot)
+    {
+        if (this.state.refreshTable)
+        {
+            this.fetchData(this.table.state, this.table);
+        }
+    }
+
     async fetchData(state, instance)
     {
         try
         {
-            this.setState({ loading: true });
+            this.setState({ loading: true, refreshTable: false });
 
             const res = await requestData(
                 "tag",
@@ -79,7 +77,7 @@ class TagTable extends React.Component
             this.setState({
                 data: res.data.rows,
                 pages: res.data.pages,
-                loading: false
+                loading: false,
             });
         }
         catch (err)
@@ -177,29 +175,16 @@ class TagTable extends React.Component
         return (
             <div>
                 <ReactTable
+                    ref={instance => { this.table = instance; }}
+                    defaultPageSize={10}
                     manual
                     filterable
                     columns={this.tagTableColumns}
                     className="-striped -highlight"
-                    // Data props
                     data={this.state.data}
                     pages={this.state.pages}
                     loading={this.state.loading}
                     onFetchData={this.fetchData}
-                    // View props
-                    sorted={this.state.sorted}
-                    page={this.state.page}
-                    pageSize={this.state.pageSize}
-                    expanded={this.state.expanded}
-                    resized={this.state.resized}
-                    filtered={this.state.filtered}
-                    // Callbacks
-                    onSortedChange={sorted => this.setState({sorted})}
-                    onPageChange={page => this.setState({page})}
-                    onPageSizeChange={(pageSize, page) => this.setState({page, pageSize})}
-                    onExpandedChange={expanded => this.setState({expanded})}
-                    onResizedChange={resized => this.setState({resized})}
-                    onFilteredChange={filtered => this.setState({filtered})}
                     SubComponent={(row) =>
                     {
                         return (

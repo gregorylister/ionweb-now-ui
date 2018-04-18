@@ -20,12 +20,6 @@ const innerHeaderFont = style({
     fontWeight: "bold"
 });
 
-const outerHeaderFont = style({
-    textAlign: "left",
-    fontWeight: 800,
-    fontSize: "large"
-});
-
 const tooltipOpacity = style({
     opacity: "1 !important"
 });
@@ -101,7 +95,7 @@ class TagTable extends React.Component
     tagTableColumns =
     [
         {
-            Header: (<div className={outerHeaderFont}>Tag Details</div>),
+            Header: (<div className={innerHeaderFont}>TAGS</div>),
             columns:
             [
                 {
@@ -151,7 +145,7 @@ class TagTable extends React.Component
             ],
         },
         {
-            Header: (<div className={outerHeaderFont}>Inspections</div>),
+            Header: (<div className={innerHeaderFont}>INSPECTIONS</div>),
             columns:
             [
                 {

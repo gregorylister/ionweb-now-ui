@@ -85,7 +85,6 @@ class InspectionTagTable extends React.Component
     {
         return (
             <ReactTable
-                defaultSorted={[{id: "inspection_date", asc: true}]}
                 defaultPageSize={5}
                 columns={this.inspectionTableColumns}
                 manual

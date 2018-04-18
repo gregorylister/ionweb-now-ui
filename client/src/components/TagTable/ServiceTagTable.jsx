@@ -82,7 +82,6 @@ class ServiceTagTable extends React.Component
     {
         return (
             <ReactTable
-                defaultSorted={[{id: "service_date", asc: true}]}
                 defaultPageSize={5}
                 columns={this.serviceTableColumns}
                 manual

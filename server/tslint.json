@@ -12,7 +12,7 @@
         "no-console": false,
         "no-string-literal": false,
         "object-literal-sort-keys": false,
-        "max-line-length": [true, 250],
+        "max-line-length": [true, 100],
         "trailing-comma": false,
         "one-line": 
         [
@@ -39,7 +39,7 @@
         "no-console": false,
         "no-string-literal": false,
         "object-literal-sort-keys": false,
-        "max-line-length": [true, 250],
+        "max-line-length": [true, 100],
         "trailing-comma": false,
         "one-line": 
         [

@@ -178,10 +178,27 @@ class TagTable extends React.Component
                     accessor: "actions",
                     Cell: row => (
                         <div>
-                            <Button size="sm" id={"edit" + row.index} tiny noMargins icon color="info"><i className="now-ui-icons ui-2_settings-90"></i></Button>
-                            <Button onClick={() => this.warningConfirm(row.row.id)} size="sm" id={"remove" + row.index} tiny noMargins icon color="danger"><i className="now-ui-icons ui-1_simple-remove"></i></Button>
-                            <UncontrolledTooltip className={tooltipOpacity} placement="right" target={"edit" + row.index} delay={0}>Edit tag</UncontrolledTooltip>
-                            <UncontrolledTooltip className={tooltipOpacity} placement="right" target={"remove" + row.index} delay={0}> Delete tag</UncontrolledTooltip>
+                            <Button
+                                size="sm" id={"edit" + row.index} tiny noMargins icon color="info"
+                            >
+                                <i className="now-ui-icons ui-2_settings-90"></i>
+                            </Button>
+                            <Button
+                                onClick={() => this.warningConfirm(row.row.id)} size="sm" id={"remove" + row.index}
+                                tiny noMargins icon color="danger"
+                            >
+                                <i className="now-ui-icons ui-1_simple-remove"></i>
+                            </Button>
+                            <UncontrolledTooltip
+                                className={tooltipOpacity} placement="right" target={"edit" + row.index} delay={0}
+                            >
+                                Edit tag
+                            </UncontrolledTooltip>
+                            <UncontrolledTooltip
+                                className={tooltipOpacity} placement="right" target={"remove" + row.index} delay={0}
+                            >
+                                Delete tag
+                            </UncontrolledTooltip>
                         </div>
                     )
                 },

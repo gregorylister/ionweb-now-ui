@@ -1,0 +1,9 @@
+{
+	"recommendations": [
+		"ms-vscode.azure-account",
+		"ms-azuretools.vscode-azureappservice",
+		"wayou.vscode-todo-highlight",
+		"eg2.tslint",
+		"emmanuelbeziat.vscode-great-icons",
+	]
+}

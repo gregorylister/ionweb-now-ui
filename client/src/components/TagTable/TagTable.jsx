@@ -179,7 +179,18 @@ class TagTable extends React.Component
                     Cell: row => (
                         <div>
                             <Button
-                                size="sm" id={"edit" + row.index} tiny noMargins icon color="info"
+                                onClick={() => this.props.toggleAddTagModal({
+                                    id: row.row.id,
+                                    tagCode: row.row.tag_code,
+                                    tagNumber: row.row.tag_number,
+                                    itemName: row.row.item_name,
+                                    itemNumber: row.row.item_number,
+                                    location: row.row.location,
+                                    generalComments: row.row.general_comments,
+                                    editTagSwitch: true
+                                })}
+                                size="sm" id={"edit" + row.index}
+                                tiny noMargins icon color="info"
                             >
                                 <i className="now-ui-icons ui-2_settings-90"></i>
                             </Button>

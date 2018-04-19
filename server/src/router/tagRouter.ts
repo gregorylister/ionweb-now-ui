@@ -9,7 +9,6 @@ const router = express.Router();
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
-// Generic add tag handler
 const addSimple = async (req: express.Request, res: express.Response) =>
 {
     let ionRes = null;
@@ -28,7 +27,6 @@ const addSimple = async (req: express.Request, res: express.Response) =>
     res.end(JSON.stringify(ionRes));
 };
 
-// Generic delete tag handler
 const deleteSimple = async (req: express.Request, res: express.Response) =>
 {
     let ionRes = null;
@@ -47,7 +45,8 @@ const deleteSimple = async (req: express.Request, res: express.Response) =>
     res.end(JSON.stringify(ionRes));
 };
 
-// Get tags handler - uses pagination, filtering and sorting - for use with react-table
+// Get multiple tags for react-table - page, filter and sort parameters used for server side filtering
+// Only the required tags for each table page are sent to the client
 const getFilteredSorted = async (req: express.Request, res: express.Response, next: express.NextFunction) =>
 {
     if (req.query.pageSize && req.query.page && req.query.sorted && req.query.filtered)
@@ -64,13 +63,10 @@ const getFilteredSorted = async (req: express.Request, res: express.Response, ne
 
             const tags = await tagService.getTags(tagId);
 
-            // Apply filters
             const filteredData = applyFilters(tags, filtered);
 
-            // Apply sorts
             const sortedData = applySorts(filteredData, sorted);
 
-            // Get final result
             const result = {
             rows: sortedData.slice(pageSize * page, pageSize * page + pageSize),
             pages: Math.ceil(filteredData.length / pageSize)
@@ -91,7 +87,6 @@ const getFilteredSorted = async (req: express.Request, res: express.Response, ne
     }
 };
 
-// Sorting function
 function applySorts(tags: any[], sorted: any)
 {
     return _.orderBy(tags, sorted.map((sort: any) =>
@@ -109,7 +104,6 @@ function applySorts(tags: any[], sorted: any)
     }), sorted.map((d: any) => (d.desc ? "desc" : "asc")));
 }
 
-// Filtering function
 function applyFilters(tags: any[], filtered: any)
 {
     if (filtered.length)
@@ -125,7 +119,6 @@ function applyFilters(tags: any[], filtered: any)
     return tags;
 }
 
-// Assign handlers to router
 router.get(urls.TAG_GET + "*", getFilteredSorted);
 router.post(urls.TAG_ADD, addSimple);
 router.get(urls.TAG_DELETE, deleteSimple);

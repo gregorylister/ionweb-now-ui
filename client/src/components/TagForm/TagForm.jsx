@@ -56,12 +56,12 @@ class TagForm extends React.Component
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    tag_code: this.props.tag_code,
-                    tag_number: this.props.tag_number,
-                    item_name: this.props.item_name,
-                    item_number: this.props.item_number,
+                    tag_code: this.props.tagCode,
+                    tag_number: this.props.tagNumber,
+                    item_name: this.props.itemName,
+                    item_number: this.props.itemNumber,
                     location: this.props.location,
-                    general_comments: this.props.general_comments,
+                    general_comments: this.props.generalComments,
                     last_modified: new Date()
                 })
             });
@@ -79,7 +79,7 @@ class TagForm extends React.Component
             <Modal className={modalWidth} size="lg" isOpen={this.props.isOpen} toggle={this.props.toggle}>
                 {this.state.alert}
                 <ModalHeader className="justify-content-center" toggle={this.props.toggle}>
-                    Add Tag
+                    {!this.props.editTagSwitch ? "Add Tag" : "Edit Tag"}
                 </ModalHeader>
                 <ModalBody>
                     <form onSubmit={this.handleSubmit}>
@@ -92,26 +92,26 @@ class TagForm extends React.Component
                                         name: "id",
                                         type : "text",
                                         disabled: true,
-                                        placeholder: "",
+                                        placeholder: this.props.id,
                                     }
                                 },
                                 {
                                     label : "Code",
                                     inputProps : {
-                                        name: "tag_code",
+                                        name: "tagCode",
                                         type : "text",
                                         placeholder: "",
-                                        value: this.props.tag_code,
+                                        value: this.props.tagCode,
                                         onChange: this.props.onChange
                                     }
                                 },
                                 {
                                     label : "Number",
                                     inputProps : {
-                                        name: "tag_number",
+                                        name: "tagNumber",
                                         type : "text",
                                         placeholder: "",
-                                        value: this.props.tag_number,
+                                        value: this.props.tagNumber,
                                         onChange: this.props.onChange
                                     }
                                 }
@@ -123,20 +123,20 @@ class TagForm extends React.Component
                                 {
                                     label : "Item Name",
                                     inputProps : {
-                                        name: "item_name",
+                                        name: "itemName",
                                         type : "text",
                                         placeholder: "",
-                                        value: this.props.item_name,
+                                        value: this.props.itemName,
                                         onChange: this.props.onChange
                                     }
                                 },
                                 {
                                     label : "Item Number",
                                     inputProps : {
-                                        name: "item_number",
+                                        name: "itemNumber",
                                         type : "text",
                                         placeholder: "",
-                                        value: this.props.item_number,
+                                        value: this.props.itemNumber,
                                         onChange: this.props.onChange
                                     }
                                 },
@@ -158,12 +158,12 @@ class TagForm extends React.Component
                                 {
                                     label : "Comments",
                                     inputProps : {
-                                        name: "general_comments",
+                                        name: "generalComments",
                                         type : "textarea",
                                         rows: "4",
                                         cols: "80",
                                         placeholder: "Enter comments here",
-                                        value: this.props.general_comments,
+                                        value: this.props.generalComments,
                                         onChange: this.props.onChange
                                     }
                                 }

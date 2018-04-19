@@ -16,14 +16,16 @@ class TagTableView extends React.Component
     {
         super(props);
         this.state = {
-            tag_code: "",
-            tag_number: "",
-            item_name: "",
-            item_number: "",
+            id: "",
+            tagCode: "",
+            tagNumber: "",
+            itemName: "",
+            itemNumber: "",
             location: "",
-            general_comments: "",
+            generalComments: "",
             addTagModal: false,
-            refreshTable: true
+            refreshTable: true,
+            editTagSwitch: false
         };
         this.toggleAddTagModal = this.toggleAddTagModal.bind(this);
         this.onChange = this.onChange.bind(this);
@@ -36,18 +38,16 @@ class TagTableView extends React.Component
         this.setState(state);
     }
 
-    toggleAddTagModal()
+    toggleAddTagModal(fieldState)
     {
-        this.setState({
-            tag_code: "",
-            tag_number: "",
-            item_name: "",
-            item_number: "",
-            location: "",
-            general_comments: "",
-            addTagModal: !this.state.addTagModal,
-            refreshTable: !this.state.refreshTable
-        });
+        const state = Object.assign(
+            {
+                addTagModal: !this.state.addTagModal,
+                refreshTable: !this.state.refreshTable
+            },
+            fieldState
+        );
+        this.setState(state);
     }
 
     render()
@@ -65,7 +65,16 @@ class TagTableView extends React.Component
                                             <Card>
                                                 <CardBody>
                                                     <Button
-                                                        onClick={this.toggleAddTagModal}
+                                                        onClick={() => this.toggleAddTagModal({
+                                                            id: "",
+                                                            tagCode: "",
+                                                            tagNumber: "",
+                                                            itemName: "",
+                                                            itemNumber: "",
+                                                            location: "",
+                                                            generalComments: "",
+                                                            editTagSwitch: false
+                                                        })}
                                                         id="add" size="sm" color="success"
                                                         noMargins round
                                                     >
@@ -118,21 +127,27 @@ class TagTableView extends React.Component
                                                         Tips
                                                     </UncontrolledTooltip>
                                                     <TagForm
-                                                        tag_code={this.state.tag_code}
-                                                        tag_number={this.state.tag_number}
-                                                        item_name={this.state.item_name}
-                                                        item_number={this.state.item_number}
+                                                        id={this.state.id}
+                                                        tagCode={this.state.tagCode}
+                                                        tagNumber={this.state.tagNumber}
+                                                        itemName={this.state.itemName}
+                                                        itemNumber={this.state.itemNumber}
                                                         location={this.state.location}
-                                                        general_comments={this.state.general_comments}
-                                                        onChange={this.onChange}
+                                                        generalComments={this.state.generalComments}
+                                                        editTagSwitch={this.state.editTagSwitch}
                                                         isOpen={this.state.addTagModal}
+                                                        onChange={this.onChange}
                                                         toggle={this.toggleAddTagModal}
                                                     />
                                                 </CardBody>
                                             </Card>
                                         </Col>
                                     </Row>
-                                    <TagTable refreshTable={this.state.refreshTable}/>
+                                    <TagTable
+                                        refreshTable={this.state.refreshTable}
+                                        toggleAddTagModal={this.toggleAddTagModal}
+                                        onChange={this.onChange}
+                                    />
                                 </CardBody>
                             </Card>
                         </Col>

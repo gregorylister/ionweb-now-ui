@@ -60,13 +60,9 @@ const getFilteredSorted = async (req: express.Request, res: express.Response, ne
             const sorted = JSON.parse(req.query.sorted);
             const filtered = JSON.parse(req.query.filtered);
             const tagId = Number(req.query.tagId);
-
             const tags = await tagService.getTags(tagId);
-
             const filteredData = applyFilters(tags, filtered);
-
             const sortedData = applySorts(filteredData, sorted);
-
             const result = {
             rows: sortedData.slice(pageSize * page, pageSize * page + pageSize),
             pages: Math.ceil(filteredData.length / pageSize)

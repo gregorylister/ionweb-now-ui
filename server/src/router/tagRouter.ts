@@ -9,7 +9,7 @@ const router = express.Router();
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
-const addSimple = async (req: express.Request, res: express.Response) =>
+const addSingleTag = async (req: express.Request, res: express.Response) =>
 {
     let ionRes = null;
     try
@@ -27,7 +27,7 @@ const addSimple = async (req: express.Request, res: express.Response) =>
     res.end(JSON.stringify(ionRes));
 };
 
-const deleteSimple = async (req: express.Request, res: express.Response) =>
+const deleteSingleTag = async (req: express.Request, res: express.Response) =>
 {
     let ionRes = null;
     try
@@ -47,7 +47,7 @@ const deleteSimple = async (req: express.Request, res: express.Response) =>
 
 // Get multiple tags for react-table - page, filter and sort parameters used for server side filtering
 // Only the required tags for each table page are sent to the client
-const getFilteredSorted = async (req: express.Request, res: express.Response, next: express.NextFunction) =>
+const getMultipleTags = async (req: express.Request, res: express.Response, next: express.NextFunction) =>
 {
     if (req.query.pageSize && req.query.page && req.query.sorted && req.query.filtered)
     {
@@ -115,16 +115,16 @@ function applyFilters(tags: any[], filtered: any)
     return tags;
 }
 
-router.get(urls.TAG_GET + "*", getFilteredSorted);
-router.post(urls.TAG_ADD, addSimple);
-router.get(urls.TAG_DELETE, deleteSimple);
+router.get(urls.TAG_GET + "*", getMultipleTags);
+router.post(urls.TAG_ADD, addSingleTag);
+router.get(urls.TAG_DELETE, deleteSingleTag);
 
-router.get(urls.SERVICE_TAG_GET + "*", getFilteredSorted);
-router.post(urls.SERVICE_TAG_ADD, addSimple);
-router.get(urls.SERVICE_TAG_DELETE, deleteSimple);
+router.get(urls.SERVICE_TAG_GET + "*", getMultipleTags);
+router.post(urls.SERVICE_TAG_ADD, addSingleTag);
+router.get(urls.SERVICE_TAG_DELETE, deleteSingleTag);
 
-router.get(urls.INSPECTION_TAG_GET + "*", getFilteredSorted);
-router.post(urls.INSPECTION_TAG_ADD, addSimple);
-router.get(urls.INSPECTION_TAG_DELETE, deleteSimple);
+router.get(urls.INSPECTION_TAG_GET + "*", getMultipleTags);
+router.post(urls.INSPECTION_TAG_ADD, addSingleTag);
+router.get(urls.INSPECTION_TAG_DELETE, deleteSingleTag);
 
 export default router;

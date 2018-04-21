@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "devDependencies": {
     "gulp": "github:gulpjs/gulp#4.0",
-    "gulp-cli": "^2.0.1",
     "gulp-sourcemaps": "^2.6.3",
     "gulp-typescript": "^4.0.0-alpha.1",
     "source-map-loader": "^0.2.3",

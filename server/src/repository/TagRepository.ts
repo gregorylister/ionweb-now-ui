@@ -53,6 +53,22 @@ export default class TagRepository
         }
     }
 
+    public async editTag(tagId: number, tag: any): Promise<void>
+    {
+        switch (this.tableRoute)
+        {
+            case "tag":
+                await this.tagTable.update(tag, {where: {id: tagId}});
+                break;
+            case "servicetag":
+                await this.tagServiceTable.update(tag, {where: {tag_id: tagId}});
+                break;
+            case "inspectiontag":
+                await this.tagInspectionTable.update(tag, {where: {tag_id: tagId}});
+                break;
+        }
+    }
+
     public async getTags(tagId: number): Promise<any[]>
     {
         let tags = [];

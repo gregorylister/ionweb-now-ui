@@ -1,6 +1,5 @@
 import React from "react";
 import ReactTable from "react-table";
-import requestData from "./requestData";
 import { style } from "typestyle";
 import "react-table/react-table.css";
 
@@ -24,19 +23,20 @@ class ServiceTagTable extends React.Component
         {
             this.setState({ loading: true });
 
-            const res = await requestData(
-                "servicetag",
-                state.pageSize,
-                state.page,
-                state.sorted,
-                state.filtered,
-                Number(this.props.tagId)
+            const res = await fetch(
+                `/servicetag/get
+                ?pageSize=${state.pageSize}
+                &page=${state.page}
+                &sorted=${JSON.stringify(state.sorted)}
+                &filtered=${JSON.stringify(state.filtered)}
+                &tagId=${ Number(this.props.tagId)}`
             );
+            const resJson = await res.json();
 
             this.setState({
-                data: res.data.rows,
-                pages: res.data.pages,
-                loading: false
+                data: resJson.data.rows,
+                pages: resJson.data.pages,
+                loading: false,
             });
         }
         catch (err)

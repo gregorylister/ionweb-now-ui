@@ -1,6 +1,5 @@
 import React from "react";
 import ReactTable from "react-table";
-import requestData from "./requestData";
 import Expander from "./Expander";
 import InspectionTagTable from "./InspectionTagTable";
 import ServiceTagTable from "./ServiceTagTable";
@@ -39,9 +38,10 @@ class TagTable extends React.Component
         };
         this.fetchData = this.fetchData.bind(this);
         this.deleteTag = this.deleteTag.bind(this);
-        this.warningConfirm = this.warningConfirm.bind(this);
-        this.successDelete = this.successDelete.bind(this);
-        this.cancelDelete = this.cancelDelete.bind(this);
+        this.warningAlert = this.warningAlert.bind(this);
+        this.successAlert = this.successAlert.bind(this);
+        this.errorAlert = this.errorAlert.bind(this);
+        this.cancelAlert = this.cancelAlert.bind(this);
         this.hideAlert = this.hideAlert.bind(this);
     }
 
@@ -71,18 +71,19 @@ class TagTable extends React.Component
         {
             this.setState({ loading: true, refreshTable: false });
 
-            const res = await requestData(
-                "tag",
-                state.pageSize,
-                state.page,
-                state.sorted,
-                state.filtered,
-                -1
+            const res = await fetch(
+                `/tag/get
+                ?pageSize=${state.pageSize}
+                &page=${state.page}
+                &sorted=${JSON.stringify(state.sorted)}
+                &filtered=${JSON.stringify(state.filtered)}
+                &tagId=${-1}`
             );
+            const resJson = await res.json();
 
             this.setState({
-                data: res.data.rows,
-                pages: res.data.pages,
+                data: resJson.data.rows,
+                pages: resJson.data.pages,
                 loading: false,
             });
         }
@@ -96,7 +97,9 @@ class TagTable extends React.Component
     {
         try
         {
-            await fetch(`/tag/delete?tagId=${JSON.stringify(tagId)}`);
+            const res = await fetch(`/tag/delete?tagId=${JSON.stringify(tagId)}`);
+            const resJson = await res.json();
+            resJson.status ? this.successAlert() : this.errorAlert();
         }
         catch (err)
         {
@@ -104,7 +107,7 @@ class TagTable extends React.Component
         }
     }
 
-    warningConfirm(tagId)
+    warningAlert(tagId)
     {
         this.setState({
             alert: (
@@ -112,8 +115,8 @@ class TagTable extends React.Component
                     warning
                     style={{display: "block", marginTop: "-200px"}}
                     title="Are you sure?"
-                    onConfirm={() => this.successDelete(tagId)}
-                    onCancel={() => this.cancelDelete()}
+                    onConfirm={() => this.deleteTag(tagId)}
+                    onCancel={() => this.cancelAlert()}
                     confirmBtnBsStyle="info"
                     cancelBtnBsStyle="danger"
                     confirmBtnText="Yes, delete it!"
@@ -125,9 +128,8 @@ class TagTable extends React.Component
         });
     }
 
-    async successDelete(tagId)
+    successAlert()
     {
-        await this.deleteTag(tagId);
         this.setState({
             alert: (
                 <SweetAlert
@@ -144,7 +146,25 @@ class TagTable extends React.Component
         });
     }
 
-    cancelDelete()
+    errorAlert()
+    {
+        this.setState({
+            alert: (
+                <SweetAlert
+                    danger
+                    style={{display: "block", marginTop: "-200px"}}
+                    title="Aw snap!"
+                    onConfirm={() => this.hideAlert()}
+                    onCancel={() => this.hideAlert()}
+                    confirmBtnBsStyle="info"
+                >
+                Internal server error
+                </SweetAlert>
+            )
+        });
+    }
+
+    cancelAlert()
     {
         this.setState({
             alert: (
@@ -195,7 +215,7 @@ class TagTable extends React.Component
                                 <i className="now-ui-icons ui-2_settings-90"></i>
                             </Button>
                             <Button
-                                onClick={() => this.warningConfirm(row.row.id)} size="sm" id={"remove" + row.index}
+                                onClick={() => this.warningAlert(row.row.id)} size="sm" id={"remove" + row.index}
                                 tiny noMargins icon color="danger"
                             >
                                 <i className="now-ui-icons ui-1_simple-remove"></i>

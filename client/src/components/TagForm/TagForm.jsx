@@ -16,6 +16,7 @@ class TagForm extends React.Component
         super(props);
         this.state = {alert: null};
         this.successAlert = this.successAlert.bind(this);
+        this.errorAlert = this.errorAlert.bind(this);
         this.hideAlert = this.hideAlert.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -32,7 +33,25 @@ class TagForm extends React.Component
                     onCancel={() => this.hideAlert()}
                     confirmBtnBsStyle="info"
                 >
-                Tag created
+                Tag saved
+                </SweetAlert>
+            )
+        });
+    }
+
+    errorAlert()
+    {
+        this.setState({
+            alert: (
+                <SweetAlert
+                    danger
+                    style={{display: "block", marginTop: "-200px"}}
+                    title="Aw snap!"
+                    onConfirm={() => this.hideAlert()}
+                    onCancel={() => this.hideAlert()}
+                    confirmBtnBsStyle="info"
+                >
+                Internal server error
                 </SweetAlert>
             )
         });
@@ -48,8 +67,10 @@ class TagForm extends React.Component
         try
         {
             event.preventDefault();
+            let path = null;
+            this.props.editTagSwitch ? path = `/tag/edit?tagId=${this.props.id}` : path = "/tag/add";
 
-            await fetch("/tag/add", {
+            const res = await fetch(path, {
                 method: "post",
                 headers: {
                     "Accept": "application/json",
@@ -65,7 +86,8 @@ class TagForm extends React.Component
                     last_modified: new Date()
                 })
             });
-            this.successAlert();
+            const resJson = await res.json();
+            resJson.status ? this.successAlert() : this.errorAlert();
         }
         catch (err)
         {

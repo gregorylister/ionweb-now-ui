@@ -11,38 +11,57 @@ router.use(bodyParser.json());
 
 const addSingleTag = async (req: express.Request, res: express.Response) =>
 {
-    let ionRes = null;
+    let finalResponse = null;
     try
     {
         const tagService = serviceInjector.createTagService(req.originalUrl);
         const tag = req.body;
         await tagService.addTag(tag);
-        ionRes = responseHelper.pass(null);
+        finalResponse = responseHelper.pass(null);
     }
     catch (err)
     {
-        ionRes = responseHelper.fail(err.message);
+        finalResponse = responseHelper.fail(err.message);
         console.error(err);
     }
-    res.end(JSON.stringify(ionRes));
+    res.end(JSON.stringify(finalResponse));
+};
+
+const editSingleTag = async (req: express.Request, res: express.Response) =>
+{
+    let finalResponse = null;
+    try
+    {
+        const tagService = serviceInjector.createTagService(req.originalUrl);
+        const tag = req.body;
+        const tagId = Number(req.query.tagId);
+        await tagService.editTag(tagId, tag);
+        finalResponse = responseHelper.pass(null);
+    }
+    catch (err)
+    {
+        finalResponse = responseHelper.fail(err.message);
+        console.error(err);
+    }
+    res.end(JSON.stringify(finalResponse));
 };
 
 const deleteSingleTag = async (req: express.Request, res: express.Response) =>
 {
-    let ionRes = null;
+    let finalResponse = null;
     try
     {
         const tagService = serviceInjector.createTagService(req.originalUrl);
         const tagId = Number(req.query.tagId);
         await tagService.deleteTag(tagId);
-        ionRes = responseHelper.pass(null);
+        finalResponse = responseHelper.pass(null);
     }
     catch (err)
     {
-        ionRes = responseHelper.fail(err.message);
+        finalResponse = responseHelper.fail(err.message);
         console.error(err);
     }
-    res.end(JSON.stringify(ionRes));
+    res.end(JSON.stringify(finalResponse));
 };
 
 // Get multiple tags for react-table - page, filter and sort parameters used for server side filtering
@@ -51,7 +70,7 @@ const getMultipleTags = async (req: express.Request, res: express.Response, next
 {
     if (req.query.pageSize && req.query.page && req.query.sorted && req.query.filtered)
     {
-        let ionRes = null;
+        let finalResponse = null;
         try
         {
             const tagService = serviceInjector.createTagService(req.originalUrl);
@@ -68,14 +87,14 @@ const getMultipleTags = async (req: express.Request, res: express.Response, next
             pages: Math.ceil(filteredData.length / pageSize)
             };
 
-            ionRes = responseHelper.pass(result);
+            finalResponse = responseHelper.pass(result);
         }
         catch (err)
         {
-            ionRes = responseHelper.fail(err.message);
+            finalResponse = responseHelper.fail(err.message);
             console.error(err);
         }
-        res.end(JSON.stringify(ionRes));
+        res.end(JSON.stringify(finalResponse));
     }
     else
     {
@@ -115,16 +134,19 @@ function applyFilters(tags: any[], filtered: any)
     return tags;
 }
 
-router.get(urls.TAG_GET + "*", getMultipleTags);
 router.post(urls.TAG_ADD, addSingleTag);
+router.post(urls.TAG_EDIT, editSingleTag);
 router.get(urls.TAG_DELETE, deleteSingleTag);
+router.get(urls.TAG_GET + "*", getMultipleTags);
 
-router.get(urls.SERVICE_TAG_GET + "*", getMultipleTags);
 router.post(urls.SERVICE_TAG_ADD, addSingleTag);
+router.post(urls.SERVICE_TAG_EDIT, editSingleTag);
 router.get(urls.SERVICE_TAG_DELETE, deleteSingleTag);
+router.get(urls.SERVICE_TAG_GET + "*", getMultipleTags);
 
-router.get(urls.INSPECTION_TAG_GET + "*", getMultipleTags);
 router.post(urls.INSPECTION_TAG_ADD, addSingleTag);
+router.post(urls.INSPECTION_TAG_EDIT, editSingleTag);
 router.get(urls.INSPECTION_TAG_DELETE, deleteSingleTag);
+router.get(urls.INSPECTION_TAG_GET + "*", getMultipleTags);
 
 export default router;

@@ -27,8 +27,8 @@ class TagTableView extends React.Component
             refreshTable: true,
             editTagSwitch: false
         };
-        this.toggleAddTagModal = this.toggleAddTagModal.bind(this);
         this.onChange = this.onChange.bind(this);
+        this.toggleAddTagModal = this.toggleAddTagModal.bind(this);
     }
 
     onChange(event)

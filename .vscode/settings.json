@@ -1,7 +1,0 @@
-{
-    "git.confirmSync": false,
-    "git.enableSmartCommit": true,
-    "workbench.iconTheme": "vscode-great-icons",
-    "tslint.jsEnable": true,
-    "workbench.startupEditor": "newUntitledFile"
-}
